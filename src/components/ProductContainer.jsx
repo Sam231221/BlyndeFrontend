@@ -24,7 +24,7 @@ export default function ProductContainer() {
 
   const dispatch =  useDispatch()
   const navigate = useNavigate()
-
+  const endpoint = process.env.REACT_APP_API
   const loadTopRatedProducts = async () => {
     const { data } = await axios.get('api/products/top/')
     SetTopRatedProducts(data)
@@ -38,10 +38,10 @@ export default function ProductContainer() {
   }
 
   const loadRecentProducts = async () => {
-    const { data } = await axios.get('api/products/recents/')
+    const { data } = await axios.get(`/api/products/recents/`)
     console.log(data)
     SetRecentProducts(data)
-    console.log('data:', typeof (data.images))
+    console.log('data:', typeof(data.images))
     SetRpLoading(false)
   }
 
@@ -81,8 +81,8 @@ export default function ProductContainer() {
 
                   <div className="showcase-banner">
 
-                    <img src={product.thumbnail} alt={product.name} className="product-img default" width="300" />
-                    <img src={product.thumbnail} alt={product.name} className="product-img hover" width="300" />
+                    <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="product-img default" width="300" />
+                    <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="product-img hover" width="300" />
 
                     <div className="showcase-actions">
                       {/* <button className="btn-action">
@@ -144,7 +144,7 @@ export default function ProductContainer() {
                         <div key={product.id} className="showcase">
 
                           <Link to="/" className="showcase-img-box">
-                            <img src={product.thumbnail} alt={product.name} className="showcase-img"
+                            <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="showcase-img"
                               width="70" />
                           </Link>
 
@@ -157,7 +157,7 @@ export default function ProductContainer() {
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
-                              <del>$15.00</del>
+                              {/* <del>$15.00</del> */}
                             </div>
 
                           </div>
@@ -185,7 +185,7 @@ export default function ProductContainer() {
                         <div key={product.id} className="showcase">
 
                           <Link to="#" className="showcase-img-box">
-                            <img src={product.thumbnail} alt={product.name} className="showcase-img"
+                            <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="showcase-img"
                               width="70" />
                           </Link>
 
@@ -198,7 +198,7 @@ export default function ProductContainer() {
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
-                              <del>$15.00</del>
+      
                             </div>
 
                           </div>
@@ -229,7 +229,7 @@ export default function ProductContainer() {
                         <div key={product.id} className="showcase">
 
                           <Link to="#" className="showcase-img-box">
-                            <img src={product.thumbnail} alt={product.name} className="showcase-img"
+                            <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="showcase-img"
                               width="70" />
                           </Link>
 
@@ -242,7 +242,7 @@ export default function ProductContainer() {
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
-                              <del>$15.00</del>
+          
                             </div>
 
                           </div>
@@ -275,7 +275,7 @@ export default function ProductContainer() {
                   <div className="showcase">
 
                     <div className="showcase-banner">
-                      <img src={product.thumbnail} alt={product.name}
+                      <img src={`${endpoint}${product.thumbnail}`} alt={product.name}
                         className="showcase-img" />
                     </div>
 

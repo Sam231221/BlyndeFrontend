@@ -5,7 +5,7 @@ import { Container, Row, Col, ListGroup, Image, Form, Button, Card } from 'react
 import { Message } from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartAction'
 import PageContainer from '../components/PageContainer'
-
+import { endpoint } from '../constants'
 export default function CartScreen() {
     const dispatch = useDispatch()
     const redirect = useNavigate()
@@ -61,7 +61,7 @@ export default function CartScreen() {
                                     <ListGroup.Item key={item.product}>
                                         <Row>
                                             <Col md={2}>
-                                                <Image src={item.thumbnail} alt={item.name} fluid rounded />
+                                                <Image src={`${endpoint}${item.thumbnail}`} alt={item.name} fluid rounded />
                                             </Col>
                                             <Col md={3}>
                                                 <Link className='nav-links link-dark' to={`/product/${item.product}`}>{item.name}</Link>

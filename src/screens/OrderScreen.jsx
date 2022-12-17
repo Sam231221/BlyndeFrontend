@@ -12,7 +12,7 @@ import { ORDER_PAY_REQUEST, ORDER_PAY_RESET } from '../reducers/Order/OrderPaySl
 import { ORDER_DELIVERY_RESET } from '../reducers/Order/OrderDeliverySlice'
 
 import PageContainer from '../components/PageContainer'
-
+import { endpoint } from '../constants'
 
 
 export default function OrderScreen() {
@@ -143,7 +143,7 @@ export default function OrderScreen() {
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 <Col md={1}>
-                                                    <Image src={item.thumbnail} alt={item.name} fluid rounded />
+                                                    <Image src={`${endpoint}${item.thumbnail}`} alt={item.name} fluid rounded />
                                                 </Col>
 
                                                 <Col>

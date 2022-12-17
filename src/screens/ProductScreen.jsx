@@ -10,14 +10,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import { Message } from '../components/Message'
 import PageContainer from '../components/PageContainer'
-
+import { endpoint } from '../constants'
 
 export default function ProductScreen() {
     const [quantity, setQuantity] = useState(1)
     const dispatch = useDispatch()
     const { id } = useParams()
     const navigate = useNavigate()
-    console.log('param id:', id, ' qty:', quantity)
 
     //select a particular state i.e productList state which is an obj
     const productDetail = useSelector(state => state.productDetails)
@@ -45,7 +44,7 @@ export default function ProductScreen() {
                     : error ? <Message variant='danger'>{error}</Message>
                         : <Row>
                             <Col md={5}>
-                                <Image src={product.thumbnail} alt={product.name} fluid></Image>
+                                <Image src={`${endpoint}${product.thumbnail}`} alt={product.name} fluid></Image>
                             </Col>
 
                             <Col md={4}>

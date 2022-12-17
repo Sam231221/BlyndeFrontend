@@ -7,6 +7,7 @@ import PageContainer from '../components/PageContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../reducers/Order/OrderCreateSlice'
+import { endpoint } from '../constants'
 
 function PlaceOrderScreen() {
 
@@ -95,7 +96,7 @@ function PlaceOrderScreen() {
                                             <ListGroup.Item key={index}>
                                                 <Row>
                                                     <Col md={1}>
-                                                        <Image src={item.thumbnail} alt={item.name} fluid rounded />
+                                                        <Image src={`${endpoint}${item.thumbnail}`} alt={item.name} fluid rounded />
                                                     </Col>
 
                                                     <Col>
