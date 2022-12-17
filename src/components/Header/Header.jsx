@@ -9,7 +9,7 @@ import logo from '../../assets/images/logo/logo.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Loader from '../Loader'
-
+import { endpoint } from '../../constants'
 
 function Header() {
     const userLogin = useSelector(state => state.userLogin)
@@ -150,7 +150,7 @@ function Header() {
                                             return (
                                                 <Link className="p-1 dataItem nav-links link-dark" to={`/product/${product._id}`}>
                                                     <div className='d-flex'>
-                                                        <img width="30" height="30" src={product.thumbnail} alt={product.name} />
+                                                        <img width="30" height="30" src={`${endpoint}${product.thumbnail}`} alt={product.name} />
                                                         <p>{product.name} </p>
                                                     </div>
                                                 </Link>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { Message } from "../../components/Message";
@@ -38,9 +38,9 @@ function RegisterScreen({ location, history }) {
   };
 
   return (
-    <FormContainer style={{"height":100+'vh'}}>
+    <Container style={{"paddingBottom":40, "paddingTop":40 , "display": 'flex', 'alignItems':'center',"height":'100vh'}}>
       <div className="form-signin shadow w-100 m-auto">
-        <h3 className="mb-2">Walmart Sign Up</h3>
+        <h3 className="mb-2">Relshop Sign Up</h3>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
@@ -100,7 +100,7 @@ function RegisterScreen({ location, history }) {
           </Col>
         </Row>
       </div>
-    </FormContainer>
+    </Container>
   );
 }
 

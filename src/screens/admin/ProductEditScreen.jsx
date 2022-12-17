@@ -201,9 +201,7 @@ function ProductEditScreen() {
 
                                     <Form.Group className='mb-4' controlId='description'>
                                         <Form.Label>Description</Form.Label>
-                                        <Form.Control
-
-                                            type='text'
+                                        <Form.Control as="textarea" rows={4}
                                             placeholder='Enter description'
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)}

@@ -146,21 +146,7 @@ i {
   padding: 20px;
 }
 
-.form-control{
-  display: block;
-  width: 100%;
-  height: calc(1.5em + 1.5rem);
-  padding: .75rem 1.5rem;
-  font-size: .875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #55595c;
-  background-color: #f7f7f9;
-  background-clip: padding-box;
-  border: 0 solid #ced4da;
-  border-radius: 0;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+
 
 .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
   color: white;
