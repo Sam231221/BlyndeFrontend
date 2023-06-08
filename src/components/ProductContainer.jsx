@@ -6,8 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Loader from './Loader'
 import ctabanner from '../assets/images/cta-banner.jpg'
 import { useDispatch } from 'react-redux'
-import { addUserlike } from '../actions/userActions'
-
+import Rating from './Rating'
 
 export default function ProductContainer() {
   const [topRatedProducts, SetTopRatedProducts] = useState([])
@@ -22,7 +21,7 @@ export default function ProductContainer() {
   const [dealProducts, SetDealProducts] = useState([])
   const [isDpLoading, SetDpLoading] = useState(true)
 
-  const dispatch =  useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const endpoint = process.env.REACT_APP_API
   const loadTopRatedProducts = async () => {
@@ -41,7 +40,7 @@ export default function ProductContainer() {
     const { data } = await axios.get(`/api/products/recents/`)
     console.log(data)
     SetRecentProducts(data)
-    console.log('data:', typeof(data.images))
+    console.log('data:', typeof (data.images))
     SetRpLoading(false)
   }
 
@@ -50,9 +49,9 @@ export default function ProductContainer() {
     SetDealProducts(data)
     SetDpLoading(false)
   }
-  const addToCartHandler = (id, quantity=1) => {
+  const addToCartHandler = (id, quantity = 1) => {
     navigate(`/cart/?code=${id}&qty=${quantity}`)
-}
+  }
 
   useEffect(() => {
     loadTopRatedProducts()
@@ -85,34 +84,30 @@ export default function ProductContainer() {
                     <img src={`${endpoint}${product.thumbnail}`} alt={product.name} className="product-img hover" width="300" />
 
                     <div className="showcase-actions">
-                      {/* <button className="btn-action">
-                        <ion-icon  name="heart-outline" role="img" className="md hydrated" aria-label="heart outline"></ion-icon>
-                      </button> */}
+                      <button className="btn-action">
+                        <ion-icon name="heart-outline" role="img" className="md hydrated" aria-label="heart outline"></ion-icon>
+                      </button>
 
                       <Link to={`/product/${product._id}`} className="btn-action">
                         <ion-icon name="eye-outline" role="img" className="md hydrated" aria-label="eye outline"></ion-icon>
                       </Link>
 
-                      <button onClick={()=>addToCartHandler(product._id)} className="btn-action">
+                      <button onClick={() => addToCartHandler(product._id)} className="btn-action">
                         <ion-icon name="bag-add-outline" role="img" className="md hydrated" aria-label="bag add outline"></ion-icon>
                       </button>
                     </div>
                   </div>
 
                   <div className="showcase-content">
-                    <a href="#" className="showcase-category">{product.category}</a>
+                    <Link to={`/product/${product._id}`} className="showcase-category">
+                      <h3 className='showcase-title'>
+                        {product.name}
+                      </h3>
+                    </Link>
 
-                    <h3>
-                      <a href="#" className="showcase-title">{product.name}</a>
-                    </h3>
 
-                    <div className="showcase-rating">
-                      <ion-icon name="star" role="img" className="md hydrated" aria-label="star"></ion-icon>
-                      <ion-icon name="star" role="img" className="md hydrated" aria-label="star"></ion-icon>
-                      <ion-icon name="star" role="img" className="md hydrated" aria-label="star"></ion-icon>
-                      <ion-icon name="star-outline" role="img" className="md hydrated" aria-label="star outline"></ion-icon>
-                      <ion-icon name="star-outline" role="img" className="md hydrated" aria-label="star outline"></ion-icon>
-                    </div>
+                    <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#fc8c04'} />
+
 
                     <div className="price-box">
                       <p className="price">${product.price}</p>
@@ -150,10 +145,13 @@ export default function ProductContainer() {
 
                           <div className="showcase-content">
 
-                            <h4 className="showcase-title">{product.name}</h4>
 
 
-                            <Link to="/" className="showcase-category">{product.category}</Link>
+                            <Link to={`/product/${product._id}`} className="showcase-category">
+                              <h4 className='showcase-title'>
+                                {product.name}
+                              </h4>
+                            </Link>
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
@@ -172,6 +170,7 @@ export default function ProductContainer() {
 
             </div>
 
+            {/* featured products */}
             <div className="product-showcase">
 
               <h2 className="title">Featured</h2>
@@ -191,14 +190,15 @@ export default function ProductContainer() {
 
                           <div className="showcase-content">
 
-                            <h4 className="showcase-title">{product.name}</h4>
-
-
-                            <a href="#" className="showcase-category">{product.category}</a>
+                            <Link to={`/product/${product._id}`} className="showcase-category">
+                              <h4 className='showcase-title'>
+                                {product.name}
+                              </h4>
+                            </Link>
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
-      
+
                             </div>
 
                           </div>
@@ -215,6 +215,7 @@ export default function ProductContainer() {
 
             </div>
 
+            {/* top-rated products */}
             <div className="product-showcase">
 
               <h2 className="title">Top Rated</h2>
@@ -235,14 +236,15 @@ export default function ProductContainer() {
 
                           <div className="showcase-content">
 
-                            <h4 className="showcase-title">{product.name}</h4>
-
-
-                            <a href="#" className="showcase-category">{product.category}</a>
+                            <Link to={`/product/${product._id}`} className="showcase-category">
+                              <h4 className='showcase-title'>
+                                {product.name}
+                              </h4>
+                            </Link>
 
                             <div className="price-box">
                               <p className="price">${product.price}</p>
-          
+
                             </div>
 
                           </div>
@@ -261,8 +263,7 @@ export default function ProductContainer() {
           </div>
 
 
-
-          {/* PRODUCT DEALS */}
+          {/* deal of the day */}
           <div className="product-featured">
 
             <h2 className="title">Deal of the day</h2>

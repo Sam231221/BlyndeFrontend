@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button,Container ,Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Button, Container, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { PayPalButton } from 'react-paypal-button-v2'
@@ -9,7 +9,7 @@ import { Message } from '../components/Message'
 import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions'
 
 import { ORDER_PAY_REQUEST, ORDER_PAY_RESET } from '../reducers/Order/OrderPaySlice'
-import { ORDER_DELIVERY_RESET } from '../reducers/Order/OrderDeliverySlice'
+import Moment from 'moment'
 
 import PageContainer from '../components/PageContainer'
 import { endpoint } from '../constants'
@@ -95,76 +95,76 @@ export default function OrderScreen() {
     ) : (
         <PageContainer>
             <Container>
-            <h3>Order No: {order._id}</h3>
-            <Row>
-                <Col md={8}>
-                    <ListGroup className='shadow p-2 m-2' variant='flush'>
-                        <ListGroup.Item>
-                            <h4>Shipping</h4>
-                            <p><strong>Name: </strong> {order.user.name}</p>
-                            <p><strong>Email: </strong>{order.user.email}</p>
-                            <p>
-                                <strong>Shipping: </strong>
-                                {order.shippingAddress.address},  {order.shippingAddress.city}
-                                {'  '}
-                                {order.shippingAddress.postalCode},
-                                {'  '}
-                                {order.shippingAddress.country}
-                            </p>
+                <h3>Order No: {order._id}</h3>
+                <Row>
+                    <Col md={8}>
+                        <ListGroup className='shadow p-2 m-2' variant='flush'>
+                            <ListGroup.Item>
+                                <h4>Shipping</h4>
+                                <p><strong>Name: </strong> {order.user.name}</p>
+                                <p><strong>Email: </strong>{order.user.email}</p>
+                                <p>
+                                    <strong>Shipping: </strong>
+                                    {order.shippingAddress.address},  {order.shippingAddress.city}
+                                    {'  '}
+                                    {order.shippingAddress.postalCode},
+                                    {'  '}
+                                    {order.shippingAddress.country}
+                                </p>
 
-                            {order.isDelivered ? (
-                                <Message variant='success'>Delivered on {order.deliveredAt}</Message>
-                            ) : (
-                                <Message variant='warning'>Not Delivered</Message>
-                            )}
-                        </ListGroup.Item>
+                                {order.isDelivered ? (
+                                    <Message variant='success'>Delivered on {order.deliveredAt}</Message>
+                                ) : (
+                                    <Message variant='warning'>Not Delivered</Message>
+                                )}
+                            </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            <h4>Payment Method</h4>
-                            <p>
-                                <strong>Method: </strong>
-                                {order.paymentMethod}
-                            </p>
-                            {order.isPaid ? (
-                                <Message variant='success'>Paid on {order.paidAt}</Message>
-                            ) : (
-                                <Message variant='warning'>Not Paid</Message>
-                            )}
+                            <ListGroup.Item>
+                                <h4>Payment Method</h4>
+                                <p>
+                                    <strong>Method: </strong>
+                                    {order.paymentMethod}
+                                </p>
+                                {order.isPaid ? (
+                                    <Message variant='success'>Paid on {Moment(order.paidAt).format('MMMM Do YYYY, h:mm a')}</Message>
+                                ) : (
+                                    <Message variant='warning'>Not Paid</Message>
+                                )}
 
-                        </ListGroup.Item>
+                            </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            <h4>Order Items</h4>
-                            {order.orderItems.length === 0 ? <Message variant='info'>
-                                Order is empty
-                            </Message> : (
-                                <ListGroup variant='flush'>
-                                    {order.orderItems.map((item, index) => (
-                                        <ListGroup.Item key={index}>
-                                            <Row>
-                                                <Col md={1}>
-                                                    <Image src={`${endpoint}${item.thumbnail}`} alt={item.name} fluid rounded />
-                                                </Col>
+                            <ListGroup.Item>
+                                <h4>Order Items</h4>
+                                {order.orderItems.length === 0 ? <Message variant='info'>
+                                    Order is empty
+                                </Message> : (
+                                    <ListGroup variant='flush'>
+                                        {order.orderItems.map((item, index) => (
+                                            <ListGroup.Item key={index}>
+                                                <Row>
+                                                    <Col md={1}>
+                                                        <Image src={`${endpoint}${item.thumbnail}`} alt={item.name} fluid rounded />
+                                                    </Col>
 
-                                                <Col>
-                                                    <Link className='nav-links link-dark' to={`/product/${item.product}`}>{item.name}</Link>
-                                                </Col>
+                                                    <Col>
+                                                        <Link className='nav-links link-dark' to={`/product/${item.product}`}>{item.name}</Link>
+                                                    </Col>
 
-                                                <Col md={4}>
-                                                    {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                    ))}
-                                </ListGroup>
-                            )}
-                        </ListGroup.Item>
+                                                    <Col md={4}>
+                                                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                                                    </Col>
+                                                </Row>
+                                            </ListGroup.Item>
+                                        ))}
+                                    </ListGroup>
+                                )}
+                            </ListGroup.Item>
 
-                    </ListGroup>
+                        </ListGroup>
 
-                </Col>
+                    </Col>
 
-                <Col md={4}>
+                    <Col md={4}>
                         <ListGroup className='shadow p-2 m-2' variant='flush'>
                             <ListGroup.Item>
                                 <h2>Order Summary</h2>
@@ -220,8 +220,8 @@ export default function OrderScreen() {
                                 </Button>
                             </ListGroup.Item>
                         )}
-                </Col>
-            </Row>
+                    </Col>
+                </Row>
             </Container>
         </PageContainer>
     )

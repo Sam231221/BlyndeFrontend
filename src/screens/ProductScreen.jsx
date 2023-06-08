@@ -55,7 +55,7 @@ export default function ProductScreen() {
                                     </ListGroup.Item>
 
                                     <ListGroup.Item>
-                                        Ratings: <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e823'} />
+                                        Ratings:    <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#fc8c04'} />
                                     </ListGroup.Item>
 
                                     <ListGroup.Item>

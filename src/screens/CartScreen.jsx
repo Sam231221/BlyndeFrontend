@@ -13,7 +13,7 @@ export default function CartScreen() {
     const params = new URLSearchParams(window.location.search);
     const qty = params.get("qty");
     const productId = params.get("code");
-    console.log(productId,typeof(qty))
+    console.log(productId, typeof (qty))
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
@@ -78,16 +78,16 @@ export default function CartScreen() {
                                                     onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
                                                 >
 
-                                                    {item.countInStock ===0 ? <option value="1">1</option>
-                                                    :<>
-                                                    {
-                                                        [...Array(item.countInStock).keys()].map((x) => (
-                                                            <option key={x + 1} value={x + 1}>
-                                                                {x + 1}
-                                                            </option>
-                                                        ))
-                                                    }
-                                                    </>
+                                                    {item.countInStock === 0 ? <option value="1">1</option>
+                                                        : <>
+                                                            {
+                                                                [...Array(item.countInStock).keys()].map((x) => (
+                                                                    <option key={x + 1} value={x + 1}>
+                                                                        {x + 1}
+                                                                    </option>
+                                                                ))
+                                                            }
+                                                        </>
 
                                                     }
 
@@ -115,7 +115,7 @@ export default function CartScreen() {
                         <ListGroup className='m-3 p-3 shadow' variant='flush'>
                             {/* Calculate indiviual total price, cart total */}
                             <ListGroup.Item>
-                                <h2>Subtotal {cartItems.reduce((acc, item) => (acc + item.quantity), 0)} items</h2>
+                                <h4>Subtotal {cartItems.reduce((acc, item) => (acc + item.quantity), 0)} items</h4>
                                 ${cartItems.reduce((accumulator, item) => accumulator + item.quantity * item.price, 0).toFixed(2)}
                             </ListGroup.Item>
 

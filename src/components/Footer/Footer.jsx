@@ -1,217 +1,217 @@
 import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import payment from '../../assets/images/payment.png'
 
 export default function Footer() {
   return (
     <footer>
-    <div className="footer-nav">
+      <div className="footer-nav">
 
-      <div className="container">
+        <div className="container">
 
-        <ul className="footer-nav-list">
+          <ul className="footer-nav-list">
 
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Popular Categories</h2>
-          </li>
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Popular Categories</h2>
+            </li>
 
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Fashion</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Fashion</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Electronic</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Electronic</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Cosmetic</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Cosmetic</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Health</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Health</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Watches</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Watches</a>
+            </li>
 
-        </ul>
+          </ul>
 
-        <ul className="footer-nav-list">
-        
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Products</h2>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Prices drop</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">New products</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
+          <ul className="footer-nav-list">
 
-        <ul className="footer-nav-list">
-        
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Our Company</h2>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Delivery</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Legal Notice</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Terms and conditions</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">About us</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Secure payment</a>
-          </li>
-        
-        </ul>
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Products</h2>
+            </li>
 
-        <ul className="footer-nav-list">
-        
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Services</h2>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Prices drop</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">New products</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li className="footer-nav-item">
-            <a href="#" className="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Prices drop</a>
+            </li>
 
-        <ul className="footer-nav-list">
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">New products</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Contact</h2>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Best sales</a>
+            </li>
 
-          <li className="footer-nav-item flex">
-            <div className="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Contact us</a>
+            </li>
 
-            <address className="content">
-              419 State 414 Rte
-              Beaver Dams, New York(NY), 14812, USA
-            </address>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Sitemap</a>
+            </li>
 
-          <li className="footer-nav-item flex">
-            <div className="icon-box">
-              <ion-icon name="call-outline"></ion-icon>
-            </div>
+          </ul>
 
-            <a href="tel:+607936-8058" className="footer-nav-link">(607) 936-8058</a>
-          </li>
+          <ul className="footer-nav-list">
 
-          <li className="footer-nav-item flex">
-            <div className="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Our Company</h2>
+            </li>
 
-            <a href="mailto:example@gmail.com" className="footer-nav-link">example@gmail.com</a>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Delivery</a>
+            </li>
 
-        </ul>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Legal Notice</a>
+            </li>
 
-        <ul className="footer-nav-list">
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Terms and conditions</a>
+            </li>
 
-          <li className="footer-nav-item">
-            <h2 className="nav-title">Follow Us</h2>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">About us</a>
+            </li>
 
-          <li>
-            <ul className="social-link">
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Secure payment</a>
+            </li>
 
-              <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
+          </ul>
 
-              <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
+          <ul className="footer-nav-list">
 
-              <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-              </li>
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Services</h2>
+            </li>
 
-              <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Prices drop</a>
+            </li>
 
-            </ul>
-          </li>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">New products</a>
+            </li>
 
-        </ul>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Best sales</a>
+            </li>
 
-      </div>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Contact us</a>
+            </li>
 
-    </div>
+            <li className="footer-nav-item">
+              <a href="#" className="footer-nav-link">Sitemap</a>
+            </li>
 
-    <div className="footer-bottom">
+          </ul>
 
-      <div className="container">
+          <ul className="footer-nav-list">
 
-        <img src={payment} alt="payment method" className="payment-img" />
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Contact</h2>
+            </li>
 
-        <p className="copyright">
-          Copyright &copy; <a href="#">Anon</a> all rights reserved.
-        </p>
+            <li className="footer-nav-item flex">
+              <div className="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+
+              <address className="content">
+                419 State 414 Rte
+                Beaver Dams, New York(NY), 14812, USA
+              </address>
+            </li>
+
+            <li className="footer-nav-item flex">
+              <div className="icon-box">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <a href="tel:+607936-8058" className="footer-nav-link">(607) 936-8058</a>
+            </li>
+
+            <li className="footer-nav-item flex">
+              <div className="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <a href="mailto:example@gmail.com" className="footer-nav-link">example@gmail.com</a>
+            </li>
+
+          </ul>
+
+          <ul className="footer-nav-list">
+
+            <li className="footer-nav-item">
+              <h2 className="nav-title">Follow Us</h2>
+            </li>
+
+            <li>
+              <ul className="social-link">
+
+                <li className="footer-nav-item">
+                  <a href="#" className="footer-nav-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+                <li className="footer-nav-item">
+                  <a href="#" className="footer-nav-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+
+                <li className="footer-nav-item">
+                  <a href="#" className="footer-nav-link">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                  </a>
+                </li>
+
+                <li className="footer-nav-item">
+                  <a href="#" className="footer-nav-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
 
       </div>
 
-    </div>
+      <div className="footer-bottom">
 
-  </footer>
+        <div className="container">
+
+          <img src={payment} alt="payment method" className="payment-img" />
+
+          <p className="copyright">
+            Copyright &copy; <a href="#">Relshop</a> all rights reserved.
+          </p>
+
+        </div>
+
+      </div>
+
+    </footer>
   )
 }
