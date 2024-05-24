@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+a {
+  text-decoration: none !important;
+}
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 0.3rem;
+}
+.table > tbody {
+  vertical-align: middle !important;
+}
