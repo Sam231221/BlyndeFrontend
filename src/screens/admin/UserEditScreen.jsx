@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { Message } from "../../components/Message";
@@ -69,40 +68,38 @@ function UserEditScreen() {
             ) : error ? (
               <Message variant="danger">{error}</Message>
             ) : (
-              <Form onSubmit={submitHandler}>
-                <Form.Group className="mb-2" controlId="name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
+              <div onSubmit={submitHandler}>
+                <div className="mb-2">
+                  <div>Name</div>
+                  <input
                     type="name"
                     placeholder="Enter name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group className="mb-2" controlId="email">
-                  <Form.Label>Email Address</Form.Label>
-                  <Form.Control
+                <div className="mb-2">
+                  <div>Email Address</div>
+                  <input
                     type="email"
                     placeholder="Enter Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group className="mb-3" controlId="isadmin">
-                  <Form.Check
+                <div className="mb-3">
+                  <input
                     type="checkbox"
                     label="Is Admin"
                     checked={isAdmin}
                     onChange={(e) => setIsAdmin(e.target.checked)}
-                  ></Form.Check>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Button type="submit" variant="primary">
-                  Update
-                </Button>
-              </Form>
+                <button type="submit">Update</button>
+              </div>
             )}
           </div>
         </FormContainer>

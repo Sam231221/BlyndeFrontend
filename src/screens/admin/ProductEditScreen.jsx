@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { Message } from "../../components/Message";
@@ -129,35 +129,35 @@ function ProductEditScreen() {
             ) : error ? (
               <Message variant="danger">{error}</Message>
             ) : (
-              <Form onSubmit={submitHandler}>
-                <Form.Group controlId="name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
+              <div onSubmit={submitHandler}>
+                <div>
+                  <label>Name</label>
+                  <input
                     type="name"
                     placeholder="Enter name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group controlId="price">
-                  <Form.Label>Price</Form.Label>
-                  <Form.Control
+                <div>
+                  <label>Price</label>
+                  <input
                     type="number"
                     placeholder="Enter price"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group controlId="image">
-                  <Form.Label>Image</Form.Label>
-                  <Form.Control
+                <div>
+                  <label>Image</label>
+                  <input
                     type="text"
                     placeholder="Enter image"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                  ></Form.Control>
+                  ></input>
                   <input
                     id="image-file"
                     label="Choose File"
@@ -167,31 +167,31 @@ function ProductEditScreen() {
                   />
 
                   {uploading && <Loader />}
-                </Form.Group>
+                </div>
 
-                <Form.Group controlId="brand">
-                  <Form.Label>Brand</Form.Label>
-                  <Form.Control
+                <div>
+                  <label>Brand</label>
+                  <input
                     type="text"
                     placeholder="Enter brand"
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group controlId="countinstock">
-                  <Form.Label>Stock</Form.Label>
-                  <Form.Control
+                <div>
+                  <label>Stock</label>
+                  <input
                     type="number"
                     placeholder="Enter stock"
                     value={countInStock}
                     onChange={(e) => setCountInStock(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Form.Group controlId="category">
-                  <Form.Label>Category</Form.Label>
-                  <Form.Select
+                <div>
+                  <label>Category</label>
+                  <div.Select
                     type="text"
                     placeholder="Enter category"
                     value={category}
@@ -202,24 +202,21 @@ function ProductEditScreen() {
                         {category.name}
                       </option>
                     ))}
-                  </Form.Select>
-                </Form.Group>
+                  </div.Select>
+                </div>
 
-                <Form.Group className="mb-4" controlId="description">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
+                <div>
+                  <label>Description</label>
+                  <input
                     rows={4}
                     placeholder="Enter description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  ></input>
+                </div>
 
-                <Button type="submit" variant="primary">
-                  Update
-                </Button>
-              </Form>
+                <button type="submit">Update</button>
+              </div>
             )}
           </div>
         </FormContainer>

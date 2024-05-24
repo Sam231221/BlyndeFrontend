@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { LinkContainer } from "react-router-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { Table, Button } from "react-bootstrap";
+
+import { Link, useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { Message } from "../../components/Message";
 import { listUsers, deleteUser } from "../../actions/userActions";
 import PageContainer from "../../components/PageContainer";
 
-function UserListScreen({ history }) {
+function UserListScreen() {
   const dispatch = useDispatch();
   const redirect = useNavigate();
 
@@ -21,15 +21,6 @@ function UserListScreen({ history }) {
 
   const userDelete = useSelector((state) => state.userDelete);
   const { success: successDelete } = userDelete;
-
-  /*
-       useEffect() handles those events like when a user is deleted
-       it has got successDelete attribute(success)which is initally 
-       false, every time we delete user the attribute get's updated.
-       Hence useFffect calls callback function() everytime on the attribute 
-       change dispatching listUsers(). This is how in Web browser. Items
-       are seen deleted in real time with no page reload.
-    */
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -54,7 +45,7 @@ function UserListScreen({ history }) {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <Table striped bordered hover responsive className="table-sm">
+          <table>
             <thead>
               <tr>
                 <th>ID</th>
@@ -83,24 +74,20 @@ function UserListScreen({ history }) {
                   </td>
 
                   <td>
-                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
-                      <Button variant="light" className="btn-sm">
+                    <Link to={`/admin/user/${user._id}/edit`}>
+                      <button>
                         <i className="fas fa-edit"></i>
-                      </Button>
-                    </LinkContainer>
+                      </button>
+                    </Link>
 
-                    <Button
-                      variant="danger"
-                      className="btn-sm"
-                      onClick={() => deleteHandler(user._id)}
-                    >
+                    <button onClick={() => deleteHandler(user._id)}>
                       <i className="fas fa-trash"></i>
-                    </Button>
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </Table>
+          </table>
         )}
       </div>
     </PageContainer>
