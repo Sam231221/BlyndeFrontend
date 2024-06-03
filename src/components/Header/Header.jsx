@@ -78,8 +78,8 @@ function Header() {
       >
         <div className="w-full px-5 flex items-center ">
           <Link to="/">
-            <h2 className="text-4xl mb-2 font-bold tracking-wide text-zinc-800">
-              Anon
+            <h2 className="text-3xl mb-2 font-bold tracking-wide text-zinc-900">
+              Blynde
             </h2>
           </Link>
 

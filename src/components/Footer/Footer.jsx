@@ -2,7 +2,7 @@ import payment from "../../assets/images/payment.png";
 import "./Footer.css";
 export default function Footer() {
   return (
-    <footer className="relative z-[2000]">
+    <footer className="relative z-[1000]">
       <div className="footer-nav">
         <div className="container">
           <ul className="footer-nav-list">
@@ -226,7 +226,7 @@ export default function Footer() {
           <img src={payment} alt="payment method" className="payment-img" />
 
           <p className="copyright">
-            Copyright &copy; <a href="#">Anon</a> all rights reserved.
+            Copyright &copy; <a href="#">Blynde</a> all rights reserved.
           </p>
         </div>
       </div>

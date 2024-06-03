@@ -38,7 +38,9 @@ function LoginScreen() {
   return (
     <div className="pb-10 pt-10 flex  h-screen">
       <div className="form-signin border shadow w-[300px] sm:w-[500px] m-auto px-5">
-        <h3 className="mb-2 mt-3 font-bold text-2xl text-center">Anon Login</h3>
+        <h3 className="mb-2 mt-3 font-bold text-2xl text-center">
+          Blynde Login
+        </h3>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
         <form className="text-sm" onSubmit={submitHandler}>

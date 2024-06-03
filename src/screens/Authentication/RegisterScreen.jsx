@@ -38,7 +38,7 @@ function RegisterScreen({ location, history }) {
   return (
     <div className="pb-10 pt-10 flex  h-screen">
       <div className="form-signin shadow  w-[300px] sm:w-[500px] m-auto px-10">
-        <h3 className="mb-2 font-bold text-2xl text-center">Anon Sign Up</h3>
+        <h3 className="mb-2 font-bold text-2xl text-center">Blynde Sign Up</h3>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
