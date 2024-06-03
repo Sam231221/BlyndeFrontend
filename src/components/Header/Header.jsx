@@ -11,10 +11,13 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 
 import clsx from "clsx";
+import Topbar from "./Topbar";
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const wishlist = useSelector((state) => state.wishlist);
+  const { userLikes } = wishlist;
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -48,9 +51,7 @@ function Header() {
   };
   window.addEventListener("scroll", changeBackground);
 
-  //destructuring pathname from location
   const { pathname } = location;
-  //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
 
   const logoutHandler = () => {
@@ -62,12 +63,7 @@ function Header() {
   };
   return (
     <>
-      <div className="bg-black flex text-sm text-medium justify-between text-gray-300 items-center h-11 px-4">
-        <p className=" ">Free shipping for standard order over $100</p>
-        <ul className="flex gap-2  align-items-center">
-          <li>Help&FAQs</li>
-        </ul>
-      </div>
+      <Topbar />
       <header
         className={clsx(
           "z-[997] h-14 fixed transition-all duration-500 w-full flex items-center",
@@ -216,12 +212,12 @@ function Header() {
             </div>
           </div>
 
-          <div className="relative cursor-pointer">
+          <Link to="/my-wishlist" className="relative cursor-pointer">
             <FaRegHeart size={25} />
             <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
-              0
+              {userLikes.reduce((acc, item) => acc + 1, 0)}
             </div>
-          </div>
+          </Link>
         </div>
       </header>
       <div
@@ -245,15 +241,14 @@ function Header() {
 
           <div className="h-[55vh] max-h-[55vh] overflow-y-auto">
             {cartItems.map((item, i) => (
-              <div
-                key={i}
-                className="flex mb-3 justify-center items-center gap-3"
-              >
-                <img
-                  src={`${endpoint}${item.thumbnail}`}
-                  className="w-16 h-16 object-cover"
-                  alt={item.name}
-                />
+              <div key={i} className="flex mb-3  items-center">
+                <div className="w-16 h-16 mr-3">
+                  <img
+                    src={`${endpoint}${item.thumbnail}`}
+                    className="w-full h-full object-cover"
+                    alt={item.name}
+                  />
+                </div>
                 <div className="flex flex-col">
                   <h1 className="text-sm text-zinc-800 font-medium">
                     {item.name}

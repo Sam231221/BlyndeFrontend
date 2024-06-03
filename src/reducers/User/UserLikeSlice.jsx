@@ -1,34 +1,46 @@
-import {createSlice} from '@reduxjs/toolkit'
-
- 
+import { createSlice } from "@reduxjs/toolkit";
+const userLikesFromStorage = localStorage.getItem("userLikes")
+  ? JSON.parse(localStorage.getItem("userLikes"))
+  : [];
 export const UserLikeSlice = createSlice({
-    name:"UserList",
-    initialState:{
-        loading: false,
-        error: false,
-        likes: 0,
+  name: "wishlist",
+  initialState: {
+    loading: false,
+    error: false,
+    userLikes: userLikesFromStorage,
+  },
+  reducers: {
+    USER_LIKE_ADD: (state, action) => {
+      const item = action.payload;
+      const existItem = state.userLikes.find(
+        (userLike) => userLike._id === item._id
+      );
+      if (existItem) {
+        return {
+          ...state,
+          userLikes: state.userLikes.map((userLike) =>
+            userLike._id === existItem._id ? item : userLike
+          ),
+        };
+      } else {
+        return { ...state, userLikes: [...state.userLikes, item] };
+      }
     },
-    reducers:{
-        USER_LIKE_ADD_REQUEST:(state, action) =>{
-            return {...state,
-             loading:true}
-        },
-        USER_LIKE_ADD_SUCCESS:(state, action) =>{
-            return {...state,
-                loading:false,
-                likes:action.payload
-            }
-        },
-        USER_LIKE_FAIL:(state, action) =>{
-            return {
-                ...state,
-                loading:false,
-                error:action.payload
-            }
-        },
+    USER_LIKE_REMOVE: (state, action) => {
+      return {
+        ...state,
+        userLikes: state.userLikes.filter((x) => x._id !== action.payload),
+      };
+    },
+    USER_LIKE_ERROR: (state, action) => {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    },
+  },
+});
 
-    }
-})
-
-export const {USER_LIKE_ADD_REQUEST, USER_LIKE_ADD_SUCCESS, USER_LIKE_FAIL} =UserLikeSlice.actions
-export default UserLikeSlice.reducer 
+export const { USER_LIKE_ADD, USER_LIKE_REMOVE, USER_LIKE_ERROR } =
+  UserLikeSlice.actions;
+export default UserLikeSlice.reducer;

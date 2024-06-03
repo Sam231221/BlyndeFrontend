@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa6";
 

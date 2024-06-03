@@ -63,7 +63,7 @@ function ProfileScreen() {
     <PageContainer>
       <div className="container-lg mx-auto mt-14 ">
         <div className="shadow my-4 mx-auto w-[500px] border py-3 px-4">
-          <h2>User Profile</h2>
+          <h2 className="text-2xl text-gray-800 font-semibold">User Profile</h2>
 
           {message && <Message variant="danger">{message}</Message>}
           {error && <Message variant="danger">{error}</Message>}

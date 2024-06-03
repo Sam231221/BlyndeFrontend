@@ -17,7 +17,7 @@ import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
 import UserListScreen from "./screens/admin/UserListScreen";
 import UserEditScreen from "./screens/admin/UserEditScreen";
-
+import WishlistScreen from "./screens/WishlistScreen";
 function App() {
   return (
     <Router>
@@ -30,6 +30,9 @@ function App() {
         <Route exact path="/register" element={<RegisterScreen />} />
         <Route exact path="/profile" element={<ProfileScreen />} />
         <Route path="/shop" element={<ShopScreen />}></Route>
+
+        <Route path="/my-wishlist" element={<WishlistScreen />}></Route>
+
         {/* Cart */}
         <Route path="/cart/*" element={<CartScreen />}></Route>
 

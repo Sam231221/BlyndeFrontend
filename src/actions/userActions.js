@@ -37,9 +37,52 @@ import {
   USER_LIST_SUCCESS,
 } from "../reducers/User/UserListSlice";
 import {
-  USER_LIKE_ADD_REQUEST,
-  USER_LIKE_ADD_SUCCESS,
+  USER_LIKE_ADD,
+  USER_LIKE_ERROR,
+  USER_LIKE_REMOVE,
 } from "../reducers/User/UserLikeSlice";
+
+export const addToWishList = (id) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.get(`/api/products/${id}`);
+    console.log(data);
+    dispatch(
+      USER_LIKE_ADD({
+        _id: data._id,
+        rating: data.rating,
+        name: data.name,
+        thumbnail: data.thumbnail,
+        on_sale: data.on_sale,
+        sale_price: data.sale_price,
+        price: data.price,
+        countInStock: data.countInStock,
+      })
+    );
+    localStorage.setItem(
+      "userLikes",
+      JSON.stringify(getState().wishlist.userLikes)
+    );
+  } catch (error) {
+    dispatch(
+      USER_LIKE_ERROR(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      )
+    );
+  }
+};
+
+export const removeFromWishList = (id) => async (dispatch, getState) => {
+  dispatch({
+    type: USER_LIKE_REMOVE,
+    payload: id,
+  });
+  localStorage.setItem(
+    "userLikes",
+    JSON.stringify(getState().wishlist.userLikes)
+  );
+};
 
 export const login = (email, password) => async (dispatch) => {
   try {
