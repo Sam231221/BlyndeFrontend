@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa6";
 
@@ -21,12 +21,12 @@ export const ImageSlider = ({ slides, autoplay = false, timeout = 5000 }) => {
     }
   };
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     nextSlide();
-  //   }, timeout);
-  //   return () => clearTimeout(timer);
-  // }, [current]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      nextSlide();
+    }, timeout);
+    return () => clearTimeout(timer);
+  }, [current]);
 
   return (
     <>
