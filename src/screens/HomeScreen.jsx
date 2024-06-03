@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { listProducts } from "../actions/productActions";
-
+import Testimonials from "../components/Testimonials";
 import ProductContainer from "../components/ProductContainer";
 import PageContainer from "../components/PageContainer";
 import ImageSlider from "../components/ImageSlider";
+import DiscountOffers from "../components/DiscountOffers";
 export const HomeScreen = () => {
   const dispatch = useDispatch();
 
@@ -25,6 +26,8 @@ export const HomeScreen = () => {
     <PageContainer>
       <ImageSlider />
       <ProductContainer />
+      <DiscountOffers />
+      <Testimonials />
     </PageContainer>
   );
 };
