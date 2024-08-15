@@ -1,57 +1,164 @@
-import bn1 from "../../../assets/images/banner-01.jpg";
-import bn2 from "../../../assets/images/banner-02.jpg";
-import bn3 from "../../../assets/images/banner-03.jpg";
+import icon1 from "../../../assets/images/icons/icon1.png";
+import icon2 from "../../../assets/images/icons/icon2.png";
+import icon3 from "../../../assets/images/icons/icon3.png";
+import icon4 from "../../../assets/images/icons/icon4.png";
+
+import bn1 from "../../../assets/images/banners/banner-01.jpg";
+import bn2 from "../../../assets/images/banners/banner-02.jpg";
+import bn3 from "../../../assets/images/banners/banner-03.jpg";
+
+import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 export default function Banner() {
   return (
-    <div className="flex flex-wrap gap-3 ">
-      <div className="flex-1 group z-[10]   cursor-pointer relative border shadow-sm h-[250px]  rounded-lg">
-        <img src={bn1} className="w-full h-full " alt="" />
+    <div className="container ">
+      <div className="flex justify-between py-5 gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10">
+              <img
+                className="w-full h-full object-contain"
+                src={icon1}
+                alt=""
+              />
+            </div>
 
-        <div className="z-[5] group-hover:bg-[#4a21ff9c]  absolute w-full h-full left-0 top-0">
-          <div className="pt-3 pl-8">
-            <h1 className="text-2xl font-bold tracking-wider group-hover:text-white text-zinc-900">
-              Women
-            </h1>
-            <p className="text-sm group-hover:text-white text-zinc-500 mt-2">
-              Spring 2018
-            </p>
+            <div>
+              <h1 className="text-xl font-semibold">Free Shipping</h1>
+              <p className="text-xs mt-1 text-zinc-500">
+                On all orders over $75.00
+              </p>
+            </div>
           </div>
-          <div className="pt-3 pl-8 absolute bottom-8 hidden group-hover:block text-white uppercase font-semibold text-sm">
-            <p>Shop Now</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10">
+              <img
+                className="w-full h-full object-contain"
+                src={icon2}
+                alt=""
+              />
+            </div>
+
+            <div>
+              <h1 className="text-xl font-semibold">Money Guarantee</h1>
+              <p className="text-sm mt-1 text-zinc-500">
+                Within 30 days for an exchange.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10">
+              <img
+                className="w-full h-full object-contain"
+                src={icon3}
+                alt=""
+              />
+            </div>
+
+            <div>
+              <h1 className="text-xl font-semibold">Online Support</h1>
+              <p className="text-sm mt-1 text-zinc-500">
+                Within 30 days for an exchange.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10">
+              <img
+                className="w-full h-full object-contain"
+                src={icon4}
+                alt=""
+              />
+            </div>
+
+            <div>
+              <h1 className="text-xl font-semibold">Flexible Payment</h1>
+              <p className="text-sm mt-1 text-zinc-500">
+                Pay with Multiple Credit Cards.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex-1 group z-[10]   cursor-pointer relative border shadow-sm h-[250px]  rounded-lg">
-        <img src={bn2} className="w-full h-full " alt="" />
-
-        <div className="z-[5] group-hover:bg-[#4a21ff9c]  absolute w-full h-full left-0 top-0">
-          <div className="pt-3 pl-8">
-            <h1 className="text-2xl font-bold tracking-wider group-hover:text-white text-zinc-900">
-              Men
-            </h1>
-            <p className="text-sm group-hover:text-white text-zinc-500 mt-2">
-              Spring 2018
-            </p>
+      <div className="flex mb-3 gap-3">
+        <div className="relative flex-1">
+          <div className="">
+            <img className="w-full h-full object-contain" src={bn1} alt="" />
           </div>
-          <div className="pt-3 pl-8 absolute bottom-8 hidden group-hover:block text-white uppercase font-semibold text-sm">
-            <p>Shop Now</p>
+
+          <div className="absolute flex  justify-start top-14 left-10">
+            <div className="w-[57%] p-2">
+              <h4 className="text-sm font-medium">NEW SEASON</h4>
+              <h2 className="text-4xl my-2 font-bold">
+                Big patterns are back in fashion
+              </h2>
+              <div className="text-sm text-gray-600">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod.
+                </p>
+              </div>
+
+              <a
+                href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
+                className="flex gap-1 items-center font-medium my-4 text-sm"
+              >
+                <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex-1 group z-[10]   cursor-pointer relative border shadow-sm h-[250px]  rounded-lg">
-        <img src={bn3} className="w-full h-full " alt="" />
+        <div className="flex-1 h-full justify-items-center justify-between ">
+          <div className="relative flex items-center ">
+            <div className="">
+              <img className="w-full h-full object-contain" src={bn2} alt="" />
+            </div>
 
-        <div className="z-[5] group-hover:bg-[#4a21ff9c]  absolute w-full h-full left-0 top-0">
-          <div className="pt-3 pl-8">
-            <h1 className="text-2xl font-bold tracking-wider group-hover:text-white text-zinc-900">
-              Accessories
-            </h1>
-            <p className="text-sm group-hover:text-white text-zinc-500 mt-2">
-              New Trend
-            </p>
+            <div className="absolute flex  justify-start top-8 left-10">
+              <div className="w-[57%] p-2">
+                <h4 className="text-sm font-medium">NEW SEASON</h4>
+                <h2 className="text-4xl my-2 font-bold">
+                  The latest men&rsquo;s trends this season
+                </h2>
+                <div className="text-sm text-gray-600">
+                  <p>Don&rsquo;t miss the opportunity.</p>
+                </div>
+                <a
+                  href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
+                  className="flex gap-1 items-center font-medium my-4 text-sm"
+                >
+                  <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="pt-3 pl-8 absolute bottom-8 hidden group-hover:block text-white uppercase font-semibold text-sm">
-            <p>Shop Now</p>
+          <div className="relative flex items-center ">
+            <div className="">
+              <img className="w-full h-full object-contain" src={bn3} alt="" />
+            </div>
+
+            <div className="absolute flex  justify-start top-8 left-10">
+              <div className="w-[57%] p-2">
+                <h4 className="text-sm font-medium">NEW SEASON</h4>
+                <h2 className="text-4xl my-2 font-bold">
+                  Show your fashion with Summer shoes
+                </h2>
+                <div className="text-sm text-gray-600">
+                  <p>Don&rsquo;t miss the opportunity.</p>
+                </div>
+                <a
+                  href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
+                  className="flex gap-1 items-center font-medium my-4 text-sm"
+                >
+                  <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -41,18 +41,18 @@ export const ImageSlider = ({ slides, autoplay = false, timeout = 5000 }) => {
             className="slide h-screen bg-cover bg-no-repeat bg-center flex items-center flex-wrap gap-4 px-4 pb-14"
             style={{ backgroundImage: `url(${slide.img})` }}
           >
-            <div className="z-20 flex flex-col  tracking-wider px-4 py-8">
+            <div className="z-20 flex flex-col  tracking-wide px-4 py-8">
               <h3 className=" text-2xl text-zinc-700 font-medium">
                 {slide.headline}
               </h3>
-              <p className="text-5xl mt-2 uppercase text-zinc-800 font-bold">
+              <p className="text-5xl mt-1 uppercase text-zinc-800 font-bold">
                 {slide.description}
               </p>
               <a
                 href=""
-                className="mt-5 py-2 text-center font-bold bg-blue-500 hover:bg-blue-400 w-full text-white  rounded-full"
+                className="mt-5 py-2 text-center uppercase font-bold bg-blue-500 hover:bg-blue-400 w-40 text-white  rounded-full"
               >
-                Shop More
+                Shop Now
               </a>
             </div>
           </div>

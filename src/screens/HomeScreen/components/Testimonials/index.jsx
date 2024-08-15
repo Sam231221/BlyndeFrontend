@@ -1,6 +1,5 @@
-import ctabanner from "../../assets/images/cta-banner.jpg";
-import avatar from "../../assets/images/testimonial-1.jpg";
-import React from "react";
+import ctabanner from "../../../../assets/images/cta-banner.jpg";
+import avatar from "../../../../assets/images/testimonial-1.jpg";
 
 export default function Testimonials() {
   return (
