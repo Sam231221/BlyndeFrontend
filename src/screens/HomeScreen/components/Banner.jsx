@@ -97,7 +97,7 @@ export default function Banner() {
               <h2 className="text-4xl my-2 font-bold">
                 Big patterns are back in fashion
               </h2>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 tracking-wider">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod.
