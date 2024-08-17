@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Rating({ color, fontSize, value, text }) {
   return (
     <span className="rating">

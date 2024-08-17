@@ -5,7 +5,7 @@ import ProductSidebar from "./components/ProductSidebar";
 
 import Nav from "./components/ProductNavbar/Nav";
 import axios, { endpoint } from "../../lib/api";
-import Rating from "../../components/Rating";
+import Rating from "../ProductScreen/components/Rating";
 import { Link, useNavigate } from "react-router-dom";
 const MIN = 0;
 const MAX = 500;

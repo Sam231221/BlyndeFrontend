@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import Rating from "../../../components/Rating";
+import Rating from "../../ProductScreen/components/Rating";
 import axios, { endpoint } from "../../../lib/api";
 import { addToWishList } from "../../../actions/userActions";
 import { addToCart } from "../../../actions/cartAction";

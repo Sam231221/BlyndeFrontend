@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Link } from "react-router-dom";
-import ProductSlider from "../components/ProductSlider/ProductSlider";
-
-import Rating from "../components/Rating";
-import { listProductDetails } from "../actions/productActions";
 import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loader from "../../components/Loader";
+import { Message } from "../../components/Message";
+import PageContainer from "../../components/PageContainer";
+import { endpoint } from "../../lib/api";
+import { listProductDetails } from "../../actions/productActions";
+import ProductSlider from "./components/ProductSlider/ProductSlider";
+import ProductPriceInput from "./components/ProductPriceInput";
+import ProductColorSelect from "./components/ProductColorSelect";
+import SizeVariant from "./components/SizeVariant";
+import Rating from "./components/Rating";
 
-import Loader from "../components/Loader";
-import { Message } from "../components/Message";
-import PageContainer from "../components/PageContainer";
-import { endpoint } from "../lib/api";
 import {
   PiGlobeThin,
   PiHeartStraightLight,
@@ -19,6 +20,18 @@ import {
 } from "react-icons/pi";
 
 export default function ProductScreen() {
+  const sizes = [
+    { size: "XS", stock: 10 },
+    { size: "M", stock: 5 },
+    { size: "L", stock: 12 },
+    { size: "XL", stock: 23 },
+  ];
+  const colors = [
+    { hexcode: "#fff", name: "White", stock: 10 },
+    { hexcode: "#000", name: "Black", stock: 5 },
+    { hexcode: "#ff0000", name: "Red", stock: 12 },
+    { hexcode: "#00ff22", name: "Green", stock: 23 },
+  ];
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -99,40 +112,14 @@ export default function ProductScreen() {
                     {product.description}
                   </p>
                 )}
-
-                <span className="bg-slate-100 my-2  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
+                <ProductColorSelect colors={colors} />
+                <SizeVariant sizes={sizes} />
+                <span className="bg-slate-100 my-3  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
                   {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                 </span>
                 <div className="flex gap-2 items-center">
-                  {product.countInStock > 0 && (
-                    <div className="flex items-center gap-3 ">
-                      <label
-                        htmlFor="select"
-                        className="text-slate-800 font-medium tracking-wide text-xs my-2 "
-                      >
-                        Qty:
-                      </label>
-                      <div className="relative">
-                        <select
-                          id="select"
-                          name="select"
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}
-                          className="block w-full pl-3 pr-10 py-2 bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        >
-                          {
-                            //create ana arrya from obj.countInStock.
-                            //[0,1,2]
-                            [...Array(product.countInStock).keys()].map((x) => (
-                              <option key={x + 1} value={x + 1}>
-                                {x + 1}
-                              </option>
-                            ))
-                          }
-                        </select>
-                      </div>
-                    </div>
-                  )}
+                  {product.countInStock > 0 && <ProductPriceInput />}
+
                   <button
                     onClick={addToCartHandler}
                     className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
@@ -143,6 +130,7 @@ export default function ProductScreen() {
                     Add to Cart
                   </button>
                 </div>
+
                 {/* {product.countInStock == 0} returns booleand value */}
                 <div className="flex my-2 justify-between items-center">
                   <a
