@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ProductScreen from "./screens/ProductScreen";
 import { HomeScreen } from "./screens/HomeScreen";
-import ShopScreen from "./screens/Shop/ShopScreen";
+import ShopScreen from "./screens/ShopScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/Authentication/LoginScreen";
 import RegisterScreen from "./screens/Authentication/RegisterScreen";

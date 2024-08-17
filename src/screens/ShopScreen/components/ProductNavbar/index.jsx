@@ -1,6 +1,6 @@
 import Button from "../../../../components/Button";
 
-const Nav = ({ handleInputChange, handleCategoryClick, query }) => {
+const ProductNavbar = ({ handleInputChange, handleCategoryClick, query }) => {
   return (
     <>
       <nav className="flex border-b-[2px] border-[#f3f3f3] p-3 ml-2">
@@ -50,4 +50,4 @@ const Nav = ({ handleInputChange, handleCategoryClick, query }) => {
   );
 };
 
-export default Nav;
+export default ProductNavbar;

@@ -1,6 +1,6 @@
 import "./Category.css";
 import Input from "../Input";
-import axios from "../../../../../lib/api";
+import axios from "../../../../../../lib/api";
 import { useEffect, useState } from "react";
 function Category({ handleChange }) {
   const [categories, setCategories] = useState([]);

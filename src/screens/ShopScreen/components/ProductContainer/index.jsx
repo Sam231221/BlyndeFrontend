@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import PageContainer from "../../components/PageContainer";
-
-import ProductSidebar from "./components/ProductSidebar";
-
-import Nav from "./components/ProductNavbar/Nav";
-import axios, { endpoint } from "../../lib/api";
-import Rating from "../ProductScreen/components/Rating";
+import ProductNavbar from "../ProductNavbar";
+import axios, { endpoint } from "../../../../lib/api";
+import Rating from "../../../ProductScreen/components/Rating";
 import { Link, useNavigate } from "react-router-dom";
-const MIN = 0;
-const MAX = 500;
-export default function ShopScreen() {
+
+export default function ProductContainer({
+  selectedCategories,
+  setSelectedCategories,
+}) {
   const [products, setProducts] = useState([]);
   const loadProducts = async () => {
     const { data } = await axios.get("/api/products/all/");
@@ -30,20 +28,9 @@ export default function ShopScreen() {
   const filteredItems = products.filter(
     (product) => product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  // ----------- Radio Filtering -----------
-  const handleChange = (event) => {
-    if (event.target) {
-      setSelectedCategory(event.target.value);
-    } else {
-      setSelectedCategory((event[1] - event[0]).toString());
-    }
-  };
-
-  // ------------ Button Filtering -----------
-  const handleCategoryClick = (event) => {
-    setSelectedCategory(event.target.value);
+  const handleProductNavItemClick = (event) => {
+    setSelectedCategories(event.target.value);
   };
 
   function filteredData(products, selected, query) {
@@ -155,24 +142,17 @@ export default function ShopScreen() {
     );
   }
 
-  const result = filteredData(products, selectedCategory, query);
+  const result = filteredData(products, selectedCategories, query);
 
   return (
-    <PageContainer>
-      <div className="mt-10 flex flex-col md:flex-row">
-        <ProductSidebar min={MIN} max={MAX} handleChange={handleChange} />
-        <div className="flex-1 mt-10">
-          <Nav
-            query={query}
-            handleCategoryClick={handleCategoryClick}
-            handleInputChange={handleInputChange}
-          />
+    <div className="flex-1 mt-10">
+      <ProductNavbar
+        query={query}
+        handleProductNavItemClick={handleProductNavItemClick}
+        handleInputChange={handleInputChange}
+      />
 
-          <section className="product-container product-grid p-4">
-            {result}
-          </section>
-        </div>
-      </div>
-    </PageContainer>
+      <section className="product-container product-grid p-4">{result}</section>
+    </div>
   );
 }
