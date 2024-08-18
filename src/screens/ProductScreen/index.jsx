@@ -32,6 +32,10 @@ export default function ProductScreen() {
     { hexcode: "#ff0000", name: "Red", stock: 12 },
     { hexcode: "#00ff22", name: "Green", stock: 23 },
   ];
+  const items = [
+    { label: "Home", path: "/" },
+    { label: "Shop", path: "/shop" },
+  ];
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -41,7 +45,7 @@ export default function ProductScreen() {
   const productDetail = useSelector((state) => state.productDetails);
 
   const { error, loading, product } = productDetail;
-
+  console.log(product);
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, [dispatch, id]);
@@ -53,14 +57,33 @@ export default function ProductScreen() {
 
   return (
     <PageContainer>
-      <div className="container-lg mx-auto  mt-14">
-        <Link
-          to="/"
-          className="bg-sky-500 inline font-medium hover:bg-sky-600 text-white py-2 px-4"
-        >
-          Go Back
-        </Link>
-
+      <div className="container mx-auto mt-24">
+        <nav className="text-xs mt-3" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            {items.map((item, index) => (
+              <li className="flex items-center gap-2" key={index}>
+                <Link
+                  to={item.path}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  {item.label}
+                </Link>
+                {index < items.length - 1 && (
+                  <span className="text-gray-300">/</span>
+                )}
+              </li>
+            ))}
+            <li className="flex items-center gap-2">
+              <span className="text-gray-300">/</span>
+              <Link
+                to={`/product/${product._id}`}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                {product.name}
+              </Link>
+            </li>
+          </ol>
+        </nav>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -104,9 +127,25 @@ export default function ProductScreen() {
                     12 Reviews
                   </span>
                 </div>
-                <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
-                  ${product.price}
-                </p>
+                <div className="flex gap-2 items-center">
+                  {product.on_sale ? (
+                    <>
+                      <del className="text-gray-300  tracking-wide text-lg my-2 ">
+                        ${product.price}
+                      </del>
+                      <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
+                        ${product.sale_price}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
+                        ${product.price}
+                      </p>
+                    </>
+                  )}
+                </div>
+
                 {product.description && (
                   <p className="text-zinc-800 font-medium tracking-wide text-[12px] my-2 ">
                     {product.description}

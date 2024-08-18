@@ -235,8 +235,10 @@ function ProductSlider(props) {
 
   return (
     <div>
-      <div className="flex gap-3">
-        <div className="flex flex-col z-[10] ">{positionIndicators}</div>
+      <div className="flex flex-col-reverse md:flex-row gap-3">
+        <div className="flex md:flex-col gap-2 z-[10] ">
+          {positionIndicators}
+        </div>
         <div className={classes.Container}>
           {children.length > 1 && (
             <div className={classes.LeftArrow} onClick={prevClickHandler}>

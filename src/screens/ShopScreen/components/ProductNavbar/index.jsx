@@ -1,6 +1,10 @@
 import Button from "../../../../components/Button";
 
-const ProductNavbar = ({ handleInputChange, handleCategoryClick, query }) => {
+const ProductNavbar = ({
+  handleInputChange,
+  handleProductNavItemClick,
+  query,
+}) => {
   return (
     <>
       <nav className="flex border-b-[2px] border-[#f3f3f3] p-3 ml-2">
@@ -20,27 +24,27 @@ const ProductNavbar = ({ handleInputChange, handleCategoryClick, query }) => {
         <h2 className=" text-lg font-semibold text-zinc-800">Recommended</h2>
         <div className="flex gap-3">
           <Button
-            onClickHandler={handleCategoryClick}
+            onClickHandler={handleProductNavItemClick}
             value=""
             title="All Products"
           />
           <Button
-            onClickHandler={handleCategoryClick}
+            onClickHandler={handleProductNavItemClick}
             value="Nike"
             title="Nike"
           />
           <Button
-            onClickHandler={handleCategoryClick}
+            onClickHandler={handleProductNavItemClick}
             value="Adidas"
             title="Adidas"
           />
           <Button
-            onClickHandler={handleCategoryClick}
+            onClickHandler={handleProductNavItemClick}
             value="Puma"
             title="Puma"
           />
           <Button
-            onClickHandler={handleCategoryClick}
+            onClickHandler={handleProductNavItemClick}
             value="Vans"
             title="Vans"
           />

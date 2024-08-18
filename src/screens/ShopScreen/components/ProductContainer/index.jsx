@@ -30,9 +30,10 @@ export default function ProductContainer({
   );
 
   const handleProductNavItemClick = (event) => {
+    console.log(event.target.value);
     setSelectedCategories(event.target.value);
   };
-
+  console.log(selectedCategories);
   function filteredData(products, selected, query) {
     let filteredProducts = products;
 
@@ -152,7 +153,13 @@ export default function ProductContainer({
         handleInputChange={handleInputChange}
       />
 
-      <section className="product-container product-grid p-4">{result}</section>
+      <section className="p-4">
+        {result.length > 0 ? (
+          <div className="product-container product-grid">{result}</div>
+        ) : (
+          <span>No products were found matching your selection.</span>
+        )}
+      </section>
     </div>
   );
 }
