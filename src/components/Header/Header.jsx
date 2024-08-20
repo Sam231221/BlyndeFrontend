@@ -83,7 +83,7 @@ function Header() {
           </div>
 
           <nav className="ml-10 hidden md:block">
-            <ul className="me-lg-5 text-xs flex items-center font-semibold gap-3">
+            <ul className="me-lg-5 text-sm flex items-center font-semibold gap-3">
               <li>
                 <Link
                   to="/"
