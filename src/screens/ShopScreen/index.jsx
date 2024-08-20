@@ -15,7 +15,7 @@ export default function ShopScreen() {
 
   return (
     <PageContainer>
-      <div className="mt-10 flex flex-col md:flex-row ">
+      <div className="mt-14 flex flex-col md:flex-row ">
         <ProductSidebar handleChange={handleChange} />
         <ProductContainer
           selectedCategories={selectedCategories}

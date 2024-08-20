@@ -7,7 +7,7 @@ import { HiOutlineXMark } from "react-icons/hi2";
 import { RiUserReceived2Line } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-
+import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 
 import clsx from "clsx";
@@ -66,20 +66,23 @@ function Header() {
       <Topbar />
       <header
         className={clsx(
-          "z-[997] h-14 fixed transition-all duration-500 w-full flex items-center",
+          "z-[997] h-20 fixed transition-all duration-500 w-full flex items-center",
           navbar
             ? "justify-between top-0 right-0 left-0 bg-white drop-shadow-lg"
-            : "bg-transparent top-11"
+            : "bg-transparent top-[0px] md:top-11"
         )}
       >
-        <div className="w-full px-5 flex items-center ">
-          <Link to="/">
-            <h2 className="text-3xl mb-2 font-bold tracking-wide text-zinc-900">
-              Blynde
-            </h2>
-          </Link>
+        <div className="w-full px-4 flex items-center ">
+          <div className="flex items-center">
+            <RxHamburgerMenu size={25} className="mr-3 block md:hidden" />
+            <Link to="/">
+              <h2 className="text-3xl  mb-2 font-bold tracking-wide text-zinc-900">
+                Blynde
+              </h2>
+            </Link>
+          </div>
 
-          <nav className="ml-10">
+          <nav className="ml-10 hidden md:block">
             <ul className="me-lg-5 text-xs flex items-center font-semibold gap-3">
               <li>
                 <Link
@@ -220,6 +223,7 @@ function Header() {
           </Link>
         </div>
       </header>
+      {/* Modal */}
       <div
         className={`w-full h-full  bg-[#0000008f] z-[1999] transition-all duration-500 ease-in-out ${
           sideCartNav ? "fixed" : "hidden"

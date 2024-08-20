@@ -10,11 +10,11 @@ import bn3 from "../../../assets/images/banners/banner-03.jpg";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 export default function Banner() {
   return (
-    <div className="container ">
-      <div className="flex justify-between py-5 gap-3">
+    <div className="container-lg ">
+      <div className="flex flex-wrap justify-start md:justify-between  py-5 gap-4">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10">
+            <div className="w-14 h-14">
               <img
                 className="w-full h-full object-contain"
                 src={icon1}
@@ -32,7 +32,7 @@ export default function Banner() {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10">
+            <div className="w-14 h-14">
               <img
                 className="w-full h-full object-contain"
                 src={icon2}
@@ -50,7 +50,7 @@ export default function Banner() {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10">
+            <div className="w-14 h-14">
               <img
                 className="w-full h-full object-contain"
                 src={icon3}
@@ -68,7 +68,7 @@ export default function Banner() {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10">
+            <div className="w-14 h-14">
               <img
                 className="w-full h-full object-contain"
                 src={icon4}
@@ -85,7 +85,7 @@ export default function Banner() {
           </div>
         </div>
       </div>
-      <div className="flex mb-3 gap-3">
+      <div className="flex flex-col md:flex-row mb-3 gap-3">
         <div className="relative flex-1">
           <div className="">
             <img className="w-full h-full object-contain" src={bn1} alt="" />
@@ -94,10 +94,10 @@ export default function Banner() {
           <div className="absolute flex  justify-start top-14 left-10">
             <div className="w-[57%] p-2">
               <h4 className="text-sm font-medium">NEW SEASON</h4>
-              <h2 className="text-4xl my-2 font-bold">
+              <h2 className="text-lg md:text-xl lg:text-4xl my-2 font-bold">
                 Big patterns are back in fashion
               </h2>
-              <div className="text-sm text-gray-600 tracking-wider">
+              <div className="text-xs md:text-sm text-gray-600 tracking-wider">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod.
@@ -106,7 +106,7 @@ export default function Banner() {
 
               <a
                 href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
-                className="flex gap-1 items-center font-medium my-4 text-sm"
+                className="flex gap-1 items-center font-medium my-4 text-xs md:text-sm"
               >
                 <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
               </a>
@@ -122,15 +122,15 @@ export default function Banner() {
             <div className="absolute flex  justify-start top-8 left-10">
               <div className="w-[57%] p-2">
                 <h4 className="text-sm font-medium">NEW SEASON</h4>
-                <h2 className="text-4xl my-2 font-bold">
+                <h2 className="text-lg md:text-xl lg:text-4xl my-2 font-bold">
                   The latest men&rsquo;s trends this season
                 </h2>
-                <div className="text-sm text-gray-600">
+                <div className="text-xs md:text-sm text-gray-600">
                   <p>Don&rsquo;t miss the opportunity.</p>
                 </div>
                 <a
                   href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
-                  className="flex gap-1 items-center font-medium my-4 text-sm"
+                  className="flex gap-1 items-center font-medium my-4 text-xs md:text-sm"
                 >
                   <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
                 </a>
@@ -145,15 +145,15 @@ export default function Banner() {
             <div className="absolute flex  justify-start top-8 left-10">
               <div className="w-[57%] p-2">
                 <h4 className="text-sm font-medium">NEW SEASON</h4>
-                <h2 className="text-4xl my-2 font-bold">
+                <h2 className="text-lg md:text-xl lg:text-4xl my-2 font-bold">
                   Show your fashion with Summer shoes
                 </h2>
-                <div className="text-sm text-gray-600">
+                <div className="text-xs md:text-smm text-gray-600">
                   <p>Don&rsquo;t miss the opportunity.</p>
                 </div>
                 <a
                   href="https://klbtheme.com/clotya/product/basic-colored-sweatpants-with-elastic-hems/?ft=recentfalse"
-                  className="flex gap-1 items-center font-medium my-4 text-sm"
+                  className="flex gap-1 items-center font-medium my-4  md:text-sm"
                 >
                   <span>Shop Now</span> <LiaLongArrowAltRightSolid size={20} />
                 </a>

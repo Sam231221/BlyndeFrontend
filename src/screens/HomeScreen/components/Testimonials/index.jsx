@@ -6,7 +6,7 @@ export default function Testimonials() {
     <div className="container-lg">
       <div className="testimonials-box">
         <div className="testimonial">
-          <h2 className="title">testimonial</h2>
+          <h2 className="title text-2xl md:text-3xl">Testimonial</h2>
 
           <div className="testimonial-card">
             <img

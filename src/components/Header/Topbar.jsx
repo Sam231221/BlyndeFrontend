@@ -3,7 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 export default function Topbar() {
   return (
-    <div className="bg-black flex text-[13px] text-medium justify-between text-gray-300 items-center h-9 px-4">
+    <div className="bg-black hidden md:flex text-[13px] text-medium justify-between text-gray-300 items-center h-9 px-4">
       <ul className="flex gap-3">
         <li>
           <a href="">About Us</a>

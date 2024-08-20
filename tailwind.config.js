@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        xs: [".88rem", "1rem"],
+        xs: [".81rem", "1rem"],
       },
       screens: {
         xs: "340px",

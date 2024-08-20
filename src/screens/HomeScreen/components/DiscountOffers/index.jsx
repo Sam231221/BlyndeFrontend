@@ -85,11 +85,11 @@ const DiscountOffers = () => {
 
   return (
     <div className="container-lg">
-      <div className="flex justify-between items-center">
-        <h2 className="text-3xl w-1/3  font-semibold text-zinc-900">
+      <div className="flex flex-col md:flex-row justify-between md:items-center">
+        <h2 className="text-2xl md:text-3xl mb-2 md:w-1/3 md:mb-0 font-semibold text-zinc-900">
           Don&apos;t Miss Our Deals
         </h2>
-        <p className="text-zinc-500 w-2/3 text-sm tracking-wider">
+        <p className="text-zinc-500 md:w-2/3 text-sm tracking-wider">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
           suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
@@ -191,9 +191,9 @@ const DiscountOffers = () => {
               </div>
             </div>
           ) : (
-            <p className="p-3 bg-red-200 rounded-lg border-2 border-red-800/50 font-medium">
+            <div className="p-3 mt-3 text-center bg-red-200 rounded-lg border-2 border-red-800/50 font-medium">
               No discount offers found!.
-            </p>
+            </div>
           )}
         </div>
       </div>
