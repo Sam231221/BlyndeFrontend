@@ -2,7 +2,7 @@ import payment from "../../assets/images/payment.png";
 
 export default function Footer() {
   return (
-    <footer className="relative z-[1000]">
+    <footer className="relative z-[996]">
       <div className="footer-nav">
         <div className="container">
           <ul className="footer-nav-list">
