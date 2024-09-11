@@ -1,68 +1,67 @@
-export default function Rating({ color, fontSize, value, text }) {
-  return (
-    <span className="rating">
-      <span>
-        <i
-          style={{ color, fontSize }}
-          className={
-            value >= 1
-              ? "fas fa-star"
-              : value >= 0.5
-              ? "fas fa-star-half-alt"
-              : //else
-                "far fa-star"
-          }
-        ></i>
-      </span>
+import { useState, useMemo } from "react";
 
-      <span>
-        <i
-          style={{ color, fontSize }}
-          className={
-            value >= 2
-              ? "fas fa-star"
-              : value >= 1.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color, fontSize }}
-          className={
-            value >= 3
-              ? "fas fa-star"
-              : value >= 2.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color, fontSize }}
-          className={
-            value >= 4
-              ? "fas fa-star"
-              : value >= 3.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        ></i>
-      </span>
-      <span>
-        <i
-          style={{ color, fontSize }}
-          className={
-            value >= 5
-              ? "fas fa-star"
-              : value >= 4.5
-              ? "fas fa-star-half-alt"
-              : "far fa-star"
-          }
-        ></i>
-      </span>
+export default function Rating({
+  color = "gold",
+  count = 5,
+  fontSize = "24px",
+  value = 0,
+  text,
+  className = "",
+  hoverEnabled = false,
+  hoverColor = "orange",
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  const stars = useMemo(() => {
+    const result = [];
+    for (let i = 1; i <= count; i++) {
+      let starClass = "far fa-star"; // Default: empty star
+
+      if (hoverEnabled && hovered) {
+        starClass = "fas fa-star"; // Full star on hover
+      } else if (value >= i) {
+        starClass = "fas fa-star"; // Full star for current value
+      } else if (value >= i - 0.5) {
+        starClass = "fas fa-star-half-alt"; // Half star for current value
+      }
+
+      result.push(
+        <span key={i}>
+          <i
+            className={`${starClass} ${className}`} // Apply custom class
+            style={{
+              color: hoverEnabled && hovered ? hoverColor : color, // Change color on hover
+              fontSize,
+            }}
+            aria-hidden="true" // Hide icon from screen readers
+          ></i>
+        </span>
+      );
+    }
+    return result;
+  }, [
+    count,
+    value,
+    hoverEnabled,
+    hovered,
+    color,
+    hoverColor,
+    fontSize,
+    className,
+  ]);
+
+  return (
+    <span
+      className={`rating items-center ${className}`}
+      onMouseEnter={() => hoverEnabled && setHovered(true)}
+      onMouseLeave={() => hoverEnabled && setHovered(false)}
+      role="img"
+      aria-label={text ? text : `Rating: ${value} out of ${count}`}
+    >
+      {stars}
+      {text && (
+        <span className="text-zinc-800 text-sm font-semibold ml-2">{text}</span>
+      )}
     </span>
   );
 }

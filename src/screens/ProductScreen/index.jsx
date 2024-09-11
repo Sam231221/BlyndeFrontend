@@ -18,6 +18,7 @@ import {
   PiHeartStraightLight,
   PiShareNetworkLight,
 } from "react-icons/pi";
+import Reviews from "./components/Reviews";
 
 export default function ProductScreen() {
   const sizes = [
@@ -89,114 +90,115 @@ export default function ProductScreen() {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <div className="flex my-8 flex-col md:flex-row md:h-screen gap-3">
-            <div className="md:flex-1 lg:flex-[3] ">
-              {/* */}
-              {product.image_albums && (
-                <ProductSlider>
-                  {/* <img
+          <>
+            <div className="flex my-8 flex-col md:flex-row md:h-screen gap-3">
+              <div className="md:flex-1 lg:flex-[3] ">
+                {/* */}
+                {product.image_albums && (
+                  <ProductSlider>
+                    {/* <img
                     src={`${endpoint}${product.thumbnail}`}
                     alt={product.name}
                   /> */}
-                  {product.image_albums?.map((album, index) => (
-                    <img
-                      key={index}
-                      src={`${endpoint}${album.image}`}
-                      alt={album.image}
-                    />
-                  ))}
-                </ProductSlider>
-              )}
-            </div>
-
-            {/* Name */}
-            <div className="md:flex-1 lg:flex-[2] ">
-              <div>
-                <h2 className="text-zinc-800 font-semibold text-2xl">
-                  {product.name}
-                </h2>
-                <div className="flex gap-2 items-center">
-                  <Rating
-                    fontSize={12}
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                    color={"#fc8c04"}
-                  />{" "}
-                  <span className="text-zinc-800 text-[12px] font-semibold">
-                    {" "}
-                    12 Reviews
-                  </span>
-                </div>
-                <div className="flex gap-2 items-center">
-                  {product.on_sale ? (
-                    <>
-                      <del className="text-gray-300  tracking-wide text-lg my-2 ">
-                        ${product.price}
-                      </del>
-                      <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
-                        ${product.sale_price}
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
-                        ${product.price}
-                      </p>
-                    </>
-                  )}
-                </div>
-
-                {product.description && (
-                  <p className="text-zinc-800 font-medium tracking-wide text-[12px] my-2 ">
-                    {product.description}
-                  </p>
+                    {product.image_albums?.map((album, index) => (
+                      <img
+                        key={index}
+                        src={`${endpoint}${album.image}`}
+                        alt={album.image}
+                      />
+                    ))}
+                  </ProductSlider>
                 )}
-                <ProductColorSelect colors={colors} />
-                <SizeVariant sizes={sizes} />
-                <span className="bg-slate-100 my-3  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
-                  {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                </span>
-                <div className="flex gap-2 items-center">
-                  {product.countInStock > 0 && <ProductPriceInput />}
+              </div>
 
-                  <button
-                    onClick={addToCartHandler}
-                    className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
-                    disabled={product.countInStock <= 0}
-                    type="button"
-                  >
-                    {" "}
-                    Add to Cart
-                  </button>
-                </div>
+              {/* Name */}
+              <div className="md:flex-1 lg:flex-[2] ">
+                <div>
+                  <h2 className="text-zinc-800 font-semibold text-2xl">
+                    {product.name}
+                  </h2>
+                  <div className="flex gap-2 items-center">
+                    <Rating
+                      fontSize={12}
+                      value={product.rating}
+                      text={`${product.numReviews} reviews`}
+                      color={"#fc8c04"}
+                    />
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    {product.on_sale ? (
+                      <>
+                        <del className="text-gray-300  tracking-wide text-lg my-2 ">
+                          ${product.price}
+                        </del>
+                        <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
+                          ${product.sale_price}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-slate-800 font-medium tracking-wide text-lg my-2 ">
+                          ${product.price}
+                        </p>
+                      </>
+                    )}
+                  </div>
 
-                {/* {product.countInStock == 0} returns booleand value */}
-                <div className="flex my-2 justify-between items-center">
-                  <a
-                    href="#"
-                    className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
-                  >
-                    <PiGlobeThin size={20} />
-                    <span>Size Guide</span>
-                  </a>{" "}
-                  <a
-                    href="#"
-                    className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
-                  >
-                    <PiHeartStraightLight size={20} />
-                    <span>Add to Wishlist</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
-                  >
-                    <PiShareNetworkLight size={20} />
-                    <span>Share this Product</span>
-                  </a>
+                  {product.description && (
+                    <p className="text-zinc-800 font-medium tracking-wide text-[12px] my-2 ">
+                      {product.description}
+                    </p>
+                  )}
+                  <ProductColorSelect colors={colors} />
+                  <SizeVariant sizes={sizes} />
+                  <span className="bg-slate-100 my-3  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
+                    {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                  </span>
+                  <div className="flex gap-2 items-center">
+                    {product.countInStock > 0 && <ProductPriceInput />}
+
+                    <button
+                      onClick={addToCartHandler}
+                      className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
+                      disabled={product.countInStock <= 0}
+                      type="button"
+                    >
+                      {" "}
+                      Add to Cart
+                    </button>
+                  </div>
+
+                  {/* {product.countInStock == 0} returns booleand value */}
+                  <div className="flex my-2 justify-between items-center">
+                    <a
+                      href="#"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                    >
+                      <PiGlobeThin size={20} />
+                      <span>Size Guide</span>
+                    </a>{" "}
+                    <a
+                      href="#"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                    >
+                      <PiHeartStraightLight size={20} />
+                      <span>Add to Wishlist</span>
+                    </a>
+                    <a
+                      href="#"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                    >
+                      <PiShareNetworkLight size={20} />
+                      <span>Share this Product</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <div>
+              <Reviews />
+            </div>
+          </>
         )}
       </div>
     </PageContainer>

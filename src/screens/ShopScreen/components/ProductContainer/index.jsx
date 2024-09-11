@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import ProductNavbar from "../ProductNavbar";
+import ProductNavbar from "./ProductNavbar";
 import axios, { endpoint } from "../../../../lib/api";
 import Rating from "../../../ProductScreen/components/Rating";
 import { Link, useNavigate } from "react-router-dom";
-
+import ProductBanner from "./ProductBanner";
+import { RxDashboard } from "react-icons/rx";
+import { CiCircleList } from "react-icons/ci";
 export default function ProductContainer({
   selectedCategories,
   setSelectedCategories,
@@ -146,16 +148,50 @@ export default function ProductContainer({
   const result = filteredData(products, selectedCategories, query);
 
   return (
-    <div className="flex-1 mt-10">
-      <ProductNavbar
-        query={query}
-        handleProductNavItemClick={handleProductNavItemClick}
-        handleInputChange={handleInputChange}
-      />
-
-      <section className="p-4">
+    <div className="relative flex-1 mt-10">
+      <ProductBanner />
+      <ProductNavbar query={query} handleInputChange={handleInputChange} />
+      <section>
         {result.length > 0 ? (
-          <div className="product-container product-grid">{result}</div>
+          <>
+            <div className="flex text-xs font-medium items-center justify-between my-4">
+              <div className="flex gap-2 items-center">
+                <RxDashboard />
+                <CiCircleList />
+                <p>Showing 1-16 of 23 results</p>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="flex gap-2 items-center">
+                  <span>Show:</span>
+                  <select
+                    className="focus:outline-none"
+                    name="itemsCount"
+                    id=""
+                  >
+                    <option value="16">16 Items</option>
+                    <option value="32">32 Items</option>
+                    <option value="64">64 Items</option>
+                    <option value="128">128 Items</option>
+                  </select>
+                </div>
+                <select
+                  className="focus:outline-none"
+                  name="sortProrducts"
+                  id=""
+                >
+                  <option value="sortbypopularity">Sort By Popularity</option>
+                  <option value="sortbylatest">Sort By Latest</option>
+                  <option value="sortbyprice-lowtohigh">
+                    Sort By Price: Low to High
+                  </option>
+                  <option value="sortbydate-hightolow">
+                    Sort By Price: High to Low
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div className="product-container product-grid">{result}</div>
+          </>
         ) : (
           <span>No products were found matching your selection.</span>
         )}
