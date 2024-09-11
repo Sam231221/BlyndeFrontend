@@ -1,15 +1,3 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 @codewithsadee 
- */
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
-
 :root {
   /**
    * colors
@@ -18,7 +6,8 @@
   --spanish-gray: hsl(0, 0%, 60%);
   --sonic-silver: hsl(0, 0%, 47%);
   --eerie-black: hsl(0, 0%, 13%);
-  --salmon-pink: hsl(353, 100%, 78%);
+  --salmon-blue: hsl(244, 80%, 53%);
+
   --sandy-brown: hsl(29, 90%, 65%);
   --bittersweet: hsl(0, 100%, 70%);
   --ocean-green: hsl(152, 51%, 52%);
@@ -281,7 +270,7 @@ body::-webkit-scrollbar-thumb:hover {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
   color: var(--white);
   font-size: 16px;
   padding: 5px;
@@ -339,7 +328,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .btn-newsletter:hover {
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
 }
 
 /**
@@ -487,7 +476,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .search-btn:hover {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
 }
 
 .mobile-bottom-navigation {
@@ -559,7 +548,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .menu-top .menu-title {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-4);
   font-weight: var(--weight-600);
 }
@@ -733,7 +722,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .banner-subtitle {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-7);
   font-weight: var(--weight-500);
   text-transform: capitalize;
@@ -754,7 +743,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .banner-btn {
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
   color: var(--white);
   width: max-content;
   font-size: var(--fs-11);
@@ -828,7 +817,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .category-btn {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-9);
   font-weight: var(--weight-500);
   text-transform: capitalize;
@@ -1084,7 +1073,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-minimal .showcase-category:hover {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
 }
 
 .product-minimal .price-box {
@@ -1096,7 +1085,7 @@ body::-webkit-scrollbar-thumb:hover {
 .product-minimal .price {
   font-size: var(--fs-7);
   font-weight: var(--weight-700);
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
 }
 
 .product-minimal .price-box del {
@@ -1172,7 +1161,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-featured .price {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-weight: var(--weight-700);
 }
 
@@ -1182,7 +1171,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-featured .add-cart-btn {
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
   padding: 8px 15px;
   color: var(--white);
   font-weight: var(--fs-9);
@@ -1227,7 +1216,7 @@ body::-webkit-scrollbar-thumb:hover {
   left: 3px;
   height: 4px;
   width: 40%;
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
   border-radius: 4px;
 }
 
@@ -1351,7 +1340,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-grid .showcase-badge.pink {
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
 }
 
 .product-grid .showcase-actions {
@@ -1389,7 +1378,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-grid .showcase-category {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-9);
   font-weight: var(--weight-500);
   text-transform: uppercase;
@@ -1567,7 +1556,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .service-icon {
   font-size: 35px;
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   transition: var(--transition-timing);
 }
 
@@ -1622,7 +1611,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .blog-category {
   width: max-content;
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-8);
 }
 
@@ -1636,7 +1625,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-title:hover {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
 }
 
 .blog-meta {
@@ -1665,7 +1654,7 @@ footer {
 }
 
 .footer-category-title {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
   font-size: var(--fs-6);
   font-weight: var(--weight-600);
   text-transform: uppercase;
@@ -1739,7 +1728,7 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: var(--salmon-pink);
+  background: var(--salmon-blue);
   width: 60px;
   height: 1px;
 }
@@ -1758,7 +1747,7 @@ footer {
 }
 
 .footer-nav-link:hover {
-  color: var(--salmon-pink);
+  color: var(--salmon-blue);
 }
 
 .footer-nav-item.flex {
@@ -2273,7 +2262,7 @@ footer {
   }
 
   .header-social-container .social-link:hover {
-    background: var(--salmon-pink);
+    background: var(--salmon-blue);
     color: var(--white);
   }
 
@@ -2330,7 +2319,7 @@ footer {
   }
 
   .desktop-menu-category-list .menu-category > .menu-title:hover {
-    color: var(--salmon-pink);
+    color: var(--salmon-blue);
   }
 
   .desktop-menu-category-list .menu-category > .menu-title::after {
@@ -2340,7 +2329,7 @@ footer {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--salmon-pink);
+    background: var(--salmon-blue);
     transform: scaleX(0);
     transform-origin: left;
     transition: var(--transition-timing);
@@ -2395,7 +2384,7 @@ footer {
   }
 
   .panel-list-item a:hover {
-    color: var(--salmon-pink);
+    color: var(--salmon-blue);
   }
 
   .panel-list-item:not(:last-child) a {
@@ -2446,7 +2435,7 @@ footer {
   }
 
   .dropdown-list .dropdown-item a:hover {
-    color: var(--salmon-pink);
+    color: var(--salmon-blue);
   }
 
   .mobile-bottom-navigation {

@@ -1,15 +1,14 @@
-import React from 'react'
-import Footer from './Footer/Footer'
-import Header from './Header/Header'
+import Footer from "./Footer";
+import Header from "./Header";
+import CartRightBar from "./Header/CartRightBar";
 function PageContainer({ children }) {
-    return (
-        <>
-        <Header/>
-          {children}
-        <Footer/>
-        </>
-
-    )
+  return (
+    <div className="relative">
+      <Header />
+      {children}
+      <Footer />
+    </div>
+  );
 }
 
-export default PageContainer
+export default PageContainer;

@@ -1,46 +1,47 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { endpoint } from "../../lib/api";
-import { logout } from "../../actions/userActions";
-import { HiOutlineXMark } from "react-icons/hi2";
+import clsx from "clsx";
 
 import { RiUserReceived2Line } from "react-icons/ri";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 
-import clsx from "clsx";
-import Topbar from "./Topbar";
+import { logout } from "../../actions/userActions";
+import CartRightBar from "./CartRightBar";
 function Header() {
+  const [sideCartNav, setSideCartNav] = useState(false);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const wishlist = useSelector((state) => state.wishlist);
   const { userLikes } = wishlist;
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
 
   const dispatch = useDispatch();
   const location = useLocation();
-  const [sideCartNav, setSideCartNav] = useState(false);
-  const [button, setButton] = useState(true);
+
+  // const [button, setButton] = useState(true);
   const [navbar, setNavbar] = useState(false);
+
+  // const showButton = () => {
+  //   if (window.innerWidth <= 960) {
+  //     setButton(false);
+  //   } else {
+  //     setButton(true);
+  //   }
+  // };
+  // useEffect(() => {
+  //   showButton();
+  // }, []);
+
+  // window.addEventListener("resize", showButton);
+
   const showSideCartNav = () => {
     setSideCartNav(!sideCartNav);
   };
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener("resize", showButton);
 
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -57,16 +58,12 @@ function Header() {
   const logoutHandler = () => {
     dispatch(logout());
   };
-  const redirect = useNavigate();
-  const checkoutHandler = () => {
-    redirect("/login?redirect=shipping");
-  };
+
   return (
     <>
-      <Topbar />
       <header
         className={clsx(
-          "z-[997] h-20 fixed transition-all duration-500 w-full flex items-center",
+          "z-[997] md:pt-3 sm:pb-3 h-16 fixed transition-all duration-500 w-full flex items-center",
           navbar
             ? "justify-between top-0 right-0 left-0 bg-white drop-shadow-lg"
             : "bg-transparent top-[0px] md:top-11"
@@ -74,7 +71,7 @@ function Header() {
       >
         <div className="w-full px-4 flex items-center ">
           <div className="flex items-center">
-            <RxHamburgerMenu size={25} className="mr-3 block md:hidden" />
+            <RxHamburgerMenu className="text-[20px] md:text-[25px] mr-3 block md:hidden" />
             <Link to="/">
               <h2 className="text-3xl  mb-2 font-bold tracking-wide text-zinc-900">
                 Blynde
@@ -201,7 +198,7 @@ function Header() {
             </div>
           ) : (
             <Link to="/login">
-              <RiUserReceived2Line size={25} />
+              <RiUserReceived2Line className="text-[20px] md:text-[25px]" />
             </Link>
           )}
 
@@ -209,90 +206,21 @@ function Header() {
             onClick={() => showSideCartNav()}
             className="relative cursor-pointer"
           >
-            <FaCartShopping size={25} />
+            <FaCartShopping className="text-[20px] md:text-[25px]" />
             <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
               {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
             </div>
           </div>
 
           <Link to="/my-wishlist" className="relative cursor-pointer">
-            <FaRegHeart size={25} />
+            <FaRegHeart className="text-[20px] md:text-[25px]" />
             <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
               {userLikes.reduce((acc, item) => acc + 1, 0)}
             </div>
           </Link>
         </div>
       </header>
-      {/* Modal */}
-      <div
-        className={`w-full h-full  bg-[#0000008f] z-[1999] transition-all duration-500 ease-in-out ${
-          sideCartNav ? "fixed" : "hidden"
-        }  top-0 `}
-      >
-        <div
-          className={`w-80 h-full px-5 py-2 bg-white fixed  top-0 right-0 transition-all duration-500 ease-in-out ${
-            sideCartNav ? "visible" : "invisible"
-          } `}
-        >
-          <div className="flex mb-3 items-center justify-between text-zinc-800">
-            <h1 className="text-2xl font-bold uppercase">Your cart</h1>
-            <HiOutlineXMark
-              onClick={() => showSideCartNav()}
-              className="cursor-pointer hover:text-sky-600"
-              size={35}
-            />
-          </div>
-
-          <div className="h-[55vh] max-h-[55vh] overflow-y-auto">
-            {cartItems.map((item, i) => (
-              <div key={i} className="flex mb-3  items-center">
-                <div className="w-16 h-16 mr-3">
-                  <img
-                    src={`${endpoint}${item.thumbnail}`}
-                    className="w-full h-full object-cover"
-                    alt={item.name}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <h1 className="text-sm text-zinc-800 font-medium">
-                    {item.name}
-                  </h1>
-                  <p className="text-xs text-zinc-400">
-                    {item.quantity} x ${item.price}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col mt-5">
-            <h1 className="text-sm mb-3 mt-5 text-zinc-800 font-medium">
-              Total:$
-              {cartItems
-                .reduce(
-                  (accumulator, item) =>
-                    accumulator + item.quantity * item.price,
-                  0
-                )
-                .toFixed(2)}
-            </h1>
-            <div className="flex gap-3">
-              <Link
-                to="/cart/"
-                className="rounded-full uppercase bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
-              >
-                View Cart
-              </Link>
-              <button
-                onClick={checkoutHandler}
-                className="rounded-full uppercase bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
-              >
-                Checkout
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CartRightBar sideCartNav={sideCartNav} setSideCartNav={setSideCartNav} />
     </>
   );
 }

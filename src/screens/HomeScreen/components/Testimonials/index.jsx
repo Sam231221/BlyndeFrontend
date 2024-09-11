@@ -42,7 +42,7 @@ export default function Testimonials() {
         </div>
 
         <div className="service">
-          <h2 className="title">Our Services</h2>
+          <h2 className="title text-2xl md:text-3xl">Our Services</h2>
 
           <div className="service-container">
             <a href="#" className="service-item">

@@ -191,8 +191,8 @@ const DiscountOffers = () => {
               </div>
             </div>
           ) : (
-            <div className="p-3 mt-3 text-center bg-red-200 rounded-lg border-2 border-red-800/50 font-medium">
-              No discount offers found!.
+            <div className="p-3 w-full mt-3 text-center bg-red-200/20 rounded-lg border-2 border-red-800/50 font-medium">
+              No discount offers available at the moment.
             </div>
           )}
         </div>
