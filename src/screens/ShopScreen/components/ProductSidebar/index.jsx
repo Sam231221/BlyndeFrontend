@@ -5,7 +5,7 @@ import Colors from "./components/Colors";
 const ProductSidebar = ({ handleChange }) => {
   return (
     <div className="w-full hidden md:block md:w-1/4 lg:w-1/5">
-      <div className="fixed top-16 z-[999] ">
+      <div className="fixed top-16 z-[995] ">
         <section className="w-full border-r-2 border-[#e5e5e5] mt-12 z-[3] flex flex-col items-center overflow-y-auto h-screen">
           <Category handleChange={handleChange} />
           {/* Range Slider */}

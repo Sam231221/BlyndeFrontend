@@ -17,6 +17,7 @@ export default function CartRightBar({ sideCartNav, setSideCartNav }) {
   return (
     <>
       <div
+        id="CartRightBar"
         className={`${
           sideCartNav ? "visible " : "invisible"
         } transition-all duration-800 ease-in absolute w-full h-full bg-black/10 backdrop-blur-sm z-[998] top-0 left-0`}

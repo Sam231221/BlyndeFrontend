@@ -6,7 +6,7 @@
   --spanish-gray: hsl(0, 0%, 60%);
   --sonic-silver: hsl(0, 0%, 47%);
   --eerie-black: hsl(0, 0%, 13%);
-  --salmon-blue: hsl(244, 80%, 53%);
+  --salmon-blue: hsl(224, 93%, 57%);
 
   --sandy-brown: hsl(29, 90%, 65%);
   --bittersweet: hsl(0, 100%, 70%);
@@ -1276,9 +1276,9 @@ body::-webkit-scrollbar-thumb:hover {
 .product-grid .showcase:hover {
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
 }
-
 .product-grid .showcase-banner {
   position: relative;
+  height: 300px;
 }
 
 .product-grid .product-img {
