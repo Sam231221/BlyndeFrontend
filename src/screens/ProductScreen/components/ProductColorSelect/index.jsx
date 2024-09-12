@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-function ProductColorSelect({ colors }) {
+function ProductColorSelect({ colors, classNames, direction = "horizontal" }) {
   const [selectedColor, setSelectedColor] = useState(null);
 
   const handleColorClick = (color) => {
@@ -8,11 +8,15 @@ function ProductColorSelect({ colors }) {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`flex flex-col gap-2 `}>
       <h1 className="font-medium  my-2 text-gray-800">
         Color: <span>{selectedColor}</span>
       </h1>
-      <div className="flex gap-3">
+      <div
+        className={`flex gap-3 ${
+          direction === "vertical" ? "flex-col" : "flex-row"
+        }`}
+      >
         {colors.map((color) => (
           <div
             type="button"

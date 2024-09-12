@@ -1,6 +1,9 @@
-import Category from "./components/Category";
-import DoubleRangeSlider from "./components/DoubleRangeSlider";
-import Colors from "./components/Colors";
+import {
+  Category,
+  DoubleRangeSlider,
+  Colors,
+  FilterBySize,
+} from "./components";
 
 const ProductSidebar = ({ handleChange }) => {
   return (
@@ -11,6 +14,10 @@ const ProductSidebar = ({ handleChange }) => {
           {/* Range Slider */}
           <div className="w-full mt-4 pl-5">
             <DoubleRangeSlider min={0} max={500} handleChange={handleChange} />
+          </div>
+          {/* FilterBySize */}
+          <div className="w-full mt-4 pl-5">
+            <FilterBySize handleChange={handleChange} />
           </div>
           {/* Colors */}
           <div className="w-full mt-4 pl-5">
