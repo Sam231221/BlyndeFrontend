@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PageContainer from "../../components/PageContainer";
 import ProductSidebar from "./components/ProductSidebar";
-import ProductContainer from "./components/ProductContainer";
+import ProductRightbar from "./components/ProductRightbar";
 
 export default function ShopScreen() {
   const [selectedCategories, setSelectedCategories] = useState(null);
@@ -17,7 +17,7 @@ export default function ShopScreen() {
     <PageContainer>
       <div className="mt-14 min-h-[1000px] flex flex-col md:flex-row ">
         <ProductSidebar handleChange={handleChange} />
-        <ProductContainer
+        <ProductRightbar
           selectedCategories={selectedCategories}
           setSelectedCategories={setSelectedCategories}
         />

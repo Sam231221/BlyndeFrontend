@@ -27,6 +27,7 @@ export const HomeScreen = () => {
     <PageContainer>
       <ImageSlider slides={slides} autoplay={true} />
       <Banner />
+
       <ProductContainer />
       <DiscountOffers />
       <Testimonials />
