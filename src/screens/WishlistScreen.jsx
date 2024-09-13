@@ -5,7 +5,7 @@ import { endpoint } from "../lib/api";
 import { Link } from "react-router-dom";
 import { removeFromWishList } from "../actions/userActions";
 import { addToCart } from "../actions/cartAction";
-import Rating from "./ProductScreen/components/Rating";
+import Rating from "../components/reusables/Rating";
 export default function WishlistScreen() {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist);

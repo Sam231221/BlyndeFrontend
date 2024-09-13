@@ -11,7 +11,7 @@ import ProductSlider from "./components/ProductSlider/ProductSlider";
 import ProductPriceInput from "./components/ProductPriceInput";
 import ProductColorSelect from "./components/ProductColorSelect";
 import SizeVariant from "./components/SizeVariant";
-import Rating from "./components/Rating";
+import Rating from "../../components/reusables/Rating";
 
 import {
   PiGlobeThin,

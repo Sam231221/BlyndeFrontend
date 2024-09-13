@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import axios, { endpoint } from "../../../../lib/api";
 import { Link, useNavigate } from "react-router-dom";
-import Rating from "../../../ProductScreen/components/Rating";
+import Rating from "../../../../components/reusables/Rating";
 import { RxDashboard } from "react-icons/rx";
 import { CiCircleList } from "react-icons/ci";
+import "./style.css";
+import ProductGridShowCase from "../../../../components/reusables/ProductGridShowCase";
+import { useDispatch } from "react-redux";
+import { addToWishList } from "../../../../actions/userActions";
 export default function ProductGallery({
   selectedCategories,
   setSelectedCategories,
@@ -11,6 +15,9 @@ export default function ProductGallery({
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const dispatch = useDispatch();
+
   //fetch products
   useEffect(() => {
     async function fetchProducts() {
@@ -35,6 +42,11 @@ export default function ProductGallery({
   const addToCartHandler = (id, quantity = 1) => {
     navigate(`/cart/?code=${id}&qty=${quantity}`);
   };
+
+  const addToWishlistHandler = (id) => {
+    dispatch(addToWishList(id));
+  };
+
   function filteredData(products, selected) {
     let filteredProducts = [];
 
@@ -173,11 +185,6 @@ export default function ProductGallery({
     return sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   }, [currentPage, productsPerPage, sortedProducts]);
 
-  // Memoize event handlers to avoid unnecessary re-renders
-  const handleImageError = useCallback((e) => {
-    e.target.src = "https://via.placeholder.com/200x200?text=Image+Not+Found";
-  }, []);
-
   const handleProductsPerPageChange = useCallback((event) => {
     setProductsPerPage(Number(event.target.value));
   }, []);
@@ -263,98 +270,15 @@ export default function ProductGallery({
           </select>
         </div>
       </div>
+
       {currentProducts.length === 0 ? (
         <p className="text-gray-600">No products found.</p>
       ) : (
-        <div className="product-container product-grid">
-          {currentProducts.map(
-            (
-              {
-                _id,
-                thumbnail,
-                image_albums,
-                name,
-                rating,
-                numReviews,
-                price,
-                sale_price,
-              },
-              i
-            ) => (
-              <div key={i} className="showcase">
-                <div className="showcase-banner">
-                  <img
-                    src={`${endpoint}${thumbnail}`}
-                    alt={name}
-                    className="product-img default"
-                    width="300"
-                    onError={handleImageError}
-                  />
-                  <img
-                    src={`${endpoint}${image_albums[1]?.image}`}
-                    alt={name}
-                    className="product-img hover"
-                    width="300"
-                  />
-                  {sale_price && (
-                    <p className="showcase-badge angle black">sale</p>
-                  )}
-                  <div className="showcase-actions">
-                    <button className="btn-action">
-                      <ion-icon
-                        name="heart-outline"
-                        role="img"
-                        className="md hydrated"
-                        aria-label="heart outline"
-                      ></ion-icon>
-                    </button>
-
-                    <Link to={`/product/${_id}`} className="btn-action">
-                      <ion-icon
-                        name="eye-outline"
-                        role="img"
-                        className="md hydrated"
-                        aria-label="eye outline"
-                      ></ion-icon>
-                    </Link>
-                    <button className="btn-action">
-                      <ion-icon name="repeat-outline"></ion-icon>
-                    </button>
-                    <button
-                      onClick={() => addToCartHandler(_id)}
-                      className="btn-action"
-                    >
-                      <ion-icon
-                        name="bag-add-outline"
-                        role="img"
-                        className="md hydrated"
-                        aria-label="bag add outline"
-                      ></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="showcase-content">
-                  <Link to={`/product/${_id}`} className="showcase-category">
-                    <h3 className="showcase-title">{name}</h3>
-                  </Link>
-
-                  <Rating
-                    color={"#fc8c04"}
-                    fontSize="14px"
-                    value={rating}
-                    text={`${numReviews} reviews`}
-                  />
-
-                  <div className="price-box">
-                    <p className="price">${price}</p>
-                    {sale_price && <del>${sale_price}</del>}
-                  </div>
-                </div>
-              </div>
-            )
-          )}
-        </div>
+        <ProductGridShowCase
+          addToCartHandler={addToCartHandler}
+          addToWishlistHandler={addToWishlistHandler}
+          products={currentProducts}
+        />
       )}
 
       {/* pagination */}

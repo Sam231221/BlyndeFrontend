@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import CommentForm from "./CommentForm";
-import Rating from "../Rating";
+import Rating from "../../../../components/reusables/Rating";
 
 export default function Reviews() {
   return (

@@ -1,4 +1,4 @@
-import Rating from "../Rating";
+import Rating from "../../../../components/reusables/Rating";
 
 const CommentForm = () => {
   return (
