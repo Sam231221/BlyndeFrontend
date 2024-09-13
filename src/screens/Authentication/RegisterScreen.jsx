@@ -18,13 +18,13 @@ function RegisterScreen({ location, history }) {
 
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
-  console.log(userInfo);
+
   useEffect(() => {
     if (userInfo) {
       redirect("/login");
     }
   }, [userInfo]);
-
+  console.log(name, email, password, confirmPassword);
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -42,7 +42,7 @@ function RegisterScreen({ location, history }) {
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
-        <div onSubmit={submitHandler}>
+        <form onSubmit={submitHandler}>
           <div className="mb-3 flex flex-col">
             <label className="text-sm mb-2 font-semibold  text-zinc-900">
               Name
@@ -98,12 +98,12 @@ function RegisterScreen({ location, history }) {
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></input>
           </div>
-          <button
+          <input
             className="bg-sky-500 hover:bg-sky-600 text-white py-2 px-4"
             type="submit"
-          >
-            Register
-          </button>
+            value={"Register"}
+          />
+
           <div className="py-3 mt-5 flex justify-between items-center">
             <p className="flex text-xs">
               Have an account?{" "}
@@ -113,7 +113,7 @@ function RegisterScreen({ location, history }) {
               here
             </p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
