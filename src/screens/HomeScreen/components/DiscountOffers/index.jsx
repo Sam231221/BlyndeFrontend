@@ -124,11 +124,11 @@ const DiscountOffers = () => {
                 style={{ scrollSnapAlign: "start" }}
               >
                 <div className="flex flex-col sm:flex-row sm:gap-4">
-                  <div>
+                  <div className="w-full h-[300px]">
                     <img
                       src={`${endpoint}${product.thumbnail}`}
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </div>
 
