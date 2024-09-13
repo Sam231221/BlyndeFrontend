@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import axios, { endpoint } from "../../../../lib/api";
+import axios, { endpoint } from "../../../../../lib/api";
 import { Link, useNavigate } from "react-router-dom";
-import Rating from "../../../../components/reusables/Rating";
+import Rating from "../../../../../components/reusables/Rating";
 import { RxDashboard } from "react-icons/rx";
 import { CiCircleList } from "react-icons/ci";
-import "./style.css";
-import ProductGridShowCase from "../../../../components/reusables/ProductGridShowCase";
+import ProductGridShowCase from "../../../../../components/reusables/ProductGridShowCase";
 import { useDispatch } from "react-redux";
-import { addToWishList } from "../../../../actions/userActions";
+import { addToWishList } from "../../../../../actions/userActions";
 export default function ProductGallery({
   selectedCategories,
   setSelectedCategories,
@@ -18,7 +17,7 @@ export default function ProductGallery({
 
   const dispatch = useDispatch();
 
-  //fetch products
+  // fetch products
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -201,7 +200,7 @@ export default function ProductGallery({
     return (
       <div className="container mx-auto py-8 px-4">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       </div>
     );
@@ -217,30 +216,26 @@ export default function ProductGallery({
           <strong className="font-bold">Error: </strong>
           <span className="block sm:inline">{error}</span>
         </div>
-        <button
-          onClick={() => window.location.reload()}
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Retry
-        </button>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto  px-4">
+    <div className="container">
       {/* filters */}
       <div className="flex text-xs font-medium items-center justify-between my-4">
-        <div className="flex gap-2 items-center">
-          <RxDashboard />
-          <CiCircleList />
+        <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+          <div className="flex gap-2">
+            <RxDashboard size={15} />
+            <CiCircleList size={15} />
+          </div>
           <p>
             Showing {currentPage * productsPerPage - productsPerPage + 1}-
             {Math.min(currentPage * productsPerPage, sortedProducts.length)} of{" "}
             {sortedProducts.length} results
           </p>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
           <div className="flex gap-2 items-center">
             <span>Show:</span>
             <select
@@ -256,18 +251,21 @@ export default function ProductGallery({
               <option value="128">128 Items</option>
             </select>
           </div>
-          <select
-            id="sortOption"
-            value={sortOption}
-            onChange={handleSortChange}
-            className="focus:outline-none"
-            name="sortProrducts"
-          >
-            <option value="popularity">Sort By Popularity</option>
-            <option value="latest">Sort By Latest</option>
-            <option value="price-low-high">Sort By Price: Low to High</option>
-            <option value="price-high-low">Sort By Price: High to Low</option>
-          </select>
+          <div>
+            <span>Sort:</span>
+            <select
+              id="sortOption"
+              value={sortOption}
+              onChange={handleSortChange}
+              className="focus:outline-none"
+              name="sortProrducts"
+            >
+              <option value="popularity">By Popularity</option>
+              <option value="latest">By Latest</option>
+              <option value="price-low-high">By Price: Low to High</option>
+              <option value="price-high-low">By Price: High to Low</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -282,7 +280,7 @@ export default function ProductGallery({
       )}
 
       {/* pagination */}
-      <div className="mt-8 flex justify-center">
+      <div className="my-4 flex justify-center">
         <nav className="inline-flex rounded-md shadow">
           <button
             onClick={() => paginate(currentPage - 1)}

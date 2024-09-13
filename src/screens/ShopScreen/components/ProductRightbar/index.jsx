@@ -1,5 +1,5 @@
-import ProductBanner from "./ProductBanner";
-import ProductGallery from "./ProductGallery";
+import ProductBanner from "./components/ProductBanner";
+import ProductGallery from "./components/ProductGallery";
 export default function ProductRightbar({
   selectedCategories,
   setSelectedCategories,

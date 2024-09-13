@@ -11,7 +11,7 @@ import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 export default function Banner() {
   return (
     <div className="container-lg ">
-      <div className="flex flex-wrap justify-start md:justify-between  py-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4  py-5 gap-4">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
             <div className="w-14 h-14">
@@ -114,8 +114,8 @@ export default function Banner() {
           </div>
         </div>
         <div className="flex-1 h-full justify-items-center justify-between ">
-          <div className="relative flex items-center ">
-            <div className="">
+          <div className="relative mb-3 sm:mb-4 flex items-center ">
+            <div className="w-full">
               <img className="w-full h-full object-contain" src={bn2} alt="" />
             </div>
 
@@ -138,7 +138,7 @@ export default function Banner() {
             </div>
           </div>
           <div className="relative flex items-center ">
-            <div className="">
+            <div className="w-full">
               <img className="w-full h-full object-contain" src={bn3} alt="" />
             </div>
 

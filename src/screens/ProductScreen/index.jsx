@@ -151,10 +151,10 @@ export default function ProductScreen() {
                   )}
                   <ProductColorSelect colors={colors} />
                   <SizeVariant sizes={sizes} />
-                  <span className="bg-slate-100 my-3  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
+                  <span className="bg-slate-100 my-4  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
                     {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                   </span>
-                  <div className="flex gap-2 items-center">
+                  <div className="flex mt-3 gap-2 items-center">
                     {product.countInStock > 0 && <ProductPriceInput />}
 
                     <button
@@ -172,21 +172,21 @@ export default function ProductScreen() {
                   <div className="flex my-2 justify-between items-center">
                     <a
                       href="#"
-                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2"
                     >
                       <PiGlobeThin size={20} />
                       <span>Size Guide</span>
                     </a>{" "}
                     <a
                       href="#"
-                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2"
                     >
                       <PiHeartStraightLight size={20} />
                       <span>Add to Wishlist</span>
                     </a>
                     <a
                       href="#"
-                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-[13px] my-2"
+                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2"
                     >
                       <PiShareNetworkLight size={20} />
                       <span>Share this Product</span>

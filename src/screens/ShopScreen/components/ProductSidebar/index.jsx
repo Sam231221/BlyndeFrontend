@@ -9,7 +9,7 @@ const ProductSidebar = ({ handleChange }) => {
   return (
     <div className="w-full hidden md:block md:w-1/4 lg:w-1/5">
       <div className="relative">
-        <section className="w-full border-r-2 border-[#e5e5e5] mt-12 z-[3] flex flex-col items-center overflow-y-auto h-screen">
+        <section className="w-full border-r-2 border-[#e5e5e5] mt-12 z-[3] flex flex-col items-center overflow-y-auto">
           <Category handleChange={handleChange} />
           {/* Range Slider */}
           <div className="w-full mt-4 pl-5">

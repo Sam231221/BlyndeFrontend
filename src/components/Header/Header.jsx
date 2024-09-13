@@ -10,6 +10,7 @@ import { FaRegHeart } from "react-icons/fa6";
 
 import { logout } from "../../actions/userActions";
 import CartRightBar from "./CartRightBar";
+import { ProfileDropDown } from "./ProfileDropDown";
 function Header() {
   const [sideCartNav, setSideCartNav] = useState(false);
   const cart = useSelector((state) => state.cart);
@@ -69,155 +70,99 @@ function Header() {
             : "bg-transparent top-[0px] md:top-11"
         )}
       >
-        <div className="w-full px-4 flex items-center ">
-          <div className="flex items-center">
-            <RxHamburgerMenu className="text-[20px] md:text-[25px] mr-3 block md:hidden" />
-            <Link to="/">
-              <h2 className="text-3xl  mb-2 font-bold tracking-wide text-zinc-900">
-                Blynde
-              </h2>
-            </Link>
-          </div>
+        <div className="flex justify-between w-full h-full items-center">
+          <div className="w-full h-full px-4 flex items-center ">
+            <div className="flex items-center">
+              <RxHamburgerMenu className="text-[20px] md:text-[25px] mr-3 block md:hidden" />
+              <Link to="/">
+                <h2 className="text-3xl  mb-2 font-bold tracking-wide text-zinc-900">
+                  Blynde
+                </h2>
+              </Link>
+            </div>
 
-          <nav className="ml-10 hidden md:block">
-            <ul className="me-lg-5 text-sm flex items-center font-semibold gap-3">
-              <li>
-                <Link
-                  to="/"
-                  className={
-                    splitLocation[1] === ""
-                      ? "nav-link text-blue scrollto "
-                      : "nav-link scrollto"
-                  }
-                >
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className={
-                    splitLocation[1] === "shop"
-                      ? "nav-link text-blue scrollto "
-                      : "nav-link scrollto"
-                  }
-                  to="/shop"
-                >
-                  Shop
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className={
-                    splitLocation[1] === "about-us"
-                      ? "nav-link active scrollto "
-                      : "nav-link scrollto"
-                  }
-                  to="/about-us/"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={
-                    splitLocation[1] === "contact-us"
-                      ? "nav-link active scrollto "
-                      : "nav-link scrollto"
-                  }
-                  to="/contact-us/"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        {/* lefmost navitems */}
-
-        <div className="flex px-5 align-items-center gap-3">
-          {userInfo ? (
-            <div className="dropdown mt-4 text-end">
-              <button
-                className="d-block link-dark text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://github.com/mdo.png"
-                  alt="mdo"
-                  className="rounded-full w-[62px] h-[33px] object-cover"
-                />
-              </button>
-              <ul className="dropdown-menu text-small">
+            <nav className="ml-10 hidden md:block">
+              <ul className="me-lg-5 text-sm flex items-center font-semibold gap-3">
                 <li>
-                  <Link to="/profile" className="dropdown-item">
-                    Profile
+                  <Link
+                    to="/"
+                    className={
+                      splitLocation[1] === ""
+                        ? "nav-link text-blue scrollto "
+                        : "nav-link scrollto"
+                    }
+                  >
+                    Home
                   </Link>
                 </li>
-                {userInfo.isAdmin && (
-                  <>
-                    <li>
-                      <Link to="/admin/userlist" className="dropdown-item">
-                        Users
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/admin/productlist"
-                        className="dropdown-item"
-                        href="#"
-                      >
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/admin/orderlist"
-                        className="dropdown-item"
-                        href="#"
-                      >
-                        Orders
-                      </Link>
-                    </li>
-                  </>
-                )}
 
                 <li>
-                  <hr className="dropdown-divider" />
+                  <Link
+                    className={
+                      splitLocation[1] === "shop"
+                        ? "nav-link text-blue scrollto "
+                        : "nav-link scrollto"
+                    }
+                    to="/shop"
+                  >
+                    Shop
+                  </Link>
                 </li>
-                <li className="ms-3 cursor-pointer">
-                  <ion-icon
-                    onClick={logoutHandler}
-                    name="log-out-outline"
-                    style={{ fontSize: 30 }}
-                  ></ion-icon>
+
+                <li>
+                  <Link
+                    className={
+                      splitLocation[1] === "about-us"
+                        ? "nav-link active scrollto "
+                        : "nav-link scrollto"
+                    }
+                    to="/about-us/"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={
+                      splitLocation[1] === "contact-us"
+                        ? "nav-link active scrollto "
+                        : "nav-link scrollto"
+                    }
+                    to="/contact-us/"
+                  >
+                    Contact Us
+                  </Link>
                 </li>
               </ul>
-            </div>
-          ) : (
-            <Link to="/login">
-              <RiUserReceived2Line className="text-[20px] md:text-[25px]" />
-            </Link>
-          )}
-
-          <div
-            onClick={() => showSideCartNav()}
-            className="relative cursor-pointer"
-          >
-            <FaCartShopping className="text-[20px] md:text-[25px]" />
-            <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
-              {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
-            </div>
+            </nav>
           </div>
+          {/* lefmost navitems */}
+          <div className="flex px-5 align-items-center gap-3">
+            {userInfo ? (
+              <ProfileDropDown />
+            ) : (
+              <Link to="/login">
+                <RiUserReceived2Line className="text-[20px] md:text-[25px]" />
+              </Link>
+            )}
 
-          <Link to="/my-wishlist" className="relative cursor-pointer">
-            <FaRegHeart className="text-[20px] md:text-[25px]" />
-            <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
-              {userLikes.reduce((acc, item) => acc + 1, 0)}
+            <div
+              onClick={() => showSideCartNav()}
+              className="relative cursor-pointer"
+            >
+              <FaCartShopping className="text-[20px] md:text-[25px]" />
+              <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
+                {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+              </div>
             </div>
-          </Link>
+
+            <Link to="/my-wishlist" className="relative cursor-pointer">
+              <FaRegHeart className="text-[20px] md:text-[25px]" />
+              <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
+                {userLikes.reduce((acc, item) => acc + 1, 0)}
+              </div>
+            </Link>
+          </div>
         </div>
       </header>
       <CartRightBar sideCartNav={sideCartNav} setSideCartNav={setSideCartNav} />

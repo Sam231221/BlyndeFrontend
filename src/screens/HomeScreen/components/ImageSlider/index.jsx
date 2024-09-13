@@ -56,28 +56,28 @@ export const ImageSlider = ({ slides, autoplay = false, timeout = 5000 }) => {
               </a>
             </div>
           </div>
+          <button
+            className="prev absolute left-0 top-1/2 -translate-y-1/2 z-30 p-3  rounded-full"
+            onClick={previousSlide}
+          >
+            <FaCaretLeft
+              size={40}
+              className="text-gray-400 hover:text-[##717FE0]"
+              onClick={previousSlide}
+            />
+          </button>
+          <button
+            className="next absolute right-0 top-1/2 -translate-y-1/2 z-30 p-3  rounded-full"
+            onClick={nextSlide}
+          >
+            <FaCaretRight
+              size={40}
+              className="text-gray-400 hover:text-[##717FE0]"
+              onClick={nextSlide}
+            />
+          </button>
         </div>
       ))}
-      <button
-        className="prev absolute left-0 top-1/2 -translate-y-1/2 z-30 p-3  rounded-full"
-        onClick={previousSlide}
-      >
-        <FaCaretLeft
-          size={40}
-          className="text-gray-300 hover:text-[##717FE0]"
-          onClick={previousSlide}
-        />
-      </button>
-      <button
-        className="next absolute right-0 top-1/2 -translate-y-1/2 z-30 p-3  rounded-full"
-        onClick={nextSlide}
-      >
-        <FaCaretRight
-          size={40}
-          className="text-gray-300 hover:text-[##717FE0]"
-          onClick={nextSlide}
-        />
-      </button>
     </>
   );
 };

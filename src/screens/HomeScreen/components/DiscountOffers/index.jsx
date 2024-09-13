@@ -97,105 +97,124 @@ const DiscountOffers = () => {
         </p>
       </div>
       <div className="container">
-        <div className="testimonials-box">
-          {isLoading ? (
-            <p>Loading offers...</p>
-          ) : error ? (
-            <p>Error fetching offers: {error.message}</p>
-          ) : offers.length > 0 ? (
-            <div className="product-featured mt-4">
-              <div className="showcase-wrapper has-scrollbar">
-                {offers.map((product, i) => (
-                  <div key={i} className="showcase-container">
-                    <div className="showcase">
-                      <div className="showcase-banner">
-                        <img
-                          src={`${endpoint}${product.thumbnail}`}
-                          alt={product.name}
-                          className="showcase-img"
-                        />
-                      </div>
+        {isLoading ? (
+          <p>Loading offers...</p>
+        ) : error ? (
+          <div className="container mx-auto py-8 px-4">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
+              <strong className="font-bold">Error: </strong>
+              <span className="block sm:inline">{error.message}</span>
+            </div>
+          </div>
+        ) : offers.length > 0 ? (
+          <div
+            className="flex items-center mb-10 mt-4 gap-5 overflow-x-auto has-scrollbar"
+            style={{
+              overscrollBehaviorInline: "contain",
+              scrollSnapType: "inline",
+            }}
+          >
+            {offers.map((product, i) => (
+              <div
+                key={i}
+                className="min-w-full p-8 border border-gray-200 rounded-sm "
+                style={{ scrollSnapAlign: "start" }}
+              >
+                <div className="flex flex-col sm:flex-row sm:gap-4">
+                  <div>
+                    <img
+                      src={`${endpoint}${product.thumbnail}`}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                      <div className="showcase-content">
-                        <div className="showcase-rating">
-                          <ion-icon name="star"></ion-icon>
-                          <ion-icon name="star"></ion-icon>
-                          <ion-icon name="star"></ion-icon>
-                          <ion-icon name="star-outline"></ion-icon>
-                          <ion-icon name="star-outline"></ion-icon>
-                        </div>
+                  <div className="mt-8">
+                    <Link to="/">
+                      <h3 className="overflow-hidden whitespace-nowrap text-ellipsis uppercase mb-1 text-2xl font-bold text-gray-800 ">
+                        {product.name}
+                      </h3>
+                    </Link>
 
-                        <Link to="/">
-                          <h3 className="showcase-title font-bold">
-                            {product.name}
-                          </h3>
-                        </Link>
+                    {product.description && (
+                      <p className="ml-1  text-gray-600 text-xs mb-2">
+                        {product.description}
+                      </p>
+                    )}
 
-                        {product.description && (
-                          <p className="showcase-desc">{product.description}</p>
-                        )}
+                    <div className="flex px-1 gap-3 text-gray-800 mb-2 text-lg">
+                      <p className="font-bold">${product.price}</p>
+                      {product.sale_price && (
+                        <del className="text-gray-400">
+                          ${product.sale_price}
+                        </del>
+                      )}
+                    </div>
 
-                        <div className="price-box">
-                          <p className="price">${product.price}</p>
-                          {product.sale_price && (
-                            <del>${product.sale_price}</del>
-                          )}
-                        </div>
+                    <button className="add-cart-btn font-bold uppercase px-8 py-3 bg-sky-600 text-white mb-2 transition-all duration-200 ease-out rounded-lg hover:bg-sky-500">
+                      Add to Cart
+                    </button>
 
-                        <button className="add-cart-btn">Add to Cart</button>
+                    <div className=" uppercase my-2">
+                      <p>
+                        Available: <b>{product.countInStock}</b>
+                      </p>
+                    </div>
 
-                        <div className="showcase-status">
-                          <div className="wrapper">
-                            <p>
-                              Available: <b>{product.countInStock}</b>
-                            </p>
-                          </div>
-                        </div>
+                    <div className="countdown-box">
+                      <p className="countdown-desc text-gray-700 tracking-wider uppercase mb-2 font-medium text-sm">
+                        Hurry Up! Offer ends in:
+                      </p>
 
-                        <div className="countdown-box">
-                          <p className="countdown-desc">
-                            Hurry Up! Offer ends in:
+                      <div className="flex gap-2">
+                        <div className="text-center bg-zinc-200 rounded-md p-2">
+                          <p className="display-number text-gray-800 font-medium text-lg min-w-[40px]">
+                            {product.remainingDays}
                           </p>
+                          <p className="text-[12px] text-gray-700  ">Days</p>
+                        </div>
+                        <div className="text-center bg-zinc-200 rounded-md p-2">
+                          <p className="display-number text-gray-800 font-medium text-lg min-w-[40px]">
+                            {product.remainingHours}
+                          </p>
+                          <p className="text-[12px] text-gray-700  ">Hours</p>
+                        </div>
+                        <div className="text-center bg-zinc-200 rounded-md p-2">
+                          <p className="display-number text-gray-800 font-medium text-lg min-w-[40px]">
+                            {product.remainingMinutes}
+                          </p>
+                          <p className="text-[12px] text-gray-700  ">Minutes</p>
+                        </div>
 
-                          <div className="countdown">
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {product.remainingDays}
-                              </p>
-                              <p className="display-text">Days</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {product.remainingHours}
-                              </p>
-                              <p className="display-text">Hours</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {product.remainingMinutes}
-                              </p>
-                              <p className="display-text">Min</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {product.remainingSeconds}
-                              </p>
-                              <p className="display-text">Sec</p>
-                            </div>
-                          </div>
+                        <div className="text-center bg-zinc-200 rounded-md p-2">
+                          <p className="display-number text-gray-800 font-medium text-lg min-w-[40px]">
+                            {product.remainingSeconds}
+                          </p>
+                          <p className="text-[12px] text-gray-700  ">Sec</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
+            ))}
+          </div>
+        ) : (
+          <div className="container mx-auto py-8 px-4">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
+              <strong className="font-bold">Error: </strong>
+              <span className="block sm:inline">
+                No discount offers available at the moment.
+              </span>
             </div>
-          ) : (
-            <div className="p-3 w-full mt-3 text-center bg-red-200/20 rounded-lg border-2 border-red-800/50 font-medium">
-              No discount offers available at the moment.
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
