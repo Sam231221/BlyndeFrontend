@@ -1382,21 +1382,20 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: var(--fs-9);
   font-weight: var(--weight-500);
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 .product-grid .showcase-title {
-  color: var(--sonic-silver);
-  font-size: var(--fs-8);
-  font-weight: var(--weight-300);
+  color: var(--eerie-black);
+  font-size: 16px;
+  font-weight: var(--weight-500);
   text-transform: capitalize;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+
   transition: var(--transition-timing);
 }
 
 .product-grid .showcase-title:hover {
-  color: var(--eerie-black);
+  color: var(--sonic-silver);
 }
 
 .product-grid .showcase-rating {

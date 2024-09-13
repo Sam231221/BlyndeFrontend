@@ -263,55 +263,9 @@ export default function ProductGallery({
           </select>
         </div>
       </div>
-      {/* <div className="bg-gray-100 rounded-lg p-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-        <div>
-          <p className="text-gray-700 mb-2 sm:mb-0">
-            Showing {currentPage * productsPerPage - productsPerPage + 1}-
-            {Math.min(currentPage * productsPerPage, sortedProducts.length)} of{" "}
-            {sortedProducts.length} products
-          </p>
-        </div>
-
-        <div className="mt-4 sm:mt-0 flex flex-col sm:flex-row items-start sm:items-center">
-          <div className="mb-2 sm:mb-0 sm:mr-4">
-            <label htmlFor="productsPerPage" className="text-gray-700 mr-2">
-              Products per page:
-            </label>
-            <select
-              id="productsPerPage"
-              value={productsPerPage}
-              onChange={handleProductsPerPageChange}
-              className="border rounded-md px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="6">6</option>
-              <option value="12">12</option>
-              <option value="24">24</option>
-              <option value="48">48</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="sortOption" className="text-gray-700 mr-2">
-              Sort by:
-            </label>
-            <select
-              id="sortOption"
-              value={sortOption}
-              onChange={handleSortChange}
-              className="border rounded-md px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="price-low-high">Price: Low to High</option>
-              <option value="price-high-low">Price: High to Low</option>
-              <option value="latest">Latest</option>
-              <option value="popularity">Popularity</option>
-            </select>
-          </div>
-        </div>
-      </div> */}
-
       {currentProducts.length === 0 ? (
         <p className="text-gray-600">No products found.</p>
       ) : (
-        //  <div className="product-container product-grid">{result}</div>
         <div className="product-container product-grid">
           {currentProducts.map(
             (
@@ -386,9 +340,10 @@ export default function ProductGallery({
                   </Link>
 
                   <Rating
+                    color={"#fc8c04"}
+                    fontSize="14px"
                     value={rating}
                     text={`${numReviews} reviews`}
-                    color={"#F6A355"}
                   />
 
                   <div className="price-box">

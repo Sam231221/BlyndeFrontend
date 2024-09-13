@@ -51,7 +51,7 @@ function ColorCheckBox({
               </div>
               <span className="ml-2 text-sm">{color.name}</span>
             </div>
-            <div className="text-sm text-gray-400">(12)</div>
+            <div className="text-sm text-gray-400">({color.product_count})</div>
           </div>
         ))}
       </div>
