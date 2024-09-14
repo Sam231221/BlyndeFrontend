@@ -21,7 +21,7 @@ export default function CartScreen() {
 
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty));
+      dispatch(addToCart(productId, qty, color, size));
     }
   }, [dispatch, productId, qty]);
 

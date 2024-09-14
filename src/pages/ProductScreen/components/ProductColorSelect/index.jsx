@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-function ProductColorSelect({ colors, classNames, direction = "horizontal" }) {
+function ProductColorSelect({
+  handleColorChange,
+  colors,
+  classNames,
+  direction = "horizontal",
+}) {
   const [selectedColor, setSelectedColor] = useState(null);
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
+    handleColorChange(color);
   };
 
   return (
     <div className={`flex flex-col gap-2 `}>
-      <h1 className="font-medium  my-2 text-gray-800">
-        Color: <span>{selectedColor}</span>
+      <h1 className="font-medium text-gray-800">
+        Colors: <span>{selectedColor}</span>
       </h1>
       <div
         className={`flex gap-3 ${
@@ -19,38 +25,33 @@ function ProductColorSelect({ colors, classNames, direction = "horizontal" }) {
       >
         {colors.map((color) => (
           <div
+            id={color.name}
             type="button"
-            key={color.hexcode}
-            className={`relative w-8 h-8 rounded-full cursor-pointer  ${
+            key={color.hex_code}
+            className={`relative w-8 h-8 rounded-full cursor-pointer ${
               selectedColor === color.name
                 ? "border-[2px] border-blue-500 "
                 : ""
-            } ${
-              color.stock === 0
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : ""
-            }`}
+            } `}
             onClick={() => handleColorClick(color.name)}
-            disabled={color.stock === 0}
           >
             <div
-              style={{ backgroundColor: color.hexcode }}
+              style={{ backgroundColor: color.hex_code }}
               className="absolute border-2 border-gray-300 inset-0 m-1 rounded-full"
             ></div>
           </div>
         ))}
       </div>
-      <div>
-        {selectedColor && (
-          <button
-            className="flex items-center"
-            onClick={() => setSelectedColor(null)}
-          >
-            <IoCloseOutline color={15} />
-            <span className="ml-2 text-xs"> Clear</span>
-          </button>
-        )}
-      </div>
+
+      {selectedColor && (
+        <button
+          className="flex items-center mb-3"
+          onClick={() => setSelectedColor(null)}
+        >
+          <IoCloseOutline color={15} />
+          <span className="ml-2 text-xs"> Clear</span>
+        </button>
+      )}
     </div>
   );
 }

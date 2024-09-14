@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-function ProductPriceInput({ unitPrice = 1 }) {
+function ProductPriceInput({ unitPrice = 1, handleChange }) {
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
+    handleChange(quantity + 1);
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+      handleChange(quantity - 1);
     }
   };
 

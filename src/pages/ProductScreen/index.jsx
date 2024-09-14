@@ -18,28 +18,29 @@ import {
   PiShareNetworkLight,
 } from "react-icons/pi";
 import Reviews from "./components/Reviews";
+import { addToCart } from "../../redux/actions/cartAction";
 
 export default function ProductScreen() {
-  const sizes = [
-    { size: "XS", stock: 10 },
-    { size: "M", stock: 5 },
-    { size: "L", stock: 12 },
-    { size: "XL", stock: 23 },
-  ];
-  const colors = [
-    { hexcode: "#fff", name: "White", stock: 10 },
-    { hexcode: "#000", name: "Black", stock: 5 },
-    { hexcode: "#ff0000", name: "Red", stock: 12 },
-    { hexcode: "#00ff22", name: "Green", stock: 23 },
-  ];
   const items = [
     { label: "Home", path: "/" },
     { label: "Shop", path: "/shop" },
   ];
-  const [quantity, setQuantity] = useState(1);
+  const [data, setData] = useState({
+    quantity: 1,
+    color: "",
+    size: "",
+  });
+  const handleQuantityChange = (quantity) => {
+    setData((prev) => ({ ...prev, quantity }));
+  };
+  const handleColorChange = (color) => {
+    setData((prev) => ({ ...prev, color }));
+  };
+  const handleSizeChange = (size) => {
+    setData((prev) => ({ ...prev, size }));
+  };
   const dispatch = useDispatch();
   const { id } = useParams();
-  const navigate = useNavigate();
 
   //select a particular state i.e productList state which is an obj
   const productDetail = useSelector((state) => state.productDetails);
@@ -50,8 +51,13 @@ export default function ProductScreen() {
     dispatch(listProductDetails(id));
   }, [dispatch, id]);
 
-  const addToCartHandler = () => {
-    navigate(`/cart/?code=${id}&qty=${quantity}`);
+  const addToCartHandler = (id) => {
+    const { quantity, size, color } = data;
+    if (product._id === id && quantity && size && color) {
+      dispatch(addToCart(product._id, quantity, size, color));
+    } else {
+      alert("Please select size and color");
+    }
   };
 
   return (
@@ -144,16 +150,28 @@ export default function ProductScreen() {
                       {product.description}
                     </p>
                   )}
-                  <ProductColorSelect colors={colors} />
-                  <SizeVariant sizes={sizes} />
-                  <span className="bg-slate-100 my-4  px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
+                  {product.colors && (
+                    <ProductColorSelect
+                      handleColorChange={handleColorChange}
+                      colors={product.colors}
+                    />
+                  )}
+                  {product.size && (
+                    <SizeVariant
+                      handleSizeChange={handleSizeChange}
+                      sizes={product.size}
+                    />
+                  )}
+                  <span className="bg-slate-100 mt-4 inline-block px-3 text-xs font-semibold text-green-600 rounded-lg p-2">
                     {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                   </span>
                   <div className="flex mt-3 gap-2 items-center">
-                    {product.countInStock > 0 && <ProductPriceInput />}
+                    {product.countInStock > 0 && (
+                      <ProductPriceInput handleChange={handleQuantityChange} />
+                    )}
 
                     <button
-                      onClick={addToCartHandler}
+                      onClick={() => addToCartHandler(product._id)}
                       className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
                       disabled={product.countInStock <= 0}
                       type="button"
