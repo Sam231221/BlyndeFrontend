@@ -41,7 +41,7 @@ function PlaceOrderScreen() {
     taxPrice: taxPrice,
     totalPrice: totalPrice,
   };
-
+  console.log(cart);
   if (!cart.paymentMethod) {
     navigate("/payment");
   }
@@ -83,7 +83,7 @@ function PlaceOrderScreen() {
             </div>
             <p className="text-sm my-1">
               <label className=" font-medium mr-3" htmlFor="">
-                Items:
+                Total:
               </label>
               <span>${FinalCart.itemsPrice}</span>
             </p>
@@ -104,7 +104,7 @@ function PlaceOrderScreen() {
 
             <p className="text-sm my-1">
               <label className=" font-medium mr-3" htmlFor="">
-                Total:
+                Grand Total:
               </label>
               <span>${FinalCart.totalPrice}</span>
             </p>

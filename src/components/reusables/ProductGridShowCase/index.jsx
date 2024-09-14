@@ -5,7 +5,6 @@ import Rating from "../Rating";
 
 export default function ProductGridShowCase({
   products,
-  addToCartHandler,
   addToWishlistHandler,
 }) {
   return (

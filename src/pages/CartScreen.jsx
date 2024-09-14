@@ -1,49 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 
-import { addToCart, removeFromCart } from "../redux/actions/cartAction";
+import {
+  addToCart,
+  removeFromCart,
+  updateCart,
+} from "../redux/actions/cartAction";
 import { AiOutlineDelete } from "react-icons/ai";
 import PageContainer from "../components/PageContainer";
 import { endpoint } from "../lib/api";
+import ProductPriceInput from "./ProductScreen/components/ProductPriceInput";
 export default function CartScreen() {
   const dispatch = useDispatch();
   const redirect = useNavigate();
-
-  const params = new URLSearchParams(window.location.search);
-  const qty = params.get("qty");
-  const productId = params.get("code");
-
+  const handleChange = (val, id) => {
+    dispatch(updateCart(id, val));
+  };
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-
-  useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty, color, size));
-    }
-  }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
-
-  /*
-    FOR CHECKOUT USER MUST BE LOGGED IN.
-    -----------------------------
-    First we check if user is logged in
-    if yes then redirect to /shipping directly.
-    if no , first redirect to /login page
-    */
-
   const checkoutHandler = () => {
     redirect("/login?redirect=shipping");
   };
 
   return (
     <PageContainer>
-      <div className="container-lg mx-auto py-2 overflow-auto mt-10">
+      <div className="container mx-auto py-2 overflow-auto mt-10">
         <div className="flex flex-wrap gap-3">
           <table className="table flex-1 md:flex-[3_1_0%] border w-full mt-4 mb-2">
             <thead className="bg-secondaryBgColor ">
@@ -91,7 +79,12 @@ export default function CartScreen() {
                     ${product.price}
                   </td>
                   <td className="p-2 text-sm text-gray-700">
-                    <div className="w-[164px]  h-[45px] flex border radius-sm overflow-hidden">
+                    <ProductPriceInput
+                      id={product.productId}
+                      qty={product.quantity}
+                      handleChange={handleChange}
+                    />
+                    {/* <div className="w-[164px]  h-[45px] flex border radius-sm overflow-hidden">
                       <button className="py-2 px-3 hover:bg-sky-500 hover:text-white ">
                         <CgMathPlus size={20} />
                       </button>
@@ -103,14 +96,14 @@ export default function CartScreen() {
                       <button className="py-2 px-3 hover:bg-sky-500 hover:text-white ">
                         <CgMathMinus size={20} />
                       </button>
-                    </div>
+                    </div> */}
                   </td>
                   <td className="p-2 text-sm text-gray-700">
                     ${(product.quantity * product.price).toFixed(2)}
                   </td>
                   <td className="p-2 text-xs text-center">
                     <AiOutlineDelete
-                      onClick={() => removeFromCartHandler(product.product)}
+                      onClick={() => removeFromCartHandler(product.productId)}
                       className="text-red-500 cursor-pointer"
                       size={20}
                     />

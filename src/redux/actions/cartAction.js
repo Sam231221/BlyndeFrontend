@@ -6,6 +6,7 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   CART_CLEAR_ITEMS,
   CART_ERROR,
+  CART_UPDATE_ITEM,
 } from "../reducers/Cart/CartSlice";
 
 export const addToCart =
@@ -15,7 +16,7 @@ export const addToCart =
 
       dispatch(
         CART_ADD_ITEM({
-          product: data._id,
+          productId: data._id,
           name: data.name,
           color: color,
           size: size,
@@ -40,7 +41,29 @@ export const addToCart =
       );
     }
   };
-
+export const updateCart = (id, quantity) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.get(`/api/products/${id}`);
+    dispatch(
+      CART_UPDATE_ITEM({
+        productId: data._id,
+        quantity: Number(quantity),
+      })
+    );
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(getState().cart.cartItems)
+    );
+  } catch (error) {
+    dispatch(
+      CART_ERROR(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      )
+    );
+  }
+};
 export const removeFromCart = (id) => (dispatch, getState) => {
   dispatch({
     type: CART_REMOVE_ITEM,

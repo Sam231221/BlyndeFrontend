@@ -31,7 +31,7 @@ export const CartSlice = createSlice({
     CART_ADD_ITEM: (state, action) => {
       const item = action.payload;
       const existItem = state.cartItems.find(
-        (cartitem) => cartitem.product === item.product
+        (cartitem) => cartitem.productId === item.productId
       );
 
       if (existItem) {
@@ -39,8 +39,8 @@ export const CartSlice = createSlice({
           ...state,
           cartItems: state.cartItems.map((cartitem) =>
             //update with x value if condition fails
-            //note product is an id see cartAction.js file
-            cartitem.product === existItem.product ? item : cartitem
+            //note productId is an id see cartAction.js file
+            cartitem.productId === existItem.productId ? item : cartitem
           ),
         };
       } else {
@@ -50,14 +50,28 @@ export const CartSlice = createSlice({
     },
 
     //ACTION TYPE 2
+    CART_UPDATE_ITEM: (state, action) => {
+      const { productId, quantity } = action.payload;
+      const item = state.cartItems.find(
+        (cartItem) => cartItem.productId === productId
+      );
+
+      if (item) {
+        item.quantity = quantity; // Update the quantity
+      }
+    },
+
+    //ACTION TYPE 3
     CART_REMOVE_ITEM: (state, action) => {
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        cartItems: state.cartItems.filter(
+          (x) => x.productId !== action.payload
+        ),
       };
     },
 
-    //ACTION TYPE 2
+    //ACTION TYPE 4
     CART_ERROR: (state, action) => {
       return {
         ...state,
@@ -91,6 +105,7 @@ export const CartSlice = createSlice({
 export const {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
+  CART_UPDATE_ITEM,
   CART_SAVE_SHIPPING_ADDRESS,
   CART_SAVE_PAYMENT_METHOD,
   CART_CLEAR_ITEMS,

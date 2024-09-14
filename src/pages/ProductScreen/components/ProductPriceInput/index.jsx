@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-function ProductPriceInput({ unitPrice = 1, handleChange }) {
-  const [quantity, setQuantity] = useState(1);
+function ProductPriceInput({ unitPrice = 1, qty = 1, id, handleChange }) {
+  const [quantity, setQuantity] = useState(qty);
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
-    handleChange(quantity + 1);
+    handleChange(quantity + 1, id);
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      handleChange(quantity - 1);
+      handleChange(quantity - 1, id);
     }
   };
 
@@ -27,7 +27,7 @@ function ProductPriceInput({ unitPrice = 1, handleChange }) {
         >
           <FiMinus size={15} />
         </button>
-        {/* <span className=' p-2 w-12 text-lg text-center'>{quantity}</span> */}
+
         <input
           type="text"
           value={quantity}
