@@ -58,7 +58,7 @@ const CommentForm = () => {
       </div>
       <button
         type="button"
-        className="px-3 py-2 mb-3 text-black bg-gray-200 hover:bg-gray-300 hover:text-white border border-gray-400 rounded-sm text-medium"
+        className="px-3 py-2 mb-3 text-black bg-gray-200 hover:bg-gray-900 hover:text-white border border-gray-400 rounded-sm text-medium"
       >
         Submit
       </button>

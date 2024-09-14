@@ -1,8 +1,1 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+create a react js project for ecommerce website. i want you to make shop page.In Left hand side of page, It will have leftbar containing multilevel checkboxes for categories(i.e Men, women, babies), price range slider,checkboxes for product_sizes(i.eS,M,L XL) and checkboxes for product colors. In right hand side of the page, it will have product gallery,with pagination. According to the selected multiple categories, colors ,price values, sizes, products will be filtered out

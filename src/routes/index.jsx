@@ -1,6 +1,6 @@
 import React from "react";
-import { HomeScreen } from "../pages/HomeScreen";
-// const HomeScreen = React.lazy(() => import("../pages/HomeScreen"));
+// import { HomeScreen } from "../pages/HomeScreen";
+const HomeScreen = React.lazy(() => import("../pages/HomeScreen"));
 const ShopScreen = React.lazy(() => import("../pages/ShopScreen"));
 const CartScreen = React.lazy(() => import("../pages/CartScreen"));
 const ProductScreen = React.lazy(() => import("../pages/ProductScreen"));

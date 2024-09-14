@@ -14,7 +14,7 @@ export default function Colors({ handleChange }) {
   }, []);
   return (
     <>
-      <h2 className="sidebar-title color-title">Colors</h2>
+      <h2 className="text-lg tracking-wide font-medium text-gray-900">Colors</h2>
       <div className="px-3">
         <ColorCheckBox
           direction="vertical"

@@ -32,13 +32,13 @@ export const ImageSlider = ({ slides, autoplay = false, timeout = 5000 }) => {
     <>
       {slides.map((slide, index) => (
         <div
-          className={`slider-container relative overflow-hidden ${
+          className={`relative overflow-hidden ${
             current === index ? "block" : "hidden"
           }`}
           key={index}
         >
           <div
-            className="slide h-screen bg-cover bg-no-repeat bg-center flex items-center flex-wrap gap-4 px-4 pb-14"
+            className="h-screen bg-cover bg-no-repeat bg-center flex items-center flex-wrap gap-4 px-4 pb-14"
             style={{ backgroundImage: `url(${slide.img})` }}
           >
             <div className="z-20 flex flex-col  tracking-wide px-4 py-8">

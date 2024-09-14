@@ -5,7 +5,7 @@ export default function ProductRightbar({
   setSelectedCategories,
 }) {
   return (
-    <div className="relative flex-1 mt-10">
+    <div className="relative p-2 flex-1 mt-10">
       <ProductBanner />
       <ProductGallery
         selectedCategories={selectedCategories}

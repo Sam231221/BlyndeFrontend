@@ -13,11 +13,13 @@ export default function FilterBySize({ handleChange }) {
   }, []);
   return (
     <>
-      <h2 className="sidebar-title color-title">Filter By Size</h2>
+      <h2 className="text-lg tracking-wide font-medium text-gray-900">
+        Filter By Size
+      </h2>
       <div className="px-3">
-        {sizes.map((size) => {
+        {sizes.map((size, i) => {
           return (
-            <div className="flex items-center justify-between">
+            <div key={i} className="flex items-center justify-between">
               <Checkbox
                 key={size.id}
                 label={size.name}
