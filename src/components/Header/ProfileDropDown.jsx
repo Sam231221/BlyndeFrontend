@@ -50,7 +50,6 @@ export const ProfileDropDown = ({ classes }) => {
       >
         <div className="text-center mb-2">
           <h2 className="text-md">Sameer Shahi</h2>
-          <p className="text-xs ">Web Developer</p>
         </div>
         <hr />
         <ul>

@@ -563,10 +563,6 @@ body::-webkit-scrollbar-thumb:hover {
    * #REUSED STYLE 
    */
 
-  .container {
-    max-width: 1200px;
-  }
-
   /**
    * #TESTIMONIALS, CTA, SERVICE
    */
@@ -623,14 +619,6 @@ body::-webkit-scrollbar-thumb:hover {
 
   html {
     font-size: 18px;
-  }
-
-  /**
-   * #REUSED STYLE 
-   */
-
-  .container {
-    max-width: 1350px;
   }
 
   /**

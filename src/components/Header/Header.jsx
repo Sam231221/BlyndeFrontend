@@ -8,7 +8,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 
-import { logout } from "../../actions/userActions";
+import { logout } from "../../redux/actions/userActions";
 import CartRightBar from "./CartRightBar";
 import { ProfileDropDown } from "./ProfileDropDown";
 function Header() {

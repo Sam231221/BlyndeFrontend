@@ -1,6 +1,6 @@
-import payment from "../../assets/images/payment.png";
-import appstore from "../../assets/images/thirdparty/app-store.png";
-import googleplay from "../../assets/images/thirdparty/google-play.png";
+import payment from "/images/payment.png";
+import appstore from "/images/thirdparty/app-store.png";
+import googleplay from "/images/thirdparty/google-play.png";
 export default function Footer() {
   return (
     <footer className="relative z-[996]">

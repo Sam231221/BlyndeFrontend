@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useSelector } from "react-redux";
