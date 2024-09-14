@@ -2,15 +2,18 @@ import { useState } from "react";
 import "./style.css";
 import Slider from "react-slider";
 
-export default function DoubleRangeSlider({ handleChange, min, max }) {
+export default function DoubleRangeSlider({ handlePriceChange, min, max }) {
   const [values, setValues] = useState([min, max]);
   const handleSliderChange = (newValue) => {
     setValues(newValue);
-    handleChange(newValue);
+    handlePriceChange(newValue);
   };
+
   return (
     <div className="w-full">
-      <h2 className="text-lg tracking-wide font-medium text-gray-900">Price Range</h2>
+      <h2 className="text-lg tracking-wide font-medium text-gray-900">
+        Price Range
+      </h2>
 
       <div className="px-3 text-[14px] font-medium">
         <div className="">

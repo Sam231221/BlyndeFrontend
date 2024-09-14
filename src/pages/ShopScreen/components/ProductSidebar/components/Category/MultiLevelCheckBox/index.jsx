@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinusSmall } from "react-icons/hi2";
 import Checkbox from "../../../../../../../components/reusables/Checkbox";
-const MultiLevelCheckbox = ({ categories }) => {
-  const [expanded, setExpanded] = useState(null);
-  const [checkedItems, setCheckedItems] = useState([]);
-
+const MultiLevelCheckbox = ({ handleCategoriesChange, categories }) => {
+  const [expanded, setExpanded] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const handleToggle = (id) => {
-    setExpanded(expanded === id ? null : id);
+    const newExpanded = expanded.includes(id)
+      ? expanded.filter((cat) => cat !== id)
+      : [...expanded, id];
+    setExpanded(newExpanded);
   };
-
-  const handleCheckboxChange = (id) => {
-    setCheckedItems((prevState) =>
-      prevState.includes(id)
-        ? prevState.filter((item) => item !== id)
-        : [...prevState, id]
-    );
+  const handleChange = (category) => {
+    const newSelected = selectedCategories.includes(category)
+      ? selectedCategories.filter((cat) => cat !== category)
+      : [...selectedCategories, category];
+    setSelectedCategories(newSelected);
+    handleCategoriesChange(newSelected);
   };
 
   const renderCategory = (category) => (
@@ -24,8 +25,11 @@ const MultiLevelCheckbox = ({ categories }) => {
         {/* input field */}
         <Checkbox
           label={category.name}
-          checked={checkedItems.includes(category.id)}
-          onChange={() => handleCheckboxChange(category.id)}
+          checked={expanded.includes(category.id)}
+          onChange={() => {
+            handleToggle(category.id);
+            handleChange(category.name);
+          }}
         />
 
         {category.genres.length > 0 && (
@@ -44,8 +48,11 @@ const MultiLevelCheckbox = ({ categories }) => {
             <div key={genre.id} className="flex items-center ">
               <Checkbox
                 label={genre.name}
-                checked={checkedItems.includes(genre.id)}
-                onChange={() => handleCheckboxChange(genre.id)}
+                checked={expanded.includes(category.id)}
+                onChange={() => {
+                  handleToggle(category.id);
+                  handleChange(genre.name);
+                }}
               />
             </div>
           ))}
@@ -53,7 +60,6 @@ const MultiLevelCheckbox = ({ categories }) => {
       )}
     </div>
   );
-
   return (
     <div className="w-full px-3 max-w-md text-[14px] overflow-hidden">
       {categories

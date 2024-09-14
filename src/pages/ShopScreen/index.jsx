@@ -4,22 +4,43 @@ import ProductSidebar from "./components/ProductSidebar";
 import ProductRightbar from "./components/ProductRightbar";
 
 export default function ShopScreen() {
-  const [selectedCategories, setSelectedCategories] = useState(null);
-  const handleChange = (event) => {
-    if (event.target) {
-      setSelectedCategories(event.target.value);
-    } else {
-      setSelectedCategories((event[1] - event[0]).toString());
-    }
+  const [selectedFilters, setSelectedFilters] = useState({
+    categories: [],
+    price: [0, 1000],
+    sizes: [],
+    color: "",
+  });
+  const handleCategoriesChange = (categories) => {
+    setSelectedFilters((preb) => ({ ...preb, categories }));
+  };
+  const handlePriceChange = (price) => {
+    setSelectedFilters((prev) => ({ ...prev, price }));
   };
 
+  const handleSizeChange = (size) => {
+    setSelectedFilters((prev) => ({ ...prev, sizes: size }));
+  };
+
+  const handleColorChange = (color) => {
+    console.log("here color:", color);
+    setSelectedFilters((prev) => ({
+      ...prev,
+      color,
+    }));
+  };
+  console.log("selectedCategories:", selectedFilters);
   return (
     <PageContainer>
       <div className="mt-14  flex flex-col md:flex-row ">
-        <ProductSidebar handleChange={handleChange} />
+        <ProductSidebar
+          handleCategoriesChange={handleCategoriesChange}
+          handlePriceChange={handlePriceChange}
+          handleSizeChange={handleSizeChange}
+          handleColorChange={handleColorChange}
+        />
         <ProductRightbar
-          selectedCategories={selectedCategories}
-          setSelectedCategories={setSelectedCategories}
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
         />
       </div>
     </PageContainer>

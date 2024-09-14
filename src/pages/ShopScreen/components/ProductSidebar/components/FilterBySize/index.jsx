@@ -2,11 +2,19 @@ import { useEffect, useState } from "react";
 import axios from "../../../../../../lib/api";
 import Checkbox from "../../../../../../components/reusables/Checkbox";
 
-export default function FilterBySize({ handleChange }) {
+export default function FilterBySize({ handleSizeChange }) {
   const [sizes, setSizes] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
   const loadSizes = async () => {
     const { data } = await axios.get("/api/products/sizes/");
     setSizes(data);
+  };
+  const handleChange = (size) => {
+    const newSelected = selectedSizes.includes(size)
+      ? selectedSizes.filter((s) => s !== size)
+      : [...selectedSizes, size];
+    setSelectedSizes(newSelected);
+    handleSizeChange(newSelected);
   };
   useEffect(() => {
     loadSizes();
@@ -23,8 +31,8 @@ export default function FilterBySize({ handleChange }) {
               <Checkbox
                 key={size.id}
                 label={size.name}
-                checked={false}
-                onChange={() => handleChange(size.id)}
+                checked={selectedSizes.includes(size.name)}
+                onChange={() => handleChange(size.name)}
               />
               <span className="text-gray-400">({size.product_count})</span>
             </div>

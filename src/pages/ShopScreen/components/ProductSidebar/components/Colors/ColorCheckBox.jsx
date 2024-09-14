@@ -7,10 +7,11 @@ function ColorCheckBox({
   handleColorChange,
 }) {
   const [selectedColor, setSelectedColor] = useState(null);
-
+  console.log("selectedColor:", selectedColor);
   const handleColorClick = (color) => {
     if (selectedColor == color) {
       setSelectedColor(null);
+      handleColorChange("");
     } else {
       setSelectedColor(color);
       handleColorChange(color);

@@ -10,10 +10,11 @@ import { addToWishList } from "../../../../../redux/actions/userActions";
 import axios, { endpoint } from "../../../../../lib/api";
 
 export default function ProductGallery({
-  selectedCategories,
-  setSelectedCategories,
+  selectedFilters,
+  setSelectedFilters,
 }) {
   const [products, setProducts] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -47,112 +48,36 @@ export default function ProductGallery({
   const addToWishlistHandler = (id) => {
     dispatch(addToWishList(id));
   };
+  function filterProducts(sortedProducts) {
+    let tempProducts = [...sortedProducts];
+    const { categories, price, sizes, color } = selectedFilters;
 
-  function filteredData(products, selected) {
-    let filteredProducts = [];
+    // Filter by categories
+    if (categories.length > 0) {
+      tempProducts = tempProducts.filter((product) =>
+        product.categories.some((cat) => categories.includes(cat.name))
+      );
+    }
+    // Filter by price range
+    tempProducts = tempProducts.filter(
+      (product) => product.price >= price[0] && product.price <= price[1]
+    );
 
-    // Applying selected filter
-    if (selected) {
-      filteredProducts = products.filter(
-        ({ categories, colors, company, price, title }) =>
-          categories.some(
-            (col) => col.name.toLowerCase() === selected.toLowerCase()
-          ) ||
-          colors.some(
-            (col) => col.name.toLowerCase() === selected.toLowerCase()
-          ) ||
-          company === selected ||
-          price <= Number(selected) ||
-          title === selected
+    // Filter by sizes
+    if (sizes.length > 0) {
+      tempProducts = tempProducts.filter((product) =>
+        product.size.some((size) => sizes.includes(size))
       );
     }
 
-    return filteredProducts.map(
-      (
-        {
-          _id,
-          thumbnail,
-          image_albums,
-          name,
-          rating,
-          numReviews,
-          price,
-          sale_price,
-        },
-        i
-      ) => (
-        <div key={i} className="showcase">
-          <div className="showcase-banner">
-            <img
-              src={`${endpoint}${thumbnail}`}
-              alt={name}
-              className="product-img default"
-              width="300"
-            />
-            <img
-              src={`${endpoint}${image_albums[1]?.image}`}
-              alt={name}
-              className="product-img hover"
-              width="300"
-            />
-            {sale_price && <p className="showcase-badge angle black">sale</p>}
-            <div className="showcase-actions">
-              <button className="btn-action">
-                <ion-icon
-                  name="heart-outline"
-                  role="img"
-                  className="md hydrated"
-                  aria-label="heart outline"
-                ></ion-icon>
-              </button>
-
-              <Link to={`/product/${_id}`} className="btn-action">
-                <ion-icon
-                  name="eye-outline"
-                  role="img"
-                  className="md hydrated"
-                  aria-label="eye outline"
-                ></ion-icon>
-              </Link>
-              <button className="btn-action">
-                <ion-icon name="repeat-outline"></ion-icon>
-              </button>
-              <button
-                onClick={() => addToCartHandler(_id)}
-                className="btn-action"
-              >
-                <ion-icon
-                  name="bag-add-outline"
-                  role="img"
-                  className="md hydrated"
-                  aria-label="bag add outline"
-                ></ion-icon>
-              </button>
-            </div>
-          </div>
-
-          <div className="showcase-content">
-            <Link to={`/product/${_id}`} className="showcase-category">
-              <h3 className="showcase-title">{name}</h3>
-            </Link>
-
-            <Rating
-              value={rating}
-              text={`${numReviews} reviews`}
-              color={"#F6A355"}
-            />
-
-            <div className="price-box">
-              <p className="price">${price}</p>
-              {sale_price && <del>${sale_price}</del>}
-            </div>
-          </div>
-        </div>
-      )
-    );
+    // Filter by colors
+    if (color.length > 0) {
+      tempProducts = tempProducts.filter((product) =>
+        product.colors.some((c) => color.includes(c.name))
+      );
+    }
+    return tempProducts;
   }
-
-  const result = filteredData(products, selectedCategories);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(8);
@@ -175,16 +100,17 @@ export default function ProductGallery({
       }
     });
   }, [products, sortOption]);
-
+  //Apply Filters
+  const filteredProducts = filterProducts(sortedProducts);
   //Calculate total number of pages
-  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   // Calculate products for the current page
   const currentProducts = useMemo(() => {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    return sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-  }, [currentPage, productsPerPage, sortedProducts]);
+    return filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  }, [currentPage, productsPerPage, filteredProducts]);
 
   const handleProductsPerPageChange = useCallback((event) => {
     setProductsPerPage(Number(event.target.value));
@@ -233,8 +159,8 @@ export default function ProductGallery({
           </div>
           <p>
             Showing {currentPage * productsPerPage - productsPerPage + 1}-
-            {Math.min(currentPage * productsPerPage, sortedProducts.length)} of{" "}
-            {sortedProducts.length} results
+            {Math.min(currentPage * productsPerPage, filteredProducts.length)}{" "}
+            of {filteredProducts.length} results
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
@@ -272,7 +198,16 @@ export default function ProductGallery({
       </div>
 
       {currentProducts.length === 0 ? (
-        <p className="text-gray-600">No products found.</p>
+        <div className="container mx-auto py-8 px-4">
+          <div
+            className="bg-zinc-100 border border-gray-400 text-gray-790 px-4 py-3 rounded relative"
+            role="alert"
+          >
+            <span className="block sm:inline">
+              No products were found matching your selection.
+            </span>
+          </div>
+        </div>
       ) : (
         <ProductGridShowCase
           addToCartHandler={addToCartHandler}

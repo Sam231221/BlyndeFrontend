@@ -1,15 +1,15 @@
 import ProductBanner from "./components/ProductBanner";
 import ProductGallery from "./components/ProductGallery";
 export default function ProductRightbar({
-  selectedCategories,
-  setSelectedCategories,
+  selectedFilters,
+  setSelectedFilters,
 }) {
   return (
     <div className="relative p-2 flex-1 mt-10">
       <ProductBanner />
       <ProductGallery
-        selectedCategories={selectedCategories}
-        setSelectedCategories={setSelectedCategories}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       />
     </div>
   );
