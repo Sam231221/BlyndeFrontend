@@ -54,7 +54,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
         views.addOrderItems
         */
     const { data } = await axios.post(`/api/orders/add/`, order, config);
-    console.log("Created an Order with data:", data);
 
     dispatch(ORDER_CREATE_SUCCESS(data));
 
@@ -123,7 +122,6 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
       paymentResult,
       config
     );
-    console.log("Response after Payment:", data);
     //here we ahave passed data for future works.
     //may be data can be used for flash messages.
     //Main point is setting success= true in OrderPaySlice.jsx

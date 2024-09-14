@@ -2,13 +2,6 @@ import { Link } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 function CheckoutSteps({ step1, step2, step3, step4 }) {
   return (
-    /*
-          Login    Shipping    Payment    Placeholder
-
-          ShippingScreen has only login and shipping link(only step 1 and step2) enabled
-          Similarly, PaymentScreen has Login, Shipping and Payment Link Enabled. 
-        */
-
     <div className="flex items-center gap-3 justify-center mb-4">
       <div>
         {step1 ? (

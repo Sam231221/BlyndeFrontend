@@ -7,9 +7,7 @@ export default function Paginate({
   isAdmin = false,
 }) {
   if (keyword) {
-    //$keyword only
     keyword = keyword.split("?keyword=")[1].split("&")[0];
-    console.log("splitting:", keyword);
   }
 
   return (

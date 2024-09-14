@@ -38,7 +38,6 @@ function ProductListScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // let keyword = history.location.search
   useEffect(() => {
     dispatch(PRODUCT_CREATE_RESET());
 
@@ -49,7 +48,6 @@ function ProductListScreen() {
     if (successCreate) {
       redirect(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      // dispatch(listProducts(keyword))
       dispatch(listProducts());
     }
   }, [dispatch, userInfo, successDelete, successCreate, createdProduct]);

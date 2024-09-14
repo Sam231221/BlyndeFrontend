@@ -17,7 +17,6 @@ function ProductSlider(props) {
   const { children, infinite, timer, stopOnManual } = props;
   const [autoAdvance, setAutoAdvance] = useState(timer !== undefined);
   let interval;
-  console.log("length:", children);
   const prevSlideHandler = () => {
     let newPosition = sliderPosition;
     if (newPosition > 0) {

@@ -24,7 +24,7 @@ function RegisterScreen({ location, history }) {
       redirect("/login");
     }
   }, [userInfo]);
-  console.log(name, email, password, confirmPassword);
+
   const submitHandler = (e) => {
     e.preventDefault();
 

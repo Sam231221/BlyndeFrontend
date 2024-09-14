@@ -24,21 +24,7 @@ function Header() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // const [button, setButton] = useState(true);
   const [navbar, setNavbar] = useState(false);
-
-  // const showButton = () => {
-  //   if (window.innerWidth <= 960) {
-  //     setButton(false);
-  //   } else {
-  //     setButton(true);
-  //   }
-  // };
-  // useEffect(() => {
-  //   showButton();
-  // }, []);
-
-  // window.addEventListener("resize", showButton);
 
   const showSideCartNav = () => {
     setSideCartNav(!sideCartNav);

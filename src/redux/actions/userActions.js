@@ -45,7 +45,7 @@ import {
 export const addToWishList = (id) => async (dispatch, getState) => {
   try {
     const { data } = await axios.get(`/api/products/${id}`);
-    console.log(data);
+
     dispatch(
       USER_LIKE_ADD({
         _id: data._id,

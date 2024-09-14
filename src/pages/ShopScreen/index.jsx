@@ -22,13 +22,12 @@ export default function ShopScreen() {
   };
 
   const handleColorChange = (color) => {
-    console.log("here color:", color);
     setSelectedFilters((prev) => ({
       ...prev,
       color,
     }));
   };
-  console.log("selectedCategories:", selectedFilters);
+
   return (
     <PageContainer>
       <div className="mt-14  flex flex-col md:flex-row ">

@@ -29,6 +29,7 @@ export default function ProductGridShowCase({
                 Sale
               </p>
             )}
+            {/* Product Actions */}
             <div className="absolute flex flex-col top-3 right-3 text-lg  transition-all duration-200 ease-in-out z-[3] translate-x-12 group-hover:translate-x-0 ">
               <Link
                 to={"#"}

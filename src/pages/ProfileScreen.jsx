@@ -35,7 +35,7 @@ function ProfileScreen() {
       redirect("/login");
     } else {
       if (!user || !user.name || success || userInfo._id !== user._id) {
-        //string is passed. we are jst calling http://127.0.0.1:8000/api/users/profile/ through the function.
+        //calling http://127.0.0.1:8000/api/users/profile/ through the function.
         dispatch(getUserDetails("profile"));
       } else {
         //set the name and email to form field after getting user detail from /api/users/profile/.
