@@ -84,7 +84,7 @@ const DiscountOffers = () => {
   }, []);
 
   return (
-    <div className="container-lg">
+    <div className="container mx-auto">
       <div className="flex flex-col md:flex-row justify-between md:items-center">
         <h2 className="text-2xl md:text-3xl mb-2 md:w-1/3 md:mb-0 font-semibold text-zinc-900">
           Don&apos;t Miss Our Deals

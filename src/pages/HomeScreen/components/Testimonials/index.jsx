@@ -3,7 +3,7 @@ import avatar from "/images/testimonial-1.jpg";
 
 export default function Testimonials() {
   return (
-    <div className="container-lg">
+    <div className="container mx-auto">
       <div className="testimonials-box">
         <div className="testimonial">
           <h2 className="title text-2xl md:text-3xl">Testimonial</h2>

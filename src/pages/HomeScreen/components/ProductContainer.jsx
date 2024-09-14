@@ -26,7 +26,7 @@ export default function ProductContainer() {
   }, []);
 
   return (
-    <div className="container-lg mx-auto my-12">
+    <div className="container mx-auto my-12">
       {/* New Products */}
       <h2 className="text-2xl md:text-3xl my-2 text-center  font-semibold text-zinc-900">
         New Products

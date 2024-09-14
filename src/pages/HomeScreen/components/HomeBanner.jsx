@@ -10,7 +10,7 @@ import bn3 from "/images/banners/banner-03.jpg";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 export default function HomeBanner() {
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <div className="grid grid-cols-2 md:grid-cols-4  py-3 gap-4">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
