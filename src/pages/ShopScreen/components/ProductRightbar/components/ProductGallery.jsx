@@ -39,7 +39,7 @@ export default function ProductGallery({
 
     fetchProducts();
   }, []);
-
+  console.log(products);
   const navigate = useNavigate();
   const addToCartHandler = (id, quantity = 1) => {
     navigate(`/cart/?code=${id}&qty=${quantity}`);

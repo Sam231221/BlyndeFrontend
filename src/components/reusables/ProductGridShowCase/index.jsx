@@ -19,15 +19,33 @@ export default function ProductGridShowCase({
               name={product.name}
               img_albums={product.image_albums}
             />
-            {product.sale_price && (
+            {product.sale_price ? (
               <p
-                className={`absolute top-[15px] font-medium left-[15px] z-[3]  rounded-sm py-1 text-white text-[12px]  ${
-                  product.priceBadge === "angle" &&
-                  "bg-black top-[8px] px-10 py-1 left-[-29px] uppercase -rotate-45 "
-                } ${product.priceBadge === "blue" && "bg-blue-500 px-3 py-1"}`}
+                className={`absolute font-medium  z-[3]  rounded-sm  text-white text-[12px]  bg-black top-[8px] px-10 py-1 left-[-29px] captialize -rotate-45  ${
+                  product.priceBadge === "blue" && "bg-blue-500 px-3 py-1"
+                }`}
               >
-                Sale
+                <span className="mr-4">{`${Math.floor(
+                  product.discount_percentage
+                )}% Off`}</span>
               </p>
+            ) : (
+              <>
+                {product.badge && (
+                  <>
+                    <p
+                      className={`absolute top-[15px] font-medium left-[15px] z-[3]  rounded-sm py-1 text-white text-[12px]  ${
+                        product.badge === "Featured" && "bg-blue-400 px-3 py-1"
+                      } ${
+                        product.badge === "Top Rated" &&
+                        "bg-green-500 px-3 py-1"
+                      }`}
+                    >
+                      {product.badge}
+                    </p>
+                  </>
+                )}
+              </>
             )}
             {/* Product Actions */}
             <div className="absolute flex flex-col top-3 right-3 text-lg  transition-all duration-200 ease-in-out z-[3] translate-x-12 group-hover:translate-x-0 ">
