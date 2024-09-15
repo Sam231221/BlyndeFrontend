@@ -10,7 +10,7 @@ export default function ProductImageTransition({ name, img_albums }) {
     <div
       onMouseEnter={() => setShowFirstImage(false)}
       onMouseLeave={() => setShowFirstImage(true)}
-      className="relative w-full h-full overflow-hidden rounded-lg shadow-lg"
+      className="relative bg-gray-300 w-full h-full overflow-hidden  shadow-lg"
     >
       <img
         src={`${endpoint}${img_albums[0]?.image}`}

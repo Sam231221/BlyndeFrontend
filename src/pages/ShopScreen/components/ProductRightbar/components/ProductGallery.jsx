@@ -14,7 +14,7 @@ export default function ProductGallery({
   setSelectedFilters,
 }) {
   const [products, setProducts] = useState([]);
-
+  const [productsDisplaytype, setProductsDisplaytype] = useState("grid");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -153,8 +153,24 @@ export default function ProductGallery({
       <div className="flex text-xs font-medium items-center justify-between my-4">
         <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
           <div className="flex gap-2">
-            <RxDashboard size={15} />
-            <CiCircleList size={15} />
+            <RxDashboard
+              className={`${
+                productsDisplaytype === "grid"
+                  ? "text-gray-900"
+                  : "text-gray-400"
+              }`}
+              onClick={() => setProductsDisplaytype("grid")}
+              size={15}
+            />
+            <CiCircleList
+              className={`${
+                productsDisplaytype === "list"
+                  ? "text-gray-900"
+                  : "text-gray-400"
+              }`}
+              onClick={() => setProductsDisplaytype("list")}
+              size={15}
+            />
           </div>
           <p>
             Showing {currentPage * productsPerPage - productsPerPage + 1}-
@@ -209,6 +225,7 @@ export default function ProductGallery({
         </div>
       ) : (
         <ProductGridShowCase
+          showtype={productsDisplaytype}
           productheight={`h-[200px] sm:h-[300px]`}
           addToCartHandler={addToCartHandler}
           addToWishlistHandler={addToWishlistHandler}

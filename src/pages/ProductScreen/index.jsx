@@ -127,7 +127,7 @@ export default function ProductScreen() {
                     />
                   </div>
                   <div className="flex gap-2 items-center">
-                    {product.on_sale ? (
+                    {product.sale_price ? (
                       <>
                         <del className="text-gray-300  tracking-wide text-lg my-2 ">
                           ${product.price}

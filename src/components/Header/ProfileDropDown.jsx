@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import profile from "/images/profile.png";
 import { RxTriangleDown } from "react-icons/rx";
 import {
   BsBoxArrowLeft,
@@ -7,6 +8,7 @@ import {
   BsPerson,
   BsQuestionCircle,
 } from "react-icons/bs";
+
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -38,12 +40,12 @@ export const ProfileDropDown = ({ classes }) => {
         }}
       >
         <img
-          src="https://dashboardleadgen.netlify.app/assets/profile-04683081.jpg"
-          className="rounded-full w-7 h-7 object-cover"
+          src={profile}
+          className="rounded-full w-8 h-8 object-cover"
           alt="userprofile"
         />
 
-        <RxTriangleDown size={20} />
+        <RxTriangleDown className="text-gray-700" size={40} />
       </div>
 
       <div
