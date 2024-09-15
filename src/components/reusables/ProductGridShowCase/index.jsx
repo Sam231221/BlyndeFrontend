@@ -44,6 +44,7 @@ export default function ProductGridShowCase({
     }
   };
 
+  console.log("products:", products);
   return (
     <>
       {showtype === "grid" && (
@@ -131,7 +132,7 @@ export default function ProductGridShowCase({
                   color={"#fc8c04"}
                   fontSize="14px"
                   value={product.rating}
-                  text={`${product.numReviews} reviews`}
+                  text={`${product.review_count} reviews`}
                 />
 
                 <div className="flex px-1 gap-3 text-gray-800 mb-2 text-sm">
@@ -226,7 +227,7 @@ export default function ProductGridShowCase({
                   <Rating
                     fontSize={12}
                     value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    text={`${product.review_count} reviews`}
                     color={"#fc8c04"}
                   />
                 </div>
@@ -281,7 +282,7 @@ export default function ProductGridShowCase({
                     type="button"
                   >
                     {" "}
-                    Add to Cart
+                    {product.countInStock > 0 ? "Add to Cart" : "Out of Stock"}
                   </button>
                 </div>
               </div>

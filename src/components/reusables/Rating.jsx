@@ -56,7 +56,6 @@ export default function Rating({
       onMouseEnter={() => hoverEnabled && setHovered(true)}
       onMouseLeave={() => hoverEnabled && setHovered(false)}
       role="img"
-      aria-label={text ? text : `Rating: ${value} out of ${count}`}
     >
       {stars}
       {text && (
