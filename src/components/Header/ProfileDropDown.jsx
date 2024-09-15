@@ -1,16 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RxTriangleDown } from "react-icons/rx";
 import {
+  BsBoxArrowLeft,
   BsBoxArrowRight,
   BsGear,
   BsPerson,
   BsQuestionCircle,
 } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const ProfileDropDown = ({ classes }) => {
   const [open, setOpen] = useState(false);
-  let ProfileDivRef = useRef();
 
+  let ProfileDivRef = useRef();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  console.log(userInfo);
   useEffect(() => {
     let handler = (e) => {
       if (!ProfileDivRef.current.contains(e.target)) {
@@ -34,10 +40,10 @@ export const ProfileDropDown = ({ classes }) => {
         <img
           src="https://dashboardleadgen.netlify.app/assets/profile-04683081.jpg"
           className="rounded-full w-7 h-7 object-cover"
-          alt=""
+          alt="userprofile"
         />
 
-        <RxTriangleDown size={50} />
+        <RxTriangleDown size={20} />
       </div>
 
       <div
@@ -48,18 +54,18 @@ export const ProfileDropDown = ({ classes }) => {
                             before:bg-[#fff] before:rotate-[45deg] border
                            top-14 right-[2px] border-[#f4f4f4] bg-[#fff] drop-shadow-lg w-[220px] p-2`}
       >
-        <div className="text-center mb-2">
-          <h2 className="text-md">Sameer Shahi</h2>
+        <div className="ml-4 mb-2">
+          <h2 className="text-md capitalize">{userInfo.name}</h2>
         </div>
         <hr />
         <ul>
           <li>
-            <a
+            <Link
               className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
-              href=""
+              to="/profile"
             >
               <BsPerson /> My profile
-            </a>
+            </Link>
           </li>
           <li>
             <a
@@ -69,22 +75,26 @@ export const ProfileDropDown = ({ classes }) => {
               <BsGear /> Acccount Setting
             </a>
           </li>
+
           <li>
-            <a
-              className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
-              href=""
-            >
-              <BsQuestionCircle /> Need Help?
-            </a>
-          </li>
-          <li>
-            <a
-              className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
-              href=""
-            >
-              {" "}
-              <BsBoxArrowRight /> Sign Out
-            </a>
+            {userInfo.username ? (
+              <>
+                <div className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs">
+                  {" "}
+                  <BsBoxArrowRight /> Sign Out
+                </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
+                  to={""}
+                >
+                  {" "}
+                  <BsBoxArrowLeft /> Sign In
+                </Link>
+              </>
+            )}
           </li>
         </ul>
       </div>

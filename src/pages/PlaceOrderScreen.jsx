@@ -11,6 +11,7 @@ import { endpoint } from "../lib/api";
 
 function PlaceOrderScreen() {
   const orderCreate = useSelector((state) => state.orderCreate);
+  console.log("mc:", orderCreate);
   const { order, error, success } = orderCreate;
 
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ function PlaceOrderScreen() {
   const cart = useSelector((state) => state.cart);
 
   //since cart is not exstensible, we will use spread operator.
-  // console.log(Object.isExtensible(cart))
-
+  // cconsole.log(Object.isExtensible(cart))
+  console.log("testing:", order);
   //FINALIZING AMOUNTS
   let itemsPrice = Number(
     Number(
@@ -41,7 +42,7 @@ function PlaceOrderScreen() {
     taxPrice: taxPrice,
     totalPrice: totalPrice,
   };
-  console.log(cart);
+
   if (!cart.paymentMethod) {
     navigate("/payment");
   }
@@ -50,6 +51,7 @@ function PlaceOrderScreen() {
     //In backend order_views.getOrderById
     //a success variable is used to redirect to /order/:id
     if (success) {
+      window.location.reload();
       navigate(`/order/${order._id}`);
       dispatch(ORDER_CREATE_RESET());
     }
