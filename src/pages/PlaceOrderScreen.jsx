@@ -11,7 +11,6 @@ import { endpoint } from "../lib/api";
 
 function PlaceOrderScreen() {
   const orderCreate = useSelector((state) => state.orderCreate);
-  console.log("mc:", orderCreate);
   const { order, error, success } = orderCreate;
 
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ function PlaceOrderScreen() {
 
   //since cart is not exstensible, we will use spread operator.
   // cconsole.log(Object.isExtensible(cart))
-  console.log("testing:", order);
   //FINALIZING AMOUNTS
   let itemsPrice = Number(
     Number(

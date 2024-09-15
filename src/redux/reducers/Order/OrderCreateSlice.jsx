@@ -15,7 +15,6 @@ export const OrderCreateSlice = createSlice({
     },
 
     ORDER_CREATE_SUCCESS: (state, action) => {
-      console.log("payload:", action.payload);
       return { ...state, loading: false, success: true, order: action.payload };
     },
 

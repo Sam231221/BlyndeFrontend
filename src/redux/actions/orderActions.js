@@ -54,14 +54,12 @@ export const createOrder = (order) => async (dispatch, getState) => {
         views.addOrderItems
         */
     const { data } = await axios.post(`/api/orders/add/`, order, config);
-    console.log("yo:", data);
     dispatch(ORDER_CREATE_SUCCESS(data));
 
     //once the order is placed we wanna clear cart items within state and Localstorage.
     dispatch(CART_CLEAR_ITEMS(data));
     localStorage.removeItem("cartItems");
   } catch (error) {
-    console.log("e:", error);
     dispatch(
       ORDER_CREATE_FAIL(
         error.response && error.response.data.detail
