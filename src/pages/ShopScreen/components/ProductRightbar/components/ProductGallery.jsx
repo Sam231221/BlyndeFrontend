@@ -210,6 +210,7 @@ export default function ProductGallery({
         </div>
       ) : (
         <ProductGridShowCase
+          productheight={`h-[200px] sm:h-[300px]`}
           addToCartHandler={addToCartHandler}
           addToWishlistHandler={addToWishlistHandler}
           products={currentProducts}

@@ -38,6 +38,7 @@ export default function ProductContainer() {
         lacus vel facilisis.
       </p>
       <ProductGridShowCase
+        productheight={`h-[300px] sm:h-[400px]`}
         addToCartHandler={addToCartHandler}
         addToWishlistHandler={addToWishlistHandler}
         products={recentProducts}

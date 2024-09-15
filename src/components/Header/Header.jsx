@@ -123,7 +123,7 @@ function Header() {
             </nav>
           </div>
           {/* lefmost navitems */}
-          <div className="flex px-5 align-items-center gap-3">
+          <div className="flex px-5 items-center gap-3">
             {userInfo ? (
               <ProfileDropDown />
             ) : (

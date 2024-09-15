@@ -5,16 +5,17 @@ import Rating from "../Rating";
 
 export default function ProductGridShowCase({
   products,
+  productheight,
   addToWishlistHandler,
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 `}>
       {products.map((product, i) => (
         <div
           key={i}
           className="group border border-gray-200 overflow-hidden transition-all duration-200 ease-in"
         >
-          <div className="relative h-[300px] ">
+          <div className={`relative ${productheight} `}>
             <ProductImageTransition
               name={product.name}
               img_albums={product.image_albums}

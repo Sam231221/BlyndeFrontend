@@ -3,7 +3,7 @@ const HomeScreen = React.lazy(() => import("../pages/HomeScreen"));
 const ShopScreen = React.lazy(() => import("../pages/ShopScreen"));
 const CartScreen = React.lazy(() => import("../pages/CartScreen"));
 const ProductScreen = React.lazy(() => import("../pages/ProductScreen"));
-
+const NotFoundScreen = React.lazy(() => import("../pages/NotFound"));
 const LoginScreen = React.lazy(() =>
   import("../pages/Authentication/LoginScreen")
 );
@@ -58,6 +58,11 @@ const routes = [
         name: "ProfileScreen",
         path: "/profile",
         component: <ProfileScreen />,
+      },
+      {
+        name: "NotFoundScreen",
+        path: "*",
+        component: <NotFoundScreen />,
       },
     ],
   },
