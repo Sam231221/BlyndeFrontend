@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function Rating({
   color = "gold",
@@ -9,31 +9,59 @@ export default function Rating({
   className = "",
   hoverEnabled = false,
   hoverColor = "orange",
+  onChange,
 }) {
-  const [hovered, setHovered] = useState(false);
+  const [hoverValue, setHoverValue] = useState(null);
+  const [currentValue, setCurrentValue] = useState(value);
+
+  useEffect(() => {
+    setCurrentValue(value); // Update currentValue when value prop changes
+  }, [value]);
+
+  const handleClick = (index) => {
+    setCurrentValue(index);
+    if (onChange) {
+      onChange(index);
+    }
+  };
+
+  const handleMouseMove = (e, index) => {
+    if (hoverEnabled) {
+      const { left, width } = e.target.getBoundingClientRect();
+      const x = e.clientX - left;
+      const isHalf = x < width / 2;
+      setHoverValue(isHalf ? index - 0.5 : index);
+    }
+  };
 
   const stars = useMemo(() => {
     const result = [];
     for (let i = 1; i <= count; i++) {
-      let starClass = "far fa-star"; // Default: empty star
-
-      if (hoverEnabled && hovered) {
-        starClass = "fas fa-star"; // Full star on hover
-      } else if (value >= i) {
-        starClass = "fas fa-star"; // Full star for current value
-      } else if (value >= i - 0.5) {
-        starClass = "fas fa-star-half-alt"; // Half star for current value
+      let starClass = "far fa-star";
+      if (hoverEnabled && hoverValue >= i) {
+        starClass = "fas fa-star";
+      } else if (hoverEnabled && hoverValue >= i - 0.5) {
+        starClass = "fas fa-star-half-alt";
+      } else if (currentValue >= i) {
+        starClass = "fas fa-star";
+      } else if (currentValue >= i - 0.5) {
+        starClass = "fas fa-star-half-alt";
       }
 
       result.push(
-        <span key={i}>
+        <span
+          key={i}
+          onMouseMove={(e) => handleMouseMove(e, i)}
+          onMouseLeave={() => setHoverValue(null)}
+          onClick={() => handleClick(hoverValue)}
+        >
           <i
-            className={`${starClass} ${className}`} // Apply custom class
+            className={`${starClass} ${className}`}
             style={{
-              color: hoverEnabled && hovered ? hoverColor : color, // Change color on hover
+              color: hoverEnabled && hoverValue >= i ? hoverColor : color,
               fontSize,
             }}
-            aria-hidden="true" // Hide icon from screen readers
+            aria-hidden="true"
           ></i>
         </span>
       );
@@ -41,9 +69,9 @@ export default function Rating({
     return result;
   }, [
     count,
-    value,
+    currentValue,
     hoverEnabled,
-    hovered,
+    hoverValue,
     color,
     hoverColor,
     fontSize,
@@ -51,12 +79,7 @@ export default function Rating({
   ]);
 
   return (
-    <span
-      className={`rating items-center ${className}`}
-      onMouseEnter={() => hoverEnabled && setHovered(true)}
-      onMouseLeave={() => hoverEnabled && setHovered(false)}
-      role="img"
-    >
+    <span className={`rating items-center ${className}`} role="img">
       {stars}
       {text && (
         <span className="text-zinc-800 text-sm font-semibold ml-2">{text}</span>

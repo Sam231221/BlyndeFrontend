@@ -53,10 +53,10 @@ export default function ProductScreen() {
   };
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   //select a particular state i.e productList state which is an obj
   const productDetail = useSelector((state) => state.productDetails);
-
   const { error, loading, product } = productDetail;
 
   useEffect(() => {
@@ -170,7 +170,7 @@ export default function ProductScreen() {
                     <Rating
                       fontSize={12}
                       value={product.rating}
-                      text={`${product.numReviews} reviews`}
+                      text={`${product.review_count} reviews`}
                       color={"#fc8c04"}
                     />
                   </div>
@@ -263,7 +263,7 @@ export default function ProductScreen() {
               </div>
             </div>
 
-            <Reviews />
+            <Reviews userInfo={userInfo} productId={product._id} />
           </>
         )}
       </div>

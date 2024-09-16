@@ -9,6 +9,8 @@ import ProductCreateReducer from "./reducers/Product/ProductCreateSlice";
 import ProductUpdateReducer from "./reducers/Product/ProductUpdateSlice";
 import ProductTopRatedReducer from "./reducers/Product/ProductTopRatedSlice";
 
+import ReviewReducer from "./reducers/Review/ReviewSlice";
+
 //Users
 import UserLikeReducer from "./reducers/User/UserLikeSlice";
 import UserRegisterReducer from "./reducers/User/UserRegisterSlice";
@@ -38,6 +40,7 @@ const store = configureStore({
     productTopRated: ProductTopRatedReducer,
 
     cart: CartReducer,
+    reviews: ReviewReducer,
 
     userLogin: UserLoginReducer,
     userRegister: UserRegisterReducer,
