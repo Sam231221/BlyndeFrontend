@@ -28,7 +28,7 @@ function OrderListScreen() {
 
   return (
     <PageContainer>
-      <div className="container">
+      <div className="container mx-auto py-2 overflow-auto mt-10">
         <h1>Orders</h1>
         {loading ? (
           <Loader />

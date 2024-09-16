@@ -157,7 +157,7 @@ export default function ProductGallery({
               className={`${
                 productsDisplaytype === "grid"
                   ? "text-gray-900"
-                  : "text-gray-400"
+                  : "text-gray-00"
               }`}
               onClick={() => setProductsDisplaytype("grid")}
               size={15}

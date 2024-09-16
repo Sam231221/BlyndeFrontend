@@ -13,7 +13,7 @@ function Category({ handleCategoriesChange }) {
   }, []);
 
   return (
-    <div className="w-full pl-5">
+    <div className="w-full mb-4">
       <h2 className="text-lg tracking-wide font-medium text-gray-900">
         Category
       </h2>

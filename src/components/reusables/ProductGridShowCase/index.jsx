@@ -38,13 +38,12 @@ export default function ProductGridShowCase({
   const addToCartHandler = (id) => {
     const { quantity, size, color } = data;
     if (id && quantity && size && color) {
-      dispatch(addToCart(id, quantity, size, color));
+      dispatch(addToCart(id, quantity, color, size));
     } else {
       alert("Please select size and color");
     }
   };
 
-  console.log("products:", products);
   return (
     <>
       {showtype === "grid" && (
@@ -276,7 +275,14 @@ export default function ProductGridShowCase({
                   )}
 
                   <button
-                    onClick={() => addToCartHandler(product._id)}
+                    onClick={() =>
+                      addToCartHandler(
+                        product._id,
+                        data.quantity,
+                        data.color,
+                        data.size
+                      )
+                    }
                     className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
                     disabled={product.countInStock <= 0}
                     type="button"

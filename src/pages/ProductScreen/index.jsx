@@ -31,12 +31,11 @@ import Reviews from "./components/Reviews";
 import { addToCart } from "../../redux/actions/cartAction";
 import { useModalContext } from "../../providers/ModalProvider";
 import CodeSnippet from "../../components/code-snippet";
-
+const items = [
+  { label: "Home", path: "/" },
+  { label: "Shop", path: "/shop" },
+];
 export default function ProductScreen() {
-  const items = [
-    { label: "Home", path: "/" },
-    { label: "Shop", path: "/shop" },
-  ];
   const { openModal } = useModalContext();
   const [data, setData] = useState({
     quantity: 1,
@@ -67,7 +66,7 @@ export default function ProductScreen() {
   const addToCartHandler = (id) => {
     const { quantity, size, color } = data;
     if (product._id === id && quantity && size && color) {
-      dispatch(addToCart(product._id, quantity, size, color));
+      dispatch(addToCart(product._id, quantity, color, size));
     } else {
       alert("Please select size and color");
     }
@@ -220,7 +219,14 @@ export default function ProductScreen() {
                     )}
 
                     <button
-                      onClick={() => addToCartHandler(product._id)}
+                      onClick={() =>
+                        addToCartHandler(
+                          product._id,
+                          data.quantity,
+                          data.color,
+                          data.size
+                        )
+                      }
                       className="bg-sky-500 w-full font-medium hover:bg-sky-600 text-white py-2 px-4"
                       disabled={product.countInStock <= 0}
                       type="button"

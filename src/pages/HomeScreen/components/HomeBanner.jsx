@@ -11,7 +11,7 @@ import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 export default function HomeBanner() {
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-2 md:grid-cols-4  py-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4  py-5 border-t gap-4">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3">
             <div className="w-14 h-14">
@@ -24,7 +24,7 @@ export default function HomeBanner() {
 
             <div>
               <h1 className="text-xl font-semibold">Free Shipping</h1>
-              <p className="text-xs mt-1 text-zinc-500">
+              <p className="text-xs tracking-wide mt-1 text-zinc-500">
                 On all orders over $75.00
               </p>
             </div>
@@ -42,7 +42,7 @@ export default function HomeBanner() {
 
             <div>
               <h1 className="text-xl font-semibold">Money Guarantee</h1>
-              <p className="text-sm mt-1 text-zinc-500">
+              <p className="text-sm  tracking-wide mt-1 text-zinc-500">
                 Within 30 days for an exchange.
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function HomeBanner() {
 
             <div>
               <h1 className="text-xl font-semibold">Online Support</h1>
-              <p className="text-sm mt-1 text-zinc-500">
+              <p className="text-sm tracking-wide  mt-1 text-zinc-500">
                 Within 30 days for an exchange.
               </p>
             </div>
@@ -78,14 +78,14 @@ export default function HomeBanner() {
 
             <div>
               <h1 className="text-xl font-semibold">Flexible Payment</h1>
-              <p className="text-sm mt-1 text-zinc-500">
+              <p className="text-sm tracking-wide  mt-1 text-zinc-500">
                 Pay with Multiple Credit Cards.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row mb-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="relative flex-1">
           <div className="">
             <img className="w-full h-full object-contain" src={bn1} alt="" />
@@ -113,10 +113,10 @@ export default function HomeBanner() {
             </div>
           </div>
         </div>
-        <div className="flex-1 h-full justify-items-center justify-between ">
-          <div className="relative mb-3 sm:mb-4 flex items-center ">
-            <div className="w-full">
-              <img className="w-full h-full object-contain" src={bn2} alt="" />
+        <div className="grid grid-rows-2 gap-2  ">
+          <div className="relative flex items-center ">
+            <div className="w-full h-full">
+              <img className="w-full h-full object-cover" src={bn2} alt="" />
             </div>
 
             <div className="absolute flex  justify-start top-8 left-10">
@@ -138,8 +138,8 @@ export default function HomeBanner() {
             </div>
           </div>
           <div className="relative flex items-center ">
-            <div className="w-full">
-              <img className="w-full h-full object-contain" src={bn3} alt="" />
+            <div className="w-full h-full">
+              <img className="w-full h-full object-cover" src={bn3} alt="" />
             </div>
 
             <div className="absolute flex  justify-start top-8 left-10">

@@ -32,7 +32,7 @@ export const ImageSlider = ({ slides, autoplay = false, timeout = 5000 }) => {
     <>
       {slides.map((slide, index) => (
         <div
-          className={`relative overflow-hidden ${
+          className={`relative container-xl overflow-hidden ${
             current === index ? "block" : "hidden"
           }`}
           key={index}

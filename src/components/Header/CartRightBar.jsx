@@ -39,7 +39,7 @@ export default function CartRightBar({ sideCartNav, setSideCartNav }) {
 
         <div className="h-[55vh] max-h-[55vh] overflow-y-auto">
           {cartItems.map((item, i) => (
-            <div key={i} className="flex mb-3  items-center">
+            <div key={i} className="flex mb-3 cursor-pointer  items-center">
               <div className="w-16 h-16 mr-3">
                 <img
                   src={`${endpoint}${item.thumbnail}`}
@@ -72,13 +72,13 @@ export default function CartRightBar({ sideCartNav, setSideCartNav }) {
           <div className="flex gap-3">
             <Link
               to="/cart/"
-              className="rounded-full uppercase bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
+              className="rounded-full uppercase hover:bg-sky-600 bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
             >
               View Cart
             </Link>
             <button
               onClick={checkoutHandler}
-              className="rounded-full uppercase bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
+              className="rounded-full uppercase hover:bg-sky-600 bg-zinc-900 text-white  font-medium text-sm px-3 py-2"
             >
               Checkout
             </button>

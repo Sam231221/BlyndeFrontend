@@ -10,7 +10,7 @@ export default function DoubleRangeSlider({ handlePriceChange, min, max }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-4">
       <h2 className="text-lg tracking-wide font-medium text-gray-900">
         Price Range
       </h2>

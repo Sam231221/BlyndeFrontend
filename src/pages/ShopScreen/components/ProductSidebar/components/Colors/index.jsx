@@ -12,7 +12,7 @@ export default function Colors({ handleColorChange }) {
     loadColors();
   }, []);
   return (
-    <>
+    <div className="w-full mb-4">
       <h2 className="text-lg tracking-wide font-medium text-gray-900">
         Colors
       </h2>
@@ -23,6 +23,6 @@ export default function Colors({ handleColorChange }) {
           handleColorChange={handleColorChange}
         />
       </div>
-    </>
+    </div>
   );
 }

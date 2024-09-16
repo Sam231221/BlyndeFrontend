@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import { Message } from "../components/Message";
@@ -8,7 +8,10 @@ import {
   updateUserProfile,
 } from "../redux/actions/userActions";
 import PageContainer from "../components/PageContainer";
-
+const items = [
+  { label: "Home", path: "/" },
+  { label: "UserProfile", path: "/profile" },
+];
 function ProfileScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +38,6 @@ function ProfileScreen() {
       redirect("/login");
     } else {
       if (!user || !user.name || success || userInfo._id !== user._id) {
-        //calling http://127.0.0.1:8000/api/users/profile/ through the function.
         dispatch(getUserDetails("profile"));
       } else {
         //set the name and email to form field after getting user detail from /api/users/profile/.
@@ -64,10 +66,29 @@ function ProfileScreen() {
   };
   return (
     <PageContainer>
-      <div className="container-lg mx-auto mt-14 ">
-        <div className="shadow my-4 mx-auto w-[500px] border py-3 px-4">
-          <h2 className="text-2xl text-gray-800 font-semibold">User Profile</h2>
-
+      <div className="container mx-auto py-2 overflow-auto mt-10">
+        {/* Breadcrumbs */}
+        <nav className="text-xs mt-10" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            {items.map((item, index) => (
+              <li className="flex items-center gap-2" key={index}>
+                <Link
+                  to={item.path}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  {item.label}
+                </Link>
+                {index < items.length - 1 && (
+                  <span className="text-gray-300">/</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+        <div className="shadow my-4 mx-auto md:w-1/3 border py-3 px-4">
+          <h1 className="font-medium text-2xl border-b mb-2 pb-2">
+            Profile Page
+          </h1>
           {message && <Message variant="danger">{message}</Message>}
           {error && <Message variant="danger">{error}</Message>}
           {loading && <Loader />}

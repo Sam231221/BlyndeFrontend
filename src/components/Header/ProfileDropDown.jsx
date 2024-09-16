@@ -9,12 +9,13 @@ import {
   BsQuestionCircle,
 } from "react-icons/bs";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../redux/actions/userActions";
 
 export const ProfileDropDown = ({ classes }) => {
   const [open, setOpen] = useState(false);
-
+  const dispatch = useDispatch();
   let ProfileDivRef = useRef();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -30,10 +31,14 @@ export const ProfileDropDown = ({ classes }) => {
       document.removeEventListener("mousedown", handler);
     };
   });
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <div className={`relative ${classes}`}>
       <div
-        className="flex items-center relative"
+        className="flex cursor-pointer items-center relative"
         ref={ProfileDivRef}
         onClick={() => {
           setOpen(!open);
@@ -79,24 +84,13 @@ export const ProfileDropDown = ({ classes }) => {
           </li>
 
           <li>
-            {userInfo.username ? (
-              <>
-                <div className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs">
-                  {" "}
-                  <BsBoxArrowRight /> Sign Out
-                </div>
-              </>
-            ) : (
-              <>
-                <Link
-                  className="px-3 py-2 bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
-                  to={""}
-                >
-                  {" "}
-                  <BsBoxArrowLeft /> Sign In
-                </Link>
-              </>
-            )}
+            <div
+              onClick={logoutHandler}
+              className="px-3 py-2 cursor-pointer bg-none hover:bg-[#eef2fa] transition-all duration-500 ease-out flex items-center gap-2 text-xs"
+            >
+              {" "}
+              <BsBoxArrowRight /> Sign Out
+            </div>
           </li>
         </ul>
       </div>

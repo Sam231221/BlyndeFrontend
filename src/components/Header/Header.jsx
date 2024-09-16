@@ -8,7 +8,6 @@ import { FaCartShopping } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 
-import { logout } from "../../redux/actions/userActions";
 import CartRightBar from "./CartRightBar";
 import { ProfileDropDown } from "./ProfileDropDown";
 function Header() {
@@ -21,7 +20,6 @@ function Header() {
   const wishlist = useSelector((state) => state.wishlist);
   const { userLikes } = wishlist;
 
-  const dispatch = useDispatch();
   const location = useLocation();
 
   const [navbar, setNavbar] = useState(false);
@@ -41,10 +39,6 @@ function Header() {
 
   const { pathname } = location;
   const splitLocation = pathname.split("/");
-
-  const logoutHandler = () => {
-    dispatch(logout());
-  };
 
   return (
     <>
@@ -128,7 +122,7 @@ function Header() {
               <ProfileDropDown />
             ) : (
               <Link to="/login">
-                <RiUserReceived2Line className="text-[20px] md:text-[25px]" />
+                <RiUserReceived2Line className="text-[15px] md:text-[20px]" />
               </Link>
             )}
 
@@ -136,14 +130,14 @@ function Header() {
               onClick={() => showSideCartNav()}
               className="relative cursor-pointer"
             >
-              <FaCartShopping className="text-[20px] md:text-[25px]" />
+              <FaCartShopping className="text-[15px] md:text-[20px]" />
               <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
                 {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
               </div>
             </div>
 
             <Link to="/my-wishlist" className="relative cursor-pointer">
-              <FaRegHeart className="text-[20px] md:text-[25px]" />
+              <FaRegHeart className="text-[15px] md:text-[20px]" />
               <div className="absolute  aspect-square -top-3 -right-3 w-4 h-4 flex items-center justify-center text-white text-[12px] font-medium bg-[#717FE0]">
                 {userLikes.reduce((acc, item) => acc + 1, 0)}
               </div>

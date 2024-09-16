@@ -4,7 +4,7 @@ import googleplay from "/images/thirdparty/google-play.png";
 export default function Footer() {
   return (
     <footer className="relative z-[996]">
-      <div className="flex  flex-col sm:flex-row sm:justify-between bg-black gap-10 py-10 px-20 ">
+      <div className="flex flex-col sm:flex-row sm:justify-between bg-black gap-10 py-10 px-20 ">
         {/* leftbar */}
         <div className="lg:w-2/3 my-10  sm:w-full">
           <div className="lg:w-2/3 sm:w-full">
@@ -50,10 +50,21 @@ export default function Footer() {
             We are available 8:00am – 7:00pm
           </p>
           <div className="mt-4">
-            <div className="flex mb-2 gap-3">
-              <img className=" " src={appstore} alt="" />
-
-              <img className=" " src={googleplay} alt="" />
+            <div className="flex md:items-center flex-col md:flex-row mb-2 gap-3">
+              <div className="h-10 w-20">
+                <img
+                  className="w-full h-full object-contain"
+                  src={appstore}
+                  alt=""
+                />
+              </div>
+              <div className="h-10 w-20">
+                <img
+                  className="w-full h-full object-contain"
+                  src={googleplay}
+                  alt=""
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 font-medium">
               Shopping App: Try our View in Your Room feature, manage registries
@@ -63,7 +74,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-nav">
+      <div className="footer-nav px-3">
         <div className="container">
           <ul className="footer-nav-list">
             <li className="footer-nav-item">

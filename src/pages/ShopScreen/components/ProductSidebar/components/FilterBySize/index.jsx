@@ -20,7 +20,7 @@ export default function FilterBySize({ handleSizeChange }) {
     loadSizes();
   }, []);
   return (
-    <>
+    <div className="w-full mb-4">
       <h2 className="text-lg tracking-wide font-medium text-gray-900">
         Filter By Size
       </h2>
@@ -39,6 +39,6 @@ export default function FilterBySize({ handleSizeChange }) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

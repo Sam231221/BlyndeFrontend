@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { saveShippingAddress } from "../redux/actions/cartAction";
 import PageContainer from "../components/PageContainer";
+const items = [
+  { label: "Home", path: "/" },
+  { label: "Shipping", path: "/shipping" },
+];
 
 function ShippingScreen() {
   const cart = useSelector((state) => state.cart);
@@ -30,16 +34,34 @@ function ShippingScreen() {
 
   return (
     <PageContainer>
-      <div className="container mt-10">
+      <div className="container mx-auto py-2 overflow-auto mt-10">
+        {/* Breadcrumbs */}
+        <nav className="text-xs mt-10" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            {items.map((item, index) => (
+              <li className="flex items-center gap-2" key={index}>
+                <Link
+                  to={item.path}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  {item.label}
+                </Link>
+                {index < items.length - 1 && (
+                  <span className="text-gray-300">/</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
         <FormContainer>
-          <div className="form-signin border w-100 m-auto">
+          <div className="form-signin px-4 py-3 border w-100 m-auto">
             {/*
              On Shipping Screen
              there are only 2 steps
              step1: User must be logged in
              step2: User Shipping Address 
             */}
-            <h3 className="text-center font-bold text-2xl my-3">
+            <h3 className="text-center font-medium tracking-wide text-2xl my-3">
               {" "}
               Checkout Process
             </h3>
@@ -104,7 +126,7 @@ function ShippingScreen() {
               </div>
 
               <button
-                className="rounded-full uppercase bg-zinc-800 hover:bg-sky-600 my-4 text-white  font-medium text-sm px-3 py-2"
+                className="uppercase bg-zinc-800 hover:bg-sky-600 my-4 text-white  font-medium text-sm px-3 py-2"
                 type="submit"
               >
                 Continue
