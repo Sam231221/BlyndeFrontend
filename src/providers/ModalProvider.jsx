@@ -1,6 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
-const ModalContext = createContext();
+export const ModalContext = createContext(null);
+export function useModalContext() {
+  const context = useContext(ModalContext);
+  if (!context) {
+    throw new Error("useModalContext must be defined within the provider.");
+  }
+  return context;
+}
 
 export default function ModalContextProvider({ children }) {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -14,16 +21,9 @@ export default function ModalContextProvider({ children }) {
   };
   return (
     <ModalContext.Provider
-      value={(isModalOpen, content, openModal, closeModal)}
+      value={{ isModalOpen, content, openModal, closeModal }}
     >
       {children}
     </ModalContext.Provider>
   );
-}
-export function useModalContext() {
-  const context = useContext(ModalContext);
-  if (!context) {
-    throw new Error("useModalContext must be defined within the provider.");
-  }
-  return context;
 }

@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+  XIcon,
+} from "react-share";
 import Loader from "../../components/Loader";
 import { Message } from "../../components/Message";
 import PageContainer from "../../components/PageContainer";
@@ -19,12 +29,15 @@ import {
 } from "react-icons/pi";
 import Reviews from "./components/Reviews";
 import { addToCart } from "../../redux/actions/cartAction";
+import { useModalContext } from "../../providers/ModalProvider";
+import CodeSnippet from "../../components/code-snippet";
 
 export default function ProductScreen() {
   const items = [
     { label: "Home", path: "/" },
     { label: "Shop", path: "/shop" },
   ];
+  const { openModal } = useModalContext();
   const [data, setData] = useState({
     quantity: 1,
     color: "",
@@ -59,7 +72,43 @@ export default function ProductScreen() {
       alert("Please select size and color");
     }
   };
+  const ShareProductComponent = ({ id }) => {
+    return (
+      <div>
+        <h2 className="text-xl tracking-wide mb-2">Copy link</h2>
+        <CodeSnippet
+          code={`${import.meta.env.VITE_PUBLIC_URL}/product/${id}`}
+        />
 
+        <p className="text-xs mt-2 text-gray-400 mb-2">
+          You can share the product with your friends
+        </p>
+        <div className="flex gap-2">
+          <FacebookShareButton
+            url={`${import.meta.env.VITE_PUBLIC_URL}/product/${id}`}
+          >
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <FacebookMessengerShareButton
+            url={`${import.meta.env.VITE_PUBLIC_URL}/product/${id}`}
+          >
+            <FacebookMessengerIcon size={32} round />
+          </FacebookMessengerShareButton>
+
+          <TwitterShareButton
+            url={`${import.meta.env.VITE_PUBLIC_URL}/product/${id}`}
+          >
+            <XIcon size={32} round />
+          </TwitterShareButton>
+          <WhatsappShareButton
+            url={`${import.meta.env.VITE_PUBLIC_URL}/product/${id}`}
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </div>
+      </div>
+    );
+  };
   return (
     <PageContainer>
       <div className="container mx-auto mt-24">
@@ -190,20 +239,19 @@ export default function ProductScreen() {
                       <PiGlobeThin size={20} />
                       <span>Size Guide</span>
                     </a>{" "}
-                    <a
-                      href="#"
-                      className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2"
-                    >
+                    <button className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2">
                       <PiHeartStraightLight size={20} />
                       <span>Add to Wishlist</span>
-                    </a>
-                    <a
-                      href="#"
+                    </button>
+                    <button
+                      onClick={() =>
+                        openModal(<ShareProductComponent id={product._id} />)
+                      }
                       className="text-zinc-800 flex items-center gap-2 font-medium tracking-wide text-sm my-2"
                     >
                       <PiShareNetworkLight size={20} />
                       <span>Share this Product</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
