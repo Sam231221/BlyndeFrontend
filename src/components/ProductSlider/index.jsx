@@ -233,38 +233,34 @@ function ProductSlider(props) {
   });
 
   return (
-    <div>
-      <div className="flex flex-col-reverse md:flex-row gap-3">
-        <div className="flex md:flex-col gap-2 z-[10] ">
-          {positionIndicators}
-        </div>
-        <div className={classes.Container}>
-          {children.length > 1 && (
-            <div className={classes.LeftArrow} onClick={prevClickHandler}>
-              ❰
-            </div>
-          )}
-
-          <div
-            className={classes.DisplayFrame}
-            id="DisplayFrame"
-            onTouchStart={(e) => touchStartHandler(e)}
-            onTouchMove={(e) => touchMoveHandler(e)}
-            onTouchEnd={(e) => touchEndHandler(e)}
-            onMouseDown={(e) => mouseStartHandler(e)}
-            onMouseMove={(e) => mouseMoveHandler(e)}
-            onMouseUp={(e) => mouseEndHandler(e)}
-            onMouseLeave={(e) => mouseEndHandler(e)}
-            onWheel={() => wheelHandler()}
-          >
-            {displayItems}
+    <div className="flex flex-col-reverse md:flex-row gap-3">
+      <div className="flex md:flex-col gap-2 z-[10] ">{positionIndicators}</div>
+      <div className={classes.Container}>
+        {children.length > 1 && (
+          <div className={classes.LeftArrow} onClick={prevClickHandler}>
+            ❰
           </div>
-          {children.length > 1 && (
-            <div className={classes.RightArrow} onClick={nextClickHandler}>
-              ❱
-            </div>
-          )}
+        )}
+
+        <div
+          className={classes.DisplayFrame}
+          id="DisplayFrame"
+          onTouchStart={(e) => touchStartHandler(e)}
+          onTouchMove={(e) => touchMoveHandler(e)}
+          onTouchEnd={(e) => touchEndHandler(e)}
+          onMouseDown={(e) => mouseStartHandler(e)}
+          onMouseMove={(e) => mouseMoveHandler(e)}
+          onMouseUp={(e) => mouseEndHandler(e)}
+          onMouseLeave={(e) => mouseEndHandler(e)}
+          onWheel={() => wheelHandler()}
+        >
+          {displayItems}
         </div>
+        {children.length > 1 && (
+          <div className={classes.RightArrow} onClick={nextClickHandler}>
+            ❱
+          </div>
+        )}
       </div>
     </div>
   );

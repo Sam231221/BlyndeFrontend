@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Rating from "../../../../components/reusables/Rating";
+import Rating from "../../../../components/Rating";
 import {
   resetReviewStatus,
   submitReview,

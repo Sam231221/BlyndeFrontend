@@ -12,7 +12,7 @@ import {
 import { AiOutlineDelete } from "react-icons/ai";
 import PageContainer from "../components/PageContainer";
 import { endpoint } from "../lib/api";
-import ProductPriceInput from "./ProductScreen/components/ProductPriceInput";
+import ProductPriceInput from "../components/ProductPriceInput";
 const items = [
   { label: "Home", path: "/" },
   { label: "Cart", path: "/cart" },

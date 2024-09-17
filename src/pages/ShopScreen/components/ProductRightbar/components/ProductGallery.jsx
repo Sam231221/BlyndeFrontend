@@ -1,13 +1,11 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { RxDashboard } from "react-icons/rx";
 import { CiCircleList } from "react-icons/ci";
-import Rating from "../../../../../components/reusables/Rating";
-import ProductGridShowCase from "../../../../../components/reusables/ProductGridShowCase";
 
+import ProductGridShowCase from "../../../../../components/reusables/ProductGridShowCase";
 import { addToWishList } from "../../../../../redux/actions/userActions";
-import axios, { endpoint } from "../../../../../lib/api";
+import axios from "../../../../../lib/api";
 
 export default function ProductGallery({
   selectedFilters,
@@ -39,10 +37,6 @@ export default function ProductGallery({
 
     fetchProducts();
   }, []);
-  const navigate = useNavigate();
-  const addToCartHandler = (id, quantity = 1) => {
-    navigate(`/cart/?code=${id}&qty=${quantity}`);
-  };
 
   const addToWishlistHandler = (id) => {
     dispatch(addToWishList(id));
@@ -227,7 +221,6 @@ export default function ProductGallery({
         <ProductGridShowCase
           showtype={productsDisplaytype}
           productheight={`h-[200px] sm:h-[300px]`}
-          addToCartHandler={addToCartHandler}
           addToWishlistHandler={addToWishlistHandler}
           products={currentProducts}
         />

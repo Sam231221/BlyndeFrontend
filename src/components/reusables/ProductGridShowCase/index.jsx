@@ -1,18 +1,15 @@
 import { Link } from "react-router-dom";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import ProductImageTransition from "./ProductImageTransition";
-import Rating from "../Rating";
-import ProductColorSelect from "../../../pages/ProductScreen/components/ProductColorSelect";
-import SizeVariant from "../../../pages/ProductScreen/components/SizeVariant";
-import {
-  PiGlobeThin,
-  PiHeartStraightLight,
-  PiShareNetworkLight,
-} from "react-icons/pi";
-import ProductPriceInput from "../../../pages/ProductScreen/components/ProductPriceInput";
+import Rating from "../../Rating";
+import ProductColorSelect from "../../ProductColorSelect";
+import SizeVariant from "../../SizeVariant";
+import ProductPriceInput from "../../ProductPriceInput";
 import { addToCart } from "../../../redux/actions/cartAction";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useModalContext } from "../../../providers/ModalProvider";
+import { ProductDetail } from "../ProductDetail";
 
 export default function ProductGridShowCase({
   showtype = "grid",
@@ -20,6 +17,7 @@ export default function ProductGridShowCase({
   productheight,
   addToWishlistHandler,
 }) {
+  const { openModal, closeModal, content } = useModalContext();
   const dispatch = useDispatch();
   const [data, setData] = useState({
     quantity: 1,
@@ -53,7 +51,7 @@ export default function ProductGridShowCase({
               key={i}
               className="group border border-gray-200 overflow-hidden transition-all duration-200 ease-in"
             >
-              <div className="relative h-[400px]">
+              <div className={`relative ${productheight}`}>
                 <ProductImageTransition
                   name={product.name}
                   img_albums={product.image_albums}
@@ -97,7 +95,22 @@ export default function ProductGridShowCase({
                       aria-label="heart outline"
                     ></ion-icon>
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 bg-white mb-2 py-2 text-gray-400 border border-zinc-200  transition-all duration-200 ease-in-out rounded-full hover:bg-gray-900 hover:text-white hover:border-gray-800">
+                  <div
+                    onClick={() =>
+                      openModal(
+                        <ProductDetail
+                          product={product}
+                          handleColorChange={handleColorChange}
+                          handleSizeChange={handleSizeChange}
+                          handleQuantityChange={handleQuantityChange}
+                          addToCartHandler={addToCartHandler}
+                          data={data}
+                          openModal={openModal}
+                        />
+                      )
+                    }
+                    className="flex justify-center items-center w-10 h-10 bg-white mb-2 py-2 text-gray-400 border border-zinc-200  transition-all duration-200 ease-in-out rounded-full hover:bg-gray-900 hover:text-white hover:border-gray-800"
+                  >
                     <MdOutlineZoomOutMap size={15} />
                   </div>
                   <Link
@@ -198,7 +211,10 @@ export default function ProductGridShowCase({
                       ></ion-icon>
                     </div>
                     <div className="flex justify-center items-center w-10 h-10 bg-white mb-2 py-2 text-gray-400 border border-zinc-200  transition-all duration-200 ease-in-out rounded-full hover:bg-gray-900 hover:text-white hover:border-gray-800">
-                      <MdOutlineZoomOutMap size={15} />
+                      <MdOutlineZoomOutMap
+                        onClick={() => openModal(<ProductDetail />)}
+                        size={15}
+                      />
                     </div>
                     <Link
                       to={`/product/${product._id}`}

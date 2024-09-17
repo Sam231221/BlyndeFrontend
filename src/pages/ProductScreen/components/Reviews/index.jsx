@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import ReviewForm from "./ReviewForm";
-import Rating from "../../../../components/reusables/Rating";
+import Rating from "../../../../components/Rating";
 import { useSelector } from "react-redux";
 import { Message } from "../../../../components/Message";
 import axios from "../../../../lib/api";
