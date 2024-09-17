@@ -10,6 +10,7 @@ import { FaRegHeart } from "react-icons/fa6";
 
 import CartRightBar from "./CartRightBar";
 import { ProfileDropDown } from "./ProfileDropDown";
+import Searchbar from "./Searchbar";
 function Header() {
   const [sideCartNav, setSideCartNav] = useState(false);
   const cart = useSelector((state) => state.cart);
@@ -51,8 +52,8 @@ function Header() {
         )}
       >
         <div className="flex justify-between w-full h-full items-center">
-          <div className="w-full h-full px-4 flex items-center ">
-            <div className="flex items-center">
+          <div className="w-full h-full px-4 flex items-center  ">
+            <div className="flex items-center ">
               <RxHamburgerMenu className="text-[20px] md:text-[25px] mr-3 block md:hidden" />
               <Link to="/">
                 <h2 className="text-3xl  mb-2 font-bold tracking-wide text-zinc-900">
@@ -115,6 +116,9 @@ function Header() {
                 </li>
               </ul>
             </nav>
+            <div className="ml-4">
+              <Searchbar />
+            </div>
           </div>
           {/* lefmost navitems */}
           <div className="flex px-4 mr-5 items-center gap-3">

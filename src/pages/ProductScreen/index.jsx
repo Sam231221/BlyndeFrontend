@@ -25,10 +25,11 @@ export default function ProductScreen() {
   //select a particular state i.e productList state which is an obj
   const productDetail = useSelector((state) => state.productDetails);
   const { error, loading, product } = productDetail;
+  const { success } = useSelector((state) => state.reviews);
 
   useEffect(() => {
     dispatch(listProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, success]);
 
   return (
     <PageContainer>

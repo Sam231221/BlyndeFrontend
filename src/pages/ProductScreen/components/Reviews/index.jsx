@@ -9,7 +9,7 @@ import Moment from "moment";
 
 export default function Reviews({ productId, userInfo }) {
   const [reviews, setReviews] = useState([]); // State for storing reviews
-  const { loading, error, success } = useSelector((state) => state.reviews);
+  const { success } = useSelector((state) => state.reviews);
 
   useEffect(() => {
     const fetchReviews = async () => {

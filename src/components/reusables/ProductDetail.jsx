@@ -37,7 +37,7 @@ export const ProductDetail = ({ product, openModal }) => {
       alert("Please select size and color");
     }
   };
-  console.log(product);
+
   return (
     <div className="flex my-8 flex-col md:flex-row md:h-screen gap-3">
       {/* ProductSlider*/}
